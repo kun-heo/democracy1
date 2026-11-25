@@ -1,0 +1,396 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,array,geometry,microtype,fancyhdr}
+\geometry{left=.96in,right=.96in,top=.88in,bottom=.84in,headheight=14pt,headsep=.17in}
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=black]{hyperref}
+\hypersetup{pdftitle={Political Realignment and the Transfer of Power: Analytical Equilibria with Overlapping Generations}}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5.3pt plus .5pt minus .5pt}
+\setlength{\emergencystretch}{1.4em}
+\setlength{\abovedisplayskip}{7pt}\setlength{\belowdisplayskip}{7pt}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small\itshape Political Realignment and the Transfer of Power}
+\fancyhead[R]{\small Analytical equilibria}\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{.25pt}
+\newcommand{\E}{\mathbb E}\newcommand{\one}{\mathbf 1}\newcommand{\UU}{\mathsf U}
+\newcommand{\Krec}{\mathsf K}
+\newcommand{\statement}[1]{\textbf{#1}\enspace}
+\begin{document}
+\thispagestyle{plain}
+{\LARGE\bfseries Political Realignment and the Transfer of Power\par}
+\vspace{2pt}
+{\large Analytical equilibria with overlapping generations of voters\par}
+\vspace{4pt}
+
+A voter lives through two terms. A party values every term in which it or its opponent may govern. This difference in horizons makes the voting problem shorter than the party's problem even when the political game lasts forever.
+
+\section{What is solved}
+\textbf{The game with mandate choice and public learning.} Sections~\ref{sec:one}--\ref{sec:chamber} keep the draft's two program menus, official causal accounts, policy experimentation, enforcement blocs, and sincere OLG electorate. For two and three elections the solution comes from backward induction and the parties' support indifference equations. For infinitely many elections I give a family of stationary Markov perfect equilibria (MPE). These are functions of monitoring and the cost of refusal on a certified parameter region. Each solution specifies choices after out-of-equilibrium program offers and defeats. The first and last terms of a finite game can have different strategies.
+
+\textbf{Closed forms for general stakes and electoral conditions.} Sections~\ref{sec:ballots}--\ref{sec:thresholds} hold the two mandates fixed and take the policy technology to be known. Parties still respond to information about the current state. Voters choose the certificate, blocs decide enforcement, and the defeated party decides whether to surrender power. I derive two- and three-term strategies and enumerate the stationary refusal candidates conditional on each possible voting and enforcement outcome. Explicit inequalities select the candidates consistent with those outcomes. In a symmetric specialization the entire equilibrium correspondence reduces to thresholds in the policy and office stakes divided by the cost of refusal.
+
+\textbf{Two implications.} First, a third election can change today's refusal solely through continuation values. In the full game the right incumbent's payoff crosses the refusal threshold even at identical current mandates and implemented policies. Second, a long finite horizon can select a different outcome from a stationary equilibrium of the same infinite game. In the symmetric specialization there is an interval on which every finite horizon produces concession at every loss while mutual refusal is also a stationary MPE.
+
+\paragraph{Timing and payoff conventions.}
+Write \(n\) for the number of terms remaining, including the disputed term. At \(n=1\) every living actor receives the term's payoff and the game ends. Put \(V_0=0\). An election opens every democratic term. Both equal-sized cohorts vote. Young voters discount their second term by \(0<\delta<1\) and have no bequest motive. A party survives defeat and discounts by the same \(\delta\). Successful entrenchment keeps the incumbent in office and ends elections; policy and regime payoffs continue through the horizon. The post-election Markov strategy conditions on the public state, offers and certificate. The certificate summarizes the count at that stage. The enforcement convention forms an attainable quorum with the draft's priority rule. The electoral valence payoff accrues to voters when the right wins the count.
+
+\newpage
+\section{Solving a term in the full game}\label{sec:one}
+The public state is \(z=(d,I,e,b)\), comprising the regime, incumbent, monitoring environment, and public record. The persistent return \(a_*\) is 0 or 1. In the unresolved record \(b=\UU\) the parties put equal probability on the two worlds. A citizen evaluates both certificates under the offered causal account that best fits her experience. The two other records \(\Krec_0,\Krec_1\) reveal the technology. Transitory economic news \(m=\E[\omega\mid\text{report}]\) has expectation zero and variance \(S(e)\). An action can improve the public record inherited by later cohorts.
+
+\statement{Implementation.} Given a program \((\beta^M,\gamma^M,a)\) and report \(m\), put \(\widehat x=\beta^M+\gamma^M a m\). The official account is used by the implementing body. Every nonzero instrument can reveal \(a_*\) with the same probability \(\lambda\) when the record is unresolved. Let \(y\) be the nonzero grid point nearest to \(\widehat x\), taking the lower in a tie. Given the installed regime \(d'\) and sponsor \(j\), define the credit for generating evidence by
+\[
+ L=\delta\lambda\one_{\{b=\UU\}}\,
+ \E_{e'\mid e}\!\left[V_{j,n-1}^{a}(d',j,e',\Krec_a)-
+                        V_{j,n-1}^{a}(d',j,e',\UU)\right].
+\]
+The body chooses \(y\) if \(L>(y-\widehat x)^2-\widehat x^2\), and zero if the inequality is reversed. At equality it takes the lower instrument. This follows by completing the square and comparing the best nonzero instrument with zero. Continuing autocracy uses the permanent party objective and averages over its posterior in both the flow ideal and the credit. In the last term \(L=0\).
+
+\statement{Transfer.} Let \(A_v\) and \(C_v\) be actor \(v\)'s values from successful entrenchment and lawful installation of the challenger, including the current policy and all payoffs while alive. A pivotal bloc \(b'\) is willing to defend when \(C_{b'}-A_{b'}\ge c_{b'}\). The distribution of the quorum then gives \(q\), the probability a refusal succeeds. Failure installs the same government as concession. The incumbent's gain and decision are
+\begin{equation}
+ T_I=q(A_I-C_I)-k-(1-q)\kappa,\qquad \text{refuse if }T_I>0.\label{eq:gain}
+\end{equation}
+
+\statement{OLG ballots.} For voter type \(v\), let \(\Delta\bar u_v\) be the expected current payoff difference between right and left certificates, before valence and integrating any refusal. In her last term \(\Delta_v^O=\Delta\bar u_v\). With a personal term remaining after this election,
+\[
+ \Delta_v^Y=\Delta\bar u_v+\delta
+ \left(\E_v[V_{v,n-1}^{O}(Z')\mid R\text{ certified}]
+       -\E_v[V_{v,n-1}^{O}(Z')\mid L\text{ certified}]\right).
+\]
+The voter supports \(R\) if \(\Delta_v^h+\eta>0\) for her age \(h\). At \(n=1\) both ages have the same comparison. For fixed affine rules and certain installation the current difference specializes to \(b_v+S d_v\), the original model's baseline advantage plus the responsiveness advantage weighted by the variance of anticipated news.
+
+\newpage
+\section{Two elections, three elections, and a stationary MPE}\label{sec:full}
+Fix continuation strategies and values for all actors. Section~\ref{sec:one} determines payoffs following \emph{each} pair of programs at a democratic state. Write \(A,B\) for the left and right campaign payoff matrices under the parties' posterior. For supports \(U,V\), let \(x,y\) be the left and right mixing vectors. The solution on a regular square support is the following pair of ordinary linear solves:
+\[
+ \binom{y_V}{a}=\begin{pmatrix}A_{UV}&-\one\\\one^\top&0\end{pmatrix}^{-1}
+        \binom{0}{1},\qquad
+ \binom{x_U}{b}=\begin{pmatrix}B_{UV}^{\top}&-\one\\\one^\top&0\end{pmatrix}^{-1}
+        \binom{0}{1}.
+\]
+Keep positive supported probabilities and require \(A_{\bar U,V}y_V\le a\one\) and \(B_{U,\bar V}^{\top}x_U\le b\one\). For rectangular or singular supports use the same indifference and normalization equations as linear systems, with the same inequalities. Candidate supports are finite. These conditions follow directly from the two parties' best responses and include pure programs.
+
+Let \(P_n^a\) and \(r_{v,n}^a\) be the stochastic transition matrix and expected term payoff under the resulting strategies in world \(a\). A row sums over installed governments, policies, release of the outcome, and next environment. At \(\UU\) the probability of learning \(a\) under an installed rule \(x\) is \(\lambda\sum_m\Pr_e(m)\one_{\{x(m)\ne0\}}\). Actual payments include the appropriate office, regime, enforcement, and valence payoffs. With \(a,v\) suppressed, the values of a party or bloc are
+\begin{align}
+ V_1&=r_1,\qquad V_2=r_2+\delta P_2r_1,\notag\\
+ V_3&=r_3+\delta P_3r_2+\delta^2P_3P_2r_1 .\label{eq:finite}
+\end{align}
+One first solves the terminal programs using zero continuation, then the two-remaining programs using \(r_1\), then the three-remaining programs using \(r_2+\delta P_2r_1\). A voter has \(V^O_{v,n}=r_{v,n}\) and \(V^Y_{v,n}=r_{v,n}+\delta P_nr_{v,n-1}\). The last term in \eqref{eq:finite} can affect her through the parties' choices while she is alive.
+
+For a complete stationary strategy profile \(\sigma\), the corresponding solution in each world is
+\begin{equation}
+ V_i=(I-\delta P)^{-1}r_i,\quad V_b=(I-\delta P)^{-1}r_b,\quad
+ V_v^O=r_v,\quad V_v^Y=r_v+\delta P r_v,\label{eq:resolvent}
+\end{equation}
+where \(i,b,v\) as actor subscripts denote a party, a bloc, and a voter type. Only parties and blocs need the resolvent. Substitution into the policy, transfer, ballot, and campaign inequalities provides a necessary and sufficient sequential check under the maintained institutions. Discounting makes one-shot deviations sufficient for each continuing organization. For arbitrary primitives this gives a finite list of rational tests for pure profiles. With stationary mixing, multiplication by the positive Bellman determinants gives polynomial equalities and inequalities in the support probabilities. The next section supplies actual solutions of these conditions for the draft's full game.
+
+\newpage
+\section{Full-game equilibrium strategies as functions of monitoring and cost}\label{sec:chamber}
+Let \(s\) be the high environment's revelation probability, also equal to its forecast variance. The low value is .12 and economic variance is one. Keep the draft's other primitives, listed in Appendix~\ref{app:params}. The following results hold throughout the rectangle
+\begin{equation}
+ .880\le s\le .882,\qquad .565\le k\le .572 .\label{eq:band}
+\end{equation}
+This interval certifies a complete set of specified actions, including off-path ballots. Its edges are sufficient bounds for the calculation.
+
+\begin{center}\small
+\textbf{Table 1.\ Equilibrium programs by public state and remaining horizon}\\[4pt]
+\begin{tabular}{@{}llcrrrr@{}}\toprule
+Incumbent & Monitoring & Record & One & Two & Three & Stationary\\\midrule
+L&Low &\(\UU\)&03&03&\(\{0,1\},2\)&02\\
+L&High&\(\UU\)&03&03&03&03\\
+R&Low &\(\UU\)&03&23&mixed&23\\
+R&High&\(\UU\)&23&23&\(\{0,1\},3\)&\(\{0,1\},3\)\\[2pt]
+Either&Either&\(\Krec_0\)&02&02&02&02\\[2pt]
+L&Low &\(\Krec_1\)&13&11&11&11\\
+L&High&\(\Krec_1\)&11&11&11&11\\
+R&Low &\(\Krec_1\)&31&31&31&31\\
+R&High&\(\Krec_1\)&31&11&11&11\\\bottomrule
+\end{tabular}
+\end{center}
+The first digit denotes the left program. Each party's codes 0 and 1 use its first mandate with account 0 and 1 respectively. Codes 2 and 3 use its second mandate. Braces allow any left mixture. For the finite horizons the table exhausts campaign equilibria under the stated rules. The stationary column displays an equilibrium family. For each entry, off-path implementation, mobilization, refusal and ballots are given by Section~\ref{sec:one} with the corresponding continuation values.
+
+With three elections remaining at \((R,\mathrm{low},\UU)\), the surviving rows are \(L_0,L_2\) and columns \(R_1,R_3\). Using the matrices of Section~\ref{sec:full}, define
+\[
+ a=B_{0,1}-B_{0,3},\quad b=B_{2,3}-B_{2,1},\quad
+ c=A_{2,1}-A_{0,1},\quad d=A_{0,3}-A_{2,3}.
+\]
+All four are positive. The unique equilibrium here has
+\begin{equation}
+ \Pr(L_0)=\frac{b}{a+b},\qquad \Pr(R_1)=\frac{d}{c+d}.\label{eq:mix}
+\end{equation}
+The four payoff differences are polynomials in \(s\) and affine in \(k\) on \eqref{eq:band}. At the draft's point \((.88,.57)\), the respective probabilities are exactly \(4680712875010686/23660196986955187\) and \(36424654052437133/132010666342686133\). The remaining support follows from strict dominance, including one strictly dominating mixture. The indifferences determine both probabilities without a search.
+
+For the stationary entry with braces, the two pure accounts yield identical on-path transition kernels and rewards in each true world. Against either account the right's program 3 is optimal. The left is indifferent. Therefore \emph{every} mixture of those two accounts is a stationary MPE with the other displayed choices. The model also has a separate source of multiplicity if one admits other coordination equilibria at enforcement nodes.
+
+\newpage
+\subsection*{A policy comparison that isolates the extra term in office}
+Take a right incumbent at \((\mathrm{high},\UU)\). Fix the campaign pair at 23. Under a lawful transfer the left chooses \(.5\) after all three reports. A right party that entrenches chooses \((-.5,.5,1)\) when \(m=(-1,0,1)\). These current policies are identical with two or three elections remaining, and in both cases \(q=.64\).
+
+Put \(h=s-.88\) and \(d=k-.57\). Direct substitution in \eqref{eq:gain} gives the following \emph{exact} equilibrium-continuation expressions on \eqref{eq:band}:
+\begin{align}
+ T_{R,2}^{23}&=-.035258816+.5832768h-d,\notag\\
+ T_{R,3}^{23}&=\phantom{-}.03716781804544+.614626818384h-.00264h^2-d,\label{eq:exact}\\
+ T_{R,3}^{03}&=\phantom{-}.53258958478336+.629251907072h-.00264h^2-d.\notag
+\end{align}
+The first expression is negative and the second is positive everywhere in the rectangle. The pair 23 is on the equilibrium path with two remaining terms and is a feasible campaign deviation with three. Holding these offers fixed isolates the change in continuation values. The third expression uses the three-election equilibrium offers; the alternative left account gives the same outcome here. In the stationary family the right also refuses at this initial state. The left refuses there under left incumbency with one, two, three, or indefinitely many elections remaining.
+
+\paragraph{Proof on the entire parameter region.}
+Conditional on the displayed profile, \(P^a(s)\) and each flow reward are affine in \(s\) at fixed \(k\). Each world admits 16 feasible public states. The entries of \(I-\delta P^a(s)\) vary with \(s\) in just two rows. Direct expansion gives
+\[
+ \det(I-\delta P^a(s))=c_a(451894-13399s)^2,\qquad c_a>0 .
+\]
+Cramer's rule gives rational stationary values. In a determinant with one reward column substituted, that column adds at most one degree beyond the two varying rows of the other columns. A one-step payoff comparison adds at most one more. Multiplying every stationary incentive by \((451894-13399s)^2\) therefore leaves a polynomial of degree at most four. In a finite game with the displayed pure future programs the degree bound for the comparison is \(n\) with \(n\le3\); the third-date-from-the-end campaign mixes only after those payoff matrices are formed.
+
+For each horizon the accompanying proof evaluates these polynomials with exact rational arithmetic at degree-plus-one arguments. It recovers their Bernstein coefficients on the entire \(s\)-interval. The Bernstein basis is nonnegative and sums to one, so nonnegative coefficients establish a weak inequality everywhere, strictly positive coefficients establish a strict inequality, and all-zero coefficients establish an identity. For each fixed profile the numerators of the incentive inequalities are affine in \(k\). Checking both \(k\)-edges proves the rectangle. The tests cover all 96 possible democratic defeat nodes per horizon, every instrument alternative, both ages' ballots, and campaign deviations. The stationary tests cover the two pure accounts that generate the family in Table 1. Full polynomial and rational expressions accompany the source. This certificate establishes the displayed stationary family; the general mixed stationary correspondence of the unrestricted game has not been enumerated.
+
+\newpage
+\section{An analytical game with endogenous elections and enforcement}\label{sec:ballots}
+The following specialization gives transparent formulas beyond the rectangle. The two mandates are fixed. Their policy effects are known and their affine rules apply in democracy and autocracy. Economic reports still arrive after the election. The public political state is the regime and incumbent, with time remaining added in finite games. The voting and enforcement rules, OLG horizons, long-lived parties, and order of installation are as before. Monitoring \(S\) is permanent here. For a voter or bloc \(b\), write \(u_b^j(S)\) for its democratic flow payoff under party \(j\) and \(\chi_b\ge0\) for its per-term loss under autocracy. For party \(i\) normalize the rival's democratic policy payoff to zero and write \(g_i>0\) for its gain from governing. If each mandate implements its sponsor's ideal, this gain is
+\[
+ g_i=B_i+(\beta_i-\beta_j)^2+S(\alpha_i-\alpha_j)^2 .
+\]
+Party \(i\)'s autocratic flow payoffs are \(g_i-\chi_i\) in power and \(-\chi_i\) in opposition. This specialization removes officeholders' choice of which persistent technology to test. Sections~\ref{sec:one}--\ref{sec:chamber} solve that choice in the full game.
+
+\paragraph{Voting given a transfer decision.}
+Let \(p_{i,n}\) be incumbent \(i\)'s probability of refusing a defeat, \(q_{i,n}\) its chance of success conditional on attempting, and \(z_{i,n}=q_{i,n}p_{i,n}\). For voter type \(v\), the value of certifying challenger \(j\) instead of incumbent \(i\), before valence, is
+\begin{align}
+ D_{vi,n}^O&=(1-z_{i,n})(u_v^j-u_v^i)-z_{i,n}\chi_v,\notag\\
+ D_{vi,n}^Y&=D_{vi,n}^O+\one_{\{n\ge2\}}\delta
+ \big[(1-z_{i,n})r_{v,j,n-1}+z_{i,n}(u_v^i-\chi_v)-r_{v,i,n-1}\big].\label{eq:ballots}
+\end{align}
+Here \(r_{v,i,n}\) is the old voter's expected term payoff on entering democratic state \(i\). Let \(\epsilon_j=1\) for a right challenger and \(-1\) for a left challenger. For each draw \(\eta\), the right certificate indicator is
+\[
+ C_{i,n}^R(\eta)=\one\!\left\{\tfrac12\sum_{h\in\{O,Y\}}\sum_v \mu_v
+                \one\{\epsilon_j D^h_{vi,n}+\eta>0\}>\tfrac12\right\}.
+\]
+The shares \(\mu_v\) within each cohort sum to one. Let \(c_{i,n}\) be the resulting chance that the challenger wins and \(e_{i,n}=\E[\eta C^R_{i,n}(\eta)]\). Then
+\begin{equation}
+ r_{v,i,n}=u_v^i+c_{i,n}D_{vi,n}^O+e_{i,n}.\label{eq:old}
+\end{equation}
+This closes the voting calculation. The identity \(u_v^R-u_v^L=b_v+S d_v\) moves actual ballots and hence the next certificate probability whenever voters cross their cutoffs. A young voter anticipates who will govern in her final term and whether she will vote again.
+
+\newpage
+\section{Closed-form solutions for two and three terms}\label{sec:finiteclosed}
+Put \(a_n=(1-\delta^n)/(1-\delta)\). Write \(B_{b,i,n}\) for the pre-election value of a long-lived enforcement bloc \(b\) when \(i\) is incumbent. Given the next values, the bloc is willing to defend a transfer from \(i\) to \(j\) exactly when
+\[
+ u_b^j+\delta B_{b,j,n-1}-(u_b^i-\chi_b)a_n\ \ge\ c_b^{\rm mob}.
+\]
+Count willing blocs at each quorum and apply the priority rule. Let \(q_{i,n}\) be the probability of an unmet quorum, and \(d_{bi,n}\) the probability that bloc \(b\) participates conditional on a refusal. Set \(f_{i,n}=k_i+(1-q_{i,n})\kappa_i\). These objects can be calculated before the election.
+
+Write \(H_{i,n}\) and \(O_{i,n}\) for party \(i\)'s pre-election values when incumbent and in opposition. Write \(u_{i,n}=1-c_{i,n}\) and \(v_{i,n}=c_{j,n}\) for its respective win probabilities from the ballots. Terminal continuation values are zero. With one term remaining,
+\begin{align}
+ T_{i,1}&=q_{i,1}(g_i-\chi_i)-f_{i,1},\notag\\
+ H_{i,1}&=u_{i,1}g_i+(1-u_{i,1})[T_{i,1}]_+,\qquad
+ O_{i,1}=v_{i,1}[(1-z_{j,1})g_i-z_{j,1}\chi_i].\label{eq:terminal}
+\end{align}
+At each date take \(p_{i,n}=0\) for \(T_{i,n}<0\), and 1 for \(T_{i,n}>0\). The theoretical correspondence allows any mixture at equality; the draft selects concession there. Use \eqref{eq:ballots} to compute the certificate probabilities after the refusal incentives are known.
+
+\statement{Two terms.} The first-date gain from refusing is
+\begin{equation}
+ T_{i,2}=q_{i,2}\Big[(1+\delta)(g_i-\chi_i)
+       -\delta v_{i,1}\{(1-z_{j,1})g_i-z_{j,1}\chi_i\}\Big]-f_{i,2}.\label{eq:two}
+\end{equation}
+For \(\chi_i=0\), the prospect of returning through the last election enters exactly as \(v_{i,1}(1-z_{j,1})\). Holding the other terms fixed, the marginal effect of a higher final certificate probability on today's refusal gain is \(-\delta q_{i,2}(1-z_{j,1})g_i\).
+
+\statement{Three terms.} Substitute the terminal values in \eqref{eq:terminal} into
+\begin{align}
+ O_{i,2}&=(1-v_{i,2})\delta O_{i,1}
+ +v_{i,2}\big[(1-z_{j,2})(g_i+\delta H_{i,1})
+                    -z_{j,2}(1+\delta)\chi_i\big],\notag\\
+ T_{i,3}&=q_{i,3}\big[(1+\delta+\delta^2)(g_i-\chi_i)-\delta O_{i,2}\big]-f_{i,3}.\label{eq:three}
+\end{align}
+These expressions require no fixed point. Start at \(n=1\) and calculate willingness, refusal, ballots, then values in that order. At each horizon the remaining bloc value for the next backward step is
+\[
+ B_{b,i,n}=(1-c_{i,n})(u_b^i+\delta B_{b,i,n-1})+
+ c_{i,n}\big[(1-z_{i,n})(u_b^j+\delta B_{b,j,n-1})+
+ z_{i,n}(u_b^i-\chi_b)a_n-p_{i,n}d_{bi,n}c_b^{\rm mob}\big].
+\]
+The proof conditions on the certificate and then on installation. Winning as challenger brings office only if the rival's refusal does not succeed. A party that concedes is the challenger at the following election. This yields \eqref{eq:two}--\eqref{eq:three} and accounts for every remaining term.
+
+\newpage
+\section{The infinite-horizon response to a rival's conduct}\label{sec:infinite}
+Fix for the moment a candidate voting cutoff in each democratic state and a candidate set of willing blocs at each possible defeat. These conjectures determine both win probabilities \(u=u_i\), \(v=v_i\) and the enforcement success probabilities \(q_i,q_j\). The next section tests the conjectures against the OLG electorate and blocs. For party \(i\), abbreviate \(g=g_i\), \(\chi=\chi_i\), \(x=p_i\), \(z=q_jp_j\), and \(f=k_i+(1-q_i)\kappa_i\). Its stationary equations are
+\begin{align*}
+ H&=u(g+\delta H)+(1-u)(\delta O+xT),\\
+ O&=(1-v)\delta O+v\big[(1-z)(g+\delta H)-z\chi/(1-\delta)\big],\\
+ T&=q_i\big[(g-\chi)/(1-\delta)-\delta O\big]-f .
+\end{align*}
+These three equations can be eliminated. Write
+\[
+ t=1-\delta,\quad b=1-\delta u,\quad
+ d_0=t[1+\delta(v-u)],\quad d_1=\delta^2v(1-u),\quad D=d_0+d_1 z>0.
+\]
+The opposition value if the focal party always concedes while other strategies stay fixed is
+\[
+ O^0=\frac{v[(1-z)g-bz\chi/t]}{D}.
+\]
+Substitution gives the actual one-shot gain under any own continuation probability \(x\),
+\begin{equation}
+ T=\frac{q_i[(g-\chi)/t-\delta O^0]-f}
+          {1+xq_i\delta^2v(1-u)(1-z)/D}.\label{eq:Tinf}
+\end{equation}
+Indeed, eliminating \(H\) from the first two equations gives \(O=O^0+\delta v(1-z)(1-u)xT/D\). Substituting this into the last equation proves \eqref{eq:Tinf}. Recover \(H=[ug+(1-u)(\delta O+xT)]/b\). Thus no party continuation value remains unknown.
+
+\paragraph{Solving for refusal probabilities.}
+If \(q_i=0\) the party concedes for positive costs. Otherwise put
+\[
+ E_i=(g-\chi)/t-f/q_i,\qquad
+ A_i=E_i d_0-\delta vg,\qquad B_i=E_i d_1+\delta v(g+b\chi/t).
+\]
+The sign of \(T\) equals the sign of the \emph{affine} function
+\begin{equation}
+ L_i(p_j)=A_i+B_iq_jp_j .\label{eq:affine}
+\end{equation}
+A pure pair is a candidate precisely when each conceding party has \(L_i\le0\) and each refusing party has \(L_i\ge0\). The only regular candidate with both parties mixing is
+\[
+ p_L=-A_R/(B_Rq_L),\qquad p_R=-A_L/(B_Lq_R),
+\]
+provided both numbers lie between zero and one. If an endpoint makes a party indifferent, intersect its interval of mixtures with the rival's inequalities in \eqref{eq:affine}. If a coefficient vanishes, the same sign conditions apply directly. On a fixed voting and enforcement region the numerator of \eqref{eq:Tinf} increases with rival refusal when \(v,q_i,q_j,g>0\), since
+\[
+ \partial_z O^0=-v\big[(g+b\chi/t)d_0+g d_1\big]/D^2<0.
+\]
+
+\newpage
+\section{Closing the stationary voting and enforcement game}\label{sec:closing}
+For a finite support of \(K\) ordered valence draws there are at most \(K+1\) possible right-certificate cutoffs per incumbent. For any conjectured continuation the right's vote share is weakly increasing in the common shock, since it enters each individual comparison with coefficient one. Hence the following finite construction includes every stationary equilibrium of the fixed-mandate game under the stated Markov and enforcement conventions.
+
+\begin{enumerate}\setlength{\itemsep}{4pt}
+\item Take a pair of certificate cutoffs and a willingness pattern for each incumbent. Sum the valence masses to obtain \(c_i,e_i\) for each side. The quorum and priority rules give \(q_i,d_{bi}\).
+\item Use \eqref{eq:affine} to list the pure and mixed refusal candidates. For each one set \(z_i=q_ip_i\). Compute \(D^O_{vi}\) and \(r_{v,i}=u_v^i+c_iD^O_{vi}+e_i\) from \eqref{eq:ballots}--\eqref{eq:old}. In the young comparison substitute this old-age value for each possible next incumbent. Keep precisely the cutoffs reproduced by the two cohorts' ballots. This step also values the last term of a young voter whose second election is canceled.
+\item For each enforcement bloc form the two-state democratic transition matrix \(Q\) with \(Q_{ii}=1-c_i\), \(Q_{ij}=c_i(1-z_i)\). Define
+\[
+ b_i^0=(1-c_i)u_b^i+c_i\big[(1-z_i)u_b^j+
+          z_i(u_b^i-\chi_b)/(1-\delta)-p_i d_{bi}c_b^{\rm mob}\big].
+\]
+The bloc's two values are \((I-\delta Q)^{-1}b^0\). Keep a willingness pattern exactly when each indicated bloc satisfies
+\[
+ u_b^j+\delta B_{b,j}-(u_b^i-\chi_b)/(1-\delta)\ \ge\ c_b^{\rm mob},
+\]
+and each unwilling bloc has the reverse strict inequality.
+\end{enumerate}
+Necessity follows by extracting the realized cutoffs and the bloc choices from an equilibrium. For sufficiency, the ballot test gives sincere optimal votes at both ages, the bloc test implements the chosen enforcement equilibrium, and \eqref{eq:Tinf} makes every party's one-shot deviation unprofitable. Autocracy is absorbing. This proves the stationary characterization. In a regular case only four pure pairs and at most one interior pair need testing for each pair of cutoffs and willingness patterns. At indifference the listed weak inequalities retain the corresponding faces. Conditioning on \(u,v\) in \eqref{eq:Tinf} has therefore imposed no exogenous win probability.
+
+\paragraph{Realignment and the option of return.}
+A change in anticipated learning can move a voter across the cutoff in \eqref{eq:ballots}. If enough votes move, \(v_i\), the probability of a certificate while in opposition, changes. Equations~\eqref{eq:two} and \eqref{eq:Tinf} show exactly where that change enters the current transfer decision. When the rival would always concede, \(\chi_i=0\) and \(u_i=v_i=w_i\), the stationary refusal index reduces to \(q_i g_i(1-\delta w_i)/(1-\delta)-f_i\). An increase in \(S\) that raises both \(g_i\) and \(w_i\) acts in opposite directions through these two quantities. Endogenous voting or enforcement can also move the game to a different region.
+
+\newpage
+\section{Thresholds for arbitrary patience and enforcement}\label{sec:thresholds}
+Take fixed mandates, symmetric stakes \(g>0\), common cost \(k>0\), zero party regime loss and zero additional sanction. Suppose either party wins the certificate with probability \(1/2\) under either incumbent, and an attempted refusal succeeds with probability \(q\in(0,1)\). Write \(G=g/k\). Keep \(q\) and \(\delta\in(0,1)\) free throughout this section.
+
+These probabilities can be implemented with the OLG electorate and the enforcement game. Give a strict majority in each cohort equal material payoffs under both policies and zero regime loss. For valence \(\pm v\) equiprobable, the difference in their expected old-age valence payoffs across any two democratic states is at most \(v\), and the expected old-age valence payoff in autocracy is zero. The democratic bound follows because a right certificate is a monotone cutoff in valence, so expected valence payoffs are either 0 or \(v/2\). A current advantage \(v\) is decisive for either age. One materially neutral bloc with \(\chi_b>c_b^{\rm mob}/(1-\delta)\) always finds pivotal defense worthwhile. A second neutral bloc with zero regime loss and positive cost stays out. A two-bloc quorum with probability \(q\) and a one-bloc quorum otherwise implement the specified success probability. These assumptions isolate reciprocity. Section~\ref{sec:closing} permits changes in the majority coalition.
+
+\statement{Finite horizons.} With \(n=1,2,3\) terms remaining, a defeated party strictly refuses if \(G>G_n\) and strictly concedes if \(G<G_n\), where
+\begin{equation}
+ G_n=\frac{1}{q\left(1+\frac12\sum_{r=1}^{n-1}\delta^r\right)} .
+ \label{eq:general-finite}
+\end{equation}
+To prove this, under concession in all later terms \(O_{i,n-1}=g a_{n-1}/2\), so the current gain is \(qg(1+\frac12\sum_{r=1}^{n-1}\delta^r)-k\). As \(G\) rises the three thresholds are crossed in the order \(G_3<G_2<G_1\). For \(G_2\le G<G_1\) the last-term parties concede, hence \(H_{i,1}=O_{i,1}=g/2\). Even if the rival refuses with two terms remaining, \(O_{i,2}\le(1+\delta)g/2\) by \eqref{eq:three}. Thus the three-remaining party strictly refuses throughout this range. For \(G\ge G_1\), a party in opposition has strictly less value than governing every future term because its rival can win the next count. Consequently \(T_{i,n}>qg-k\ge0\) at \(n=2,3\). These inequalities include any future mixing at a threshold.
+
+\statement{Infinite horizon.} Put \(t=1-\delta\) and \(b=1-\delta/2\). Substitution in \eqref{eq:Tinf} gives a best-response index increasing in the rival's refusal probability \(p\):
+\begin{equation}
+ D(p)=qg\,\frac{b(t+\delta qp/2)}{t(t+\delta^2qp/4)}-k .
+ \label{eq:general-D}
+\end{equation}
+The thresholds from \(D(1)=0\) and \(D(0)=0\) are respectively
+\[
+ G_R=\frac{t(t+\delta^2q/4)}{qb(t+\delta q/2)}
+ \quad<\quad
+ G_C=\frac{t}{qb}.
+\]
+For \(G<G_R\) only mutual concession is stationary. For \(G>G_C\) only mutual refusal is stationary. For \(G_R<G<G_C\) both pure equilibria and one symmetric mixed equilibrium exist. The mixed probability solves \(D(p^*)=0\):
+\[
+ p^*(G)=\frac{4t(t-qbG)}{q\delta(2qbG-t\delta)} .
+\]
+Every finite horizon yields concession throughout this coexistence interval. Under concession in all later terms, the current index is strictly less than \(qg[1+\delta/(2t)]-k\le0\) for \(G\le G_C\). Backward induction gives the claim.
+
+\newpage
+\subsection*{A numerical normalization of the exact thresholds}
+Take \(\delta=4/5\) and \(q=1/2\). Substitution in \eqref{eq:general-finite} and \eqref{eq:general-D} gives the following rational thresholds. They use the same electorate, enforcement rule, and two parties at all three horizons.
+
+\begin{center}\small
+\textbf{Table 2.\ Complete refusal thresholds in the symmetric specialization}\\[4pt]
+\begin{tabular}{@{}ll@{}}\toprule
+Horizon & Decision after a certified loss, with \(G=g/k\)\\\midrule
+One election remaining & Refuse if \(G>2\), concede if \(G<2\).\\
+Two elections remaining & Refuse if \(G>10/7\), concede if \(G<10/7\).\\
+Three elections remaining & Refuse if \(G>50/43\), concede if \(G<50/43\).\\[2pt]
+Stationary, \(G<7/15\) & Unique mutual concession.\\
+Stationary, \(7/15<G<2/3\) & Mutual concession, mutual refusal, and mutual mixing.\\
+Stationary, \(G>2/3\) & Unique mutual refusal.\\\bottomrule
+\end{tabular}
+\end{center}
+
+At a finite cutoff the incumbent is indifferent at that horizon. The theoretical game permits any mixture there. Under the full indifference correspondence both pure profiles exist at either stationary boundary, where the mixed branch meets one of them. Selecting concession at every tie can remove a weak equilibrium at a boundary. At later dates of a finite game use the row for the number of elections then remaining. The thresholds refer to the same primitives across all horizons.
+
+\paragraph{Finite proof.}
+At the terminal election \(T_1=g/2-k\). If the last-period parties concede, \(H_1=O_1=g/2\) and \(T_2=7g/10-k\). If they also concede with two terms remaining, \(O_2=9g/10\), giving \(T_3=43g/50-k\). For \(10/7<G<2\), terminal parties concede and both refuse with two terms remaining. Direct substitution gives \(O_2=11g/20\) and \(T_3=g-k>0\). At \(G=10/7\), mixing in the two-remaining subgame gives \(O_2\le9g/10\), so the three-remaining party still strictly refuses. For \(G\ge2\) a party entering the next term in opposition receives strictly less than the value of continuously governing: the rival can win the next count. Consequently \(T_n>g/2-k\ge0\) for \(n=2,3\), including any terminal indifference. This establishes every row of the finite game by backward induction.
+
+\newpage
+\subsection*{Why increasing the horizon need not select the stationary refusal equilibrium}
+With rival refusal probability \(p\), \eqref{eq:Tinf} has the sign of
+\[
+ D(p,G)=\frac{15g(1+p)}{2(5+2p)}-k .
+\]
+It is strictly increasing in \(p\), with \(D(0,G)=3g/2-k\) and \(D(1,G)=15g/7-k\). This gives the two boundary tests in Table 2. In the coexistence interval no asymmetric pure profile is a best response pair. A party mixes only if the rival makes it indifferent, so the third stationary equilibrium has
+\[
+ p_L=p_R=p^*(G)=\frac{10-15G}{15G-4},\qquad
+ \frac{dp^*}{dG}=-\frac{90}{(15G-4)^2}<0 .
+\]
+At either endpoint, a party mixing strictly would require a pure action from its opponent to be indifferent. Against the interior mixture the opponent would strictly prefer the other action. Only the two pure profiles remain there. The least and greatest refusal equilibria weakly increase with \(G\); both are locally constant in the interior of the coexistence region. Along symmetric best-response adjustment the interior mixing threshold is repelling. The ordering here follows from the actual best-response index. A change in voting coalitions or willingness to enforce in the full game requires its own comparison.
+
+\statement{Finite-horizon selection.} If \(7/15<G<2/3\), \emph{every finite horizon} yields mutual concession after every loss, although the infinite game also sustains mutual refusal. To see this, suppose all shorter subgames yield concession. Following a transfer, party \(i\) will obtain \(g/2\) in expectation in each later term. With \(n\) terms left its deviation gain is
+\[
+ T_n^{C}=\tfrac12g\left[1+\tfrac12\sum_{r=1}^{n-1}\delta^r\right]-k
+       <\tfrac32g-k<0.
+\]
+The same strict sign holds at the terminal date. Induction proves the claim, and \(T_n^C\to3g/2-k\). For instance at \(G=3/5\) every finite game concedes, while the stationary game admits \((0,0),(1/5,1/5),(1,1)\). A party can refuse in the stationary game because its rival would refuse at future defeats. A terminal date can unravel that expectation regardless of how distant it is.
+
+\paragraph{Interpretation.}
+The reduced model gives formulas for arbitrary political stakes and for both ages' votes. The symmetric thresholds isolate how a future transfer enters today's decision. The full-menu calculation answers a different aggregation question: voters can change coalitions, parties can change their proposed programs or experiment in office, and equilibrium refusal can appear with three elections remaining even at identical present policy. Section~\ref{sec:thresholds} states the assumptions behind the symmetric thresholds.
+
+\newpage
+\appendix
+\section{Full-game primitives and reproduction}\label{app:params}
+The two equal-sized cohorts have the same entering type distribution. In the unresolved public record, when both parties offer the same account voters and blocs use it to evaluate both certificates. When the accounts differ they use their ranking from the historical record. When the return is revealed everyone uses the verified account. Each party assigns prior probability \(1/2\) to each true world. Both ages of a given type have the following common flow primitives.
+
+\begin{center}\small
+\begin{tabular}{@{}lrrrrr@{}}\toprule
+Actor & Baseline \(\beta\) & Loading \(\gamma\) & Regime loss \(\chi\) & Share & Preferred account\\\midrule
+Left party & $-.45$ & $-.50$ & $.15$ & & \\
+Right party & $1$ & $2.10$ & $.15$ & & \\
+Left bloc & $-.20$ & $-.50$ & $.43$ & & $0$\\
+Right bloc & $1$ & $1.80$ & $1.08$ & & $1$\\[2pt]
+Voter 1 & $0$ & $.15$ & $.65$ & $.15$ & $0$\\
+Voter 2 & $0$ & $1.90$ & $.65$ & $.30$ & $1$\\
+Voter 3 & $.10$ & $2.50$ & $.65$ & $.20$ & $0$\\
+Voter 4 & $1$ & $2.00$ & $.65$ & $.35$ & $1$\\\bottomrule
+\end{tabular}
+\end{center}
+The policy grid is \(\{-2,-1.5,\dots,3\}\). The left's two mandates \((\beta^M,\gamma^M)\) are \((-.10,-.10)\) and \((.30,1.20)\); the right's are \((1,2.40)\) and \((.50,.70)\). Each is paired with an admissible account \(a\in\{0,1\}\). The material expected flow conditional on the true world and report is \(-(x-\beta_v)^2+2\gamma_v a_*xm\). The party in office alone gets rent .15. All actors bear their own regime losses each autocratic term. In the term of entrenchment the incumbent's announced mandate applies; in continuing autocracy it implements its party objective.
+
+The transitory state is \(-1\) or \(+1\) with equal probabilities each period, independently of the persistent technology. The report reveals it with probability \(S(e)\) and otherwise gives posterior mean zero. The monitoring environment switches from low to high with probability .12 and from high to low with probability .20. Set \(S(\mathrm{low})=.12\), \(S(\mathrm{high})=s\). A nonzero instrument discloses the true \(a_*\) with independent probability \(\lambda=.25\). The public record retains a disclosure forever. Discounting is \(\delta=.25\).
+
+The refusal cost is \(k\). Failure adds a sanction \(\kappa=.30\). Each participating bloc pays .12. A one-bloc quorum has probability .36 and a two-bloc quorum probability .64. At an attainable quorum the challenger's willing bloc has priority, followed by the incumbent's willing bloc. A right certificate gives every voter the common electoral valence \(\eta\). At \(\eta=0\) the mass is .36; each of \(\pm.2,\pm.6,\pm4\) has mass .10 and each of \(\pm1.5,\pm3\) mass .01 per sign. Ballot and majority ties favor the left. Instrument ties choose the lower action. The full-menu benchmarks select concession when indifferent.
+
+\newpage
+\subsection*{An exact stationary refusal incentive in the full game}
+For the right incumbent at high monitoring and an unresolved record, consider the equilibrium programs \(03\) and set \(k=.57\). On the parameter region in \eqref{eq:band}, its refusal gain is
+\[
+ T_{R,\infty}^{03}(s,.57)=
+ \frac{c_0+c_1s-c_2s^2}{c_3(451894-13399s)},
+\]
+where the following constants are integers:
+\begin{align*}
+ c_0&=58675001565810846973576720218253481566,\\
+ c_1&=4897469886712393727453712019877183437253,\\
+ c_2&=177560332633443554668628317260253966272,\\
+ c_3&=16804354394637399435733219329939060 .
+\end{align*}
+This expression and the bivariate formula in the source are obtained by substituting the stationary values into \eqref{eq:gain}. In particular the coefficients depend on future program choice, future certificates, and the public learning transitions.
+
+\subsection*{Reproducing the proofs}
+The source includes two independent calculations. With Python 3.11 or later, NumPy and SymPy, run:
+\begin{verbatim}
+python check_identities.py
+python full_game.py
+\end{verbatim}
+The first calculation checks the symbolic party Bellman equations, the refusal index and the symmetric thresholds, including arbitrary \(\delta\) and \(q\). The second constructs the campaign comparisons and the stationary transition matrices from the draft's full-game primitives. It proves all the stated signs on the rectangle and writes the symbolic expressions for the finite and stationary incentives. The file \texttt{full\_game\_formulas.txt} contains the output, including the four coefficients needed for the three-election mixed campaign in \eqref{eq:mix}. The two stationary program specifications are in \texttt{stationary\_paths.json}. The supplied scripts derive all associated deviations and the off-path decisions.
+\end{document}

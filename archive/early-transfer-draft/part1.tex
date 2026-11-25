@@ -1,0 +1,479 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,array,graphicx,xcolor,microtype}
+\usepackage[margin=1.02in,top=.9in,bottom=.92in,headheight=14pt,headsep=.19in]{geometry}
+\usepackage[authoryear,round]{natbib}
+\usepackage{fancyhdr,placeins,needspace}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage{hyperref}
+
+\definecolor{inkblue}{HTML}{245771}
+\hypersetup{colorlinks=true,linkcolor=inkblue,citecolor=inkblue,urlcolor=inkblue,
+pdftitle={Political Realignment and the Transfer of Power in an Unpredictable World},
+pdfauthor={Kun Heo}}
+
+\setlength{\emergencystretch}{2em}
+\linespread{1.09}
+\setlength{\parindent}{1.25em}
+\setlength{\bibsep}{2pt}
+\setcounter{topnumber}{3}\setcounter{bottomnumber}{2}
+\renewcommand{\topfraction}{.93}\renewcommand{\bottomfraction}{.90}\renewcommand{\textfraction}{.07}
+
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\itshape Political Realignment and the Transfer of Power}
+\fancyhead[R]{\small Kun Heo}\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{.25pt}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{result}{Result}
+
+\newcommand{\E}{\mathbb E}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\Prb}{\mathbb P}
+\newcommand{\D}{\mathrm D}
+\newcommand{\A}{\mathrm A}
+\newcommand{\Dd}{\Delta d}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\refsource}[2]{\href{#1}{#2}}
+
+\begin{document}
+\thispagestyle{plain}
+\begin{center}
+{\LARGE\bfseries Political Realignment and the Transfer of Power\\[4pt]
+in an Unpredictable World\par}
+\vspace{10pt}
+{\large Kun Heo}\\[3pt]
+Department of Government, London School of Economics and Political Science\\
+Working draft, November 2026
+\end{center}
+
+\begin{quote}\small
+\noindent\textbf{Abstract.} How does the prospect of learning during and after a term in office shape pre-electoral moderation and the peaceful transfer of power? Two long-lived parties commit to state-contingent policy rules, overlapping generations vote, and implemented policies generate public evidence about the effectiveness of government intervention. Uncertainty operates through two channels: better within-term economic forecasts raise the immediate risk of delegating discretionary authority and can realign cross-pressured voters before the vote, while a successor's policy trial can realign the next electorate and diminish a defeated incumbent's chance of a lawful return. Studying a transitional election followed by contested democratic continuation, I characterize the maximum forecast precision at which a defeated incumbent honors each opposition platform. Better monitoring first induces the challenger to mute its policy responsiveness so as to secure office peacefully---even when its electoral odds stay constant---before causing accommodation to collapse altogether, returning the opposition to its full program precisely as the incumbent turns to refusal. Extending the benchmark to endogenous voter realignment, unrestricted policy slopes, and partial institutional commitment separates incumbent-appeasing restraint from voter-appeasing restraint and shows that the discontinuous collapse of moderation is endogenous whenever refusal can fail. Under Gaussian policy learning, the experimentation gain and transfer cutoffs admit smooth closed forms without piecewise kinks. In the infinite-horizon game, a total-variance decomposition yields posterior-dependent transfer bounds whose slack vanishes as learning progresses, while numerical Markov equilibria exhibit learning-driven reversals and self-fulfilling compliance traps.
+\end{quote}
+
+\section{Introduction}\label{sec:intro}
+
+Suppose two voters agree on the ordinary size of public intervention in calm economic times, yet favor opposite remedies should a financial or external crisis strike---one favoring orthodox liquidity support and fiscal consolidation, the other favoring capital controls, bank levies, and debt relief. Both understand that either instrument's leverage grows in a severe downturn. If the government is unlikely to detect a downturn in time to tailor policy, the two voters compare parties mainly on ordinary policy and may vote together. If an early-warning system makes timely crisis forecasts likely after the election, each voter must ask how the next government will use that discretion. Voters aligned in calm times can then split onto opposing sides without any change in their preferences or beliefs about persistent fundamentals.
+
+The same incoming news changes what it means for a governing party to lose, linking two forms of political realignment to democratic survival. First, better within-term forecasts can trigger \emph{ex ante} realignment among cross-pressured voters while simultaneously raising the \emph{delegation risk} borne by a defeated incumbent that hands discretionary authority to an ideological rival. Second, at the end of the term everyone observes what the governing party's policy accomplished, which can trigger \emph{ex post} realignment at the next election and impose \emph{record risk} by lowering a yielding incumbent's probability of returning to office lawfully. Facing both risks, an opposition party can promise to tie its hands and respond mutedly to crisis news. Such a pledge can look like a Downsian appeal to undecided voters even when electoral odds are invariant and the concession---a \emph{turnover tribute}---is addressed solely to an incumbent whose compliance the winner needs.
+
+I model two long-lived parties choosing one-term mandates that set the responsiveness weight placed on economic outcomes when policy is chosen after a within-term forecast arrives. Parties survive electoral defeats, while overlapping generations of voters live for two terms and inherit a common public record. Separating a single-election benchmark, a two-election transitional game under Gaussian learning, and an infinite-horizon dynamic game isolates each strategic force cleanly:
+
+\begin{enumerate}
+\item \textbf{Incumbent-appeasing versus voter-appeasing moderation.} In the single-election benchmark with fixed electoral odds, better state monitoring first compels the challenger to moderate to preserve peaceful turnover and then defeats moderation once even an unresponsive rule triggers refusal, causing the challenger to jump discontinuously back to its full program at the exact point democratic compliance breaks down. Crucially, muting responsiveness toward zero appeases the incumbent precisely when the parties desire opposite-signed crisis responses; if they agreed on the direction of crisis action and differed only in intensity, an unresponsive pledge would worsen the incumbent's loss. Allowing cross-pressured voters to realign separates steeper pre-breakdown concessions aimed at the incumbent from post-breakdown concessions aimed at retaining swing voters. Relaxing both sign and cap restrictions to the entire real line shows that the collapse of moderation is not a boundary artifact: because policy capitulation is paid with certainty upon victory whereas refusal succeeds only with probability $q<1$, the challenger endogenously abandons capitulation at a finite monitoring threshold. Incorporating institutional commitment frictions further shows why independent courts, legislatures, and central banks expand the range of peaceful turnover.
+\item \textbf{Horizon versus Gaussian learning across elections.} Studying a transitional election followed by consolidated electoral competition separates today's transfer crisis from artificial end-of-the-world refusal distortions while isolating how post-election Bayesian learning alters today's bargain. Comparing the dynamic refusal gain against a two-election no-learning benchmark decomposes the intertemporal wedge into a \emph{horizon effect}, a \emph{policy-adaptation learning effect}, and an \emph{electoral-realignment learning effect}. Under Gaussian parameter uncertainty and Gaussian outcome noise, each party's trial shifts next period's posterior means along a one-dimensional normal ray, summarized by a smooth rational experimentation index. The resulting monitoring cutoff schedule and equilibrium mandate are globally smooth on the interior without piecewise kinks, and a linear-stakes wedge in $(S,k/q)$ space characterizes the exact phase boundaries between unconstrained democracy, pacted moderation, and simultaneous platform polarization and refusal.
+\item \textbf{Repeated elections and posterior-dependent bounds.} When refusal remains available at every future election, projecting squared losses onto the post-signal filtration cancels unforecastable state shocks across regimes and applies the law of total variance to bound continuation values by current posterior parameter variances. The uncertainty slack in these equilibrium-independent bounds shrinks toward zero as public learning accumulates. Numerical Markov perfect equilibria under Kalman filtering illustrate non-monotonic compliance reversals along a single learning trajectory as well as Przeworski-style multiplicity sustained by reciprocal expectations of future turnover.
+\end{enumerate}
+
+\paragraph{Relation to existing work.}
+For \citet{przeworski}, competitive democracy persuades losers to yield by offering a future chance to govern, while \citet{fearon} shows how regular electoral rules coordinate civic enforcement. My model starts at a certified count and endogenizes the pre-electoral policy bargain that precedes a potential violation. \citet{svolik2020} and \citet{graham} show how partisan policy stakes erode voters' willingness to punish undemocratic conduct. Here those stakes depend endogenously on within-term information and post-election learning, allowing \emph{regime radicalization}---a greater willingness to subvert an adverse count---to emerge even as the opposition's announced platform moderates.
+
+Building on \citet*{izzo}, whose online appendix E.1 links ideal policies to the product of perceived policy leverage and outcome valuation, I separate common Bayesian beliefs about persistent returns from partisan weights on outcomes. Delegating an objective prior to observing within-term shocks follows \citet{rogoff}. As in \citet{callgood,calltrial} and \citet{partisantraps}, implemented policies govern public learning inherited by future voters; here both living cohorts vote and the peaceful transfer of office is itself an equilibrium choice.
+
+Section~\ref{sec:setup} defines the game. Section~\ref{sec:prelim} analyzes one-election realignment, two-audience moderation, unrestricted slopes, and partial commitment. Section~\ref{sec:two} characterizes transitional elections and closed-form Gaussian learning. Section~\ref{sec:stationary} establishes infinite-horizon posterior bounds. Section~\ref{sec:example} presents the worked Gaussian and infinite-horizon analyses, and Section~\ref{sec:discussion} develops empirical designs and historical narratives. Proofs appear in the appendix.
+
+\section{The political game}\label{sec:setup}
+
+Two long-lived parties, $L$ and $R$, compete for the authority to set policy after receiving within-term economic news. Before voters cast ballots, both parties announce how strongly they will respond to that news. After the count certifies a winner, a defeated incumbent decides---before observing the within-term news---whether to concede office or attempt refusal. Whoever assumes office observes the forecast and implements policy, generating a public policy trial for future electorates.
+
+\subsection{Policy technology and public learning}
+
+In term $t$, the installed government chooses a scalar instrument $x_t\in\mathbb R$. The economic state $\omega_t$ is drawn independently across terms with $\E[\omega_t]=0$ and $\Var(\omega_t)=\sigma_\omega^2\in(0,\infty)$. Nature draws two persistent technology parameters $(\alpha,\beta)\in\mathbb R^2$ once at the outset, independently of $\{\omega_t\}$, from a common prior $h_0$ possessing finite fourth moments. This class accommodates both Gaussian priors on $\mathbb R^2$ and distributions with compact support, and permits arbitrary prior correlation between $\alpha$ and $\beta$. Neither party holds private information.
+
+Let $y(x,\omega)$ denote the systematic outcome produced by instrument $x$ in state $\omega$ relative to the reference policy $x=0$:
+\[
+ y(0,\omega)=0,\qquad
+ y(x',\omega)-y(x,\omega)=(x'-x)(\alpha+\beta\omega).
+\]
+Thus $\alpha$ is the marginal policy effect in a neutral state ($\omega=0$), and $\beta$ governs how strongly economic conditions amplify or dampen that marginal effect. At the end of term $t$, the public noisy outcome is
+\begin{equation}
+ Y_t=y(x_t,\omega_t)+\varepsilon_t
+    =x_t(\alpha+\beta\omega_t)+\varepsilon_t ,
+ \label{eq:dgp}
+\end{equation}
+where $\varepsilon_t$ has known continuous density $f_\varepsilon$ with mean zero, independent of $(\alpha,\beta)$, $\{\omega_t\}$, and the history up to implementation.
+
+\subsection{Within-term forecasts and information timing}
+
+Entering term $t$, parties and voters share the public posterior $h_t$ over $(\alpha,\beta)$ with posterior means $a_t=\E_{h_t}[\alpha]$ and $b_t=\E_{h_t}[\beta]$. Today's state $\omega_t$ is unobserved during the campaign, the vote, and any transfer dispute. Once office is settled, the installed government observes a within-term report $s_t$ whose distribution given $(\omega_t,\mathcal H_t)$ is independent of $(\alpha,\beta)$. Define the conditional state forecast and its variance by
+\begin{equation}
+ m_t=\E[\omega_t\mid s_t],\qquad
+ S_t=\Var(m_t)=R_t^2\sigma_\omega^2 \in[0,\sigma_\omega^2],
+ \label{eq:monitoring}
+\end{equation}
+where $R_t^2=S_t/\sigma_\omega^2\in[0,1]$ is the fraction of state variance explained by the within-term report. An uninformative report yields $m_t=0$ ($R_t^2=0$); a fully revealing report yields $m_t=\omega_t$ ($R_t^2=1$). Conditional on $(h_t,s_t)$, the expected marginal effect of policy at implementation is $\E[\alpha+\beta\omega_t\mid h_t,s_t]=a_t+b_t m_t$.
+
+Single-period results in Section~\ref{sec:prelim} depend on the report structure solely through $S_t$. For intertemporal comparative statics, the baseline news-arrival specification lets $s_t$ reveal $\omega_t$ with probability $R_t^2=S_t/\sigma_\omega^2$ and carry no information ($m_t=0$) with probability $1-R_t^2$, varying $R_t^2$ while holding the unconditional distribution of $\omega_t$ fixed.
+
+\subsection{Preferences and campaign mandates}
+
+Actor $i$ is characterized by an ordinary baseline $d_i\in\mathbb R$ and a signed outcome weight $\gamma_i\in\mathbb R$, with quadratic loss around the state-contingent bliss point $d_i+\gamma_i(\alpha+\beta\omega_t)$:
+\begin{equation}
+ u_i(x_t,\omega_t,\alpha,\beta)
+   =-\big[x_t-d_i-\gamma_i(\alpha+\beta\omega_t)\big]^2 .
+ \label{eq:u}
+\end{equation}
+Expanding \eqref{eq:u} shows that terms involving $x_t$ equal $2\gamma_i\,y(x_t,\omega_t)-(x_t-d_i)^2$: actors agree on the objective technology $y(x_t,\omega_t)$ given $h_t$ yet disagree over both baseline intervention $d_i$ and the signed value $\gamma_i$ of shifting the outcome during shocks.
+
+Party $j\in\{L,R\}$ has permanent preference parameters $(d_j,\gamma_j^P)$ with $d_R>d_L$, $\Dd\equiv d_R-d_L>0$, $\gamma_R^P=\Gamma_R>0$, and $\gamma_L^P=-\Gamma_L<0$. Opposite-signed responsiveness weights reflect competing crisis doctrines: when $|\alpha+\beta\omega_t|$ rises in a downturn, $R$ wants the instrument moved upward ($x_t>d_R$) whereas $L$ wants it moved downward ($x_t<d_L$). During the campaign, party $j$ announces a mandate weight $w_j=\gamma_j^M$ committing its implementing authority to maximize expected current payoff \eqref{eq:u} evaluated at $(d_j,w_j)$. Minimizing conditional quadratic loss after observing $s_t$ yields the linear policy rule and voter $i$'s ideal rule:
+\begin{equation}
+ x_j(m_t)=d_j+w_j(a_t+b_t m_t),\qquad
+ x_i^*(m_t)=d_i+\gamma_i(a_t+b_t m_t).
+ \label{eq:rule}
+\end{equation}
+In the baseline menu, $R$ chooses $w_R=r\in[0,\bar r]$ with $0<\bar r\le\Gamma_R$, and $L$ chooses $w_L=-\ell$ with $\ell\in[0,\bar\ell]$ and $0<\bar\ell\le\Gamma_L$. A party's \emph{full mandate} is its menu cap ($\bar r$ or $\bar\ell$), and \emph{moderating} means reducing responsiveness toward zero (an unresponsive or flat rule $w_j=0$ sets $x_j(m_t)=d_j$). Here $d_j$ reflects the party's durable redistributive identity, whereas $w_j$ represents statutory or agency crisis rules delegated for the term; constitutional or statutory ceilings motivate $\bar r<\Gamma_R$ or $\bar\ell<\Gamma_L$. Section~\ref{sec:unconstrained} relaxes both sign and cap restrictions to $w_j\in\mathbb R$ and introduces imperfect institutional commitment.
+
+\subsection{Voting, civic enforcement, and within-term timing}
+
+Parties and two organized partisan constituencies (blocs), one aligned with each party, are infinitely lived and discount future payoffs by $\delta\in(0,1)$. In each democratic term a young voter cohort enters and lives for two terms, voting alongside the old cohort with weights $\nu\in(0,1)$ and $1-\nu$. Figure~\ref{fig:timeline} summarizes the five stages within term $t$.
+
+\begin{figure}[htbp]\centering\small
+\begin{tikzpicture}[
+  >=Latex,
+  stage/.style={draw=inkblue, thick, rounded corners=2pt, fill=inkblue!5,
+                align=center, minimum height=1.24cm, inner sep=4pt, font=\footnotesize}
+]
+\node[stage, text width=2.28cm] (m1) {\textbf{1. Campaign}\\Parties announce\\mandates $(w_L,w_R)$\\at posterior $h_t$};
+\node[stage, text width=2.28cm, right=0.34cm of m1] (m2) {\textbf{2. Election}\\Valence $\eta_t$ realized;\\cohorts vote;\\winner certified};
+\node[stage, text width=2.52cm, right=0.34cm of m2] (m3) {\textbf{3. Transfer Node}\\Defeated $I$ concedes\\or pays $k$ to refuse\\(\emph{before} seeing $s_t$)};
+\node[stage, text width=2.34cm, right=0.34cm of m3] (m4) {\textbf{4. Policy Choice}\\Installed ruler sees\\$s_t$, forms $m_t$, sets\\$x_t(m_t)$ via \eqref{eq:rule}};
+\node[stage, text width=2.40cm, right=0.34cm of m4] (m5) {\textbf{5. Public Trial}\\$(x_t,\omega_t,Y_t)$ observed;\\$h_{t+1}$ updated via\\Bayes' rule \eqref{eq:bayes}};
+
+\draw[->, thick, inkblue] (m1) -- (m2);
+\draw[->, thick, inkblue] (m2) -- (m3);
+\draw[->, thick, inkblue] (m3) -- (m4);
+\draw[->, thick, inkblue] (m4) -- (m5);
+\end{tikzpicture}
+\caption{Sequence of events within term $t$ in democracy. If a refusal in Stage~3 is not blocked by the required constituency quorum, $I$ retains office, implements its announced $w_I$ in Stage~4, and governs permanently under $\gamma_I^P$ from $t+1$ onward without further elections.}\label{fig:timeline}
+\end{figure}
+
+\paragraph{Certification, refusal, and civic enforcement.}
+After mandates $(w_L,w_R)$ are announced, an integrable common valence shock $\eta_t$ is realized and both cohorts vote. If the incumbent $I$ wins the weighted count, it governs in democracy. If challenger $J$ wins, $I$ chooses whether to concede or pay attempt cost $k>0$ to refuse transfer. Upon refusal, a public draw determines whether one or both blocs must endorse enforcement at cost $c>0$ each. Let $C_i^J$ and $A_i^I$ denote actor $i$'s continuation payoffs (including current-term policy and all remaining periods of $i$'s life, net of current attempt/endorsement costs) when $J$ is seated in democracy versus when $I$ entrenches in autocracy. A bloc is willing to endorse when pivotal if $C_i^J-A_i^I\ge c$; when an attainable quorum exists, the required blocs endorse in priority order (challenger's bloc first), and otherwise both abstain.
+
+Let $q\in[0,1]$ denote the resulting probability that the required quorum exceeds the number of willing blocs, so refusal succeeds with probability $q$ and fails (seating $J$ in democracy) with probability $1-q$. If refusal succeeds, future elections end: $I$ still executes its announced rule $w_I$ in the current term---reflecting statutory and bureaucratic delegation lags within an already initiated budget or policy cycle---and reconstitutes institutions to implement its permanent weight $\gamma_I^P$ in every subsequent term. Incumbent $I$'s net gain from refusing defeat is therefore
+\begin{equation}
+ T_I=q(A_I^I-C_I^J)-k .
+ \label{eq:gain}
+\end{equation}
+The incumbent refuses when $T_I>0$ and concedes when $T_I\le 0$. Concession at indifference ($T_I=0$) is not an arbitrary tie-breaking assumption on interior moderation: whenever an interior offer $\ell\in(0,\bar\ell)$ binds at $T_I=0$, any positive refusal probability would leave the challenger without a best response because shading $\ell$ downward by an infinitesimal $\varepsilon>0$ would discontinuously restore full compliance. Concession with probability one at $T_I=0$ is thus an endogenous implication of subgame perfection on the interior of the menu.
+
+\paragraph{Overlapping-generations voting.}
+Valence $\eta_t$ accrues to voters when $R$ is certified. Let $\Delta_i^O$ denote voter $i$'s expected current-term policy gain from certifying $R$ rather than $L$, accounting for any refusal and its success probability $q$. The net utility gains from certifying $R$ for old and young voters of type $i$ are
+\begin{equation}
+ \begin{aligned}
+ \text{Old}\quad &\Delta_i^O+\eta_t,\\
+ \text{Young}\quad &\Delta_i^O+\eta_t+
+ \delta\big\{\E[V_i^O(Z')\mid R\text{ certified}]
+             -\E[V_i^O(Z')\mid L\text{ certified}]\big\},
+ \end{aligned}
+ \label{eq:olg}
+\end{equation}
+where $Z'$ is next period's public state and $V_i^O(Z')$ is the voter's old-age payoff. A voter casts a ballot for $R$ iff her gain is strictly positive (ties go to $L$). The OLG structure plays both a substantive and an analytical role. Substantively, when $R$ would refuse defeat ($T_R>0$), certifying $L$ exposes young voters to losing next period's election---and any positive expected electoral valence---with probability $q$, generating a \emph{regime-preservation} motive to vote for $R$. Analytically, two-period lifetimes bound voters' horizon in the infinite-horizon game, ruling out strategic voter experimentation while preserving full forward-looking responses to regime and learning transitions. Throughout single- and two-election analyses, current time subscripts are omitted where clear and next-period variables carry primes.
+
+\subsection{The policy trial and Bayesian updating}
+
+At the end of term $t$, the public observes the policy trial $(x_t,\omega_t,Y_t)$---including the realized state $\omega_t$ even when the earlier forecast $s_t$ was uninformative---and updates $h_t$ via Bayes' rule:
+\begin{equation}
+ dh_{t+1}(\alpha,\beta)=
+ \frac{f_\varepsilon(Y_t-x_t(\alpha+\beta\omega_t))\,dh_t(\alpha,\beta)}
+ {\int f_\varepsilon(Y_t-x_t(\alpha'+\beta'\omega_t))\,dh_t(\alpha',\beta')} .
+ \label{eq:bayes}
+\end{equation}
+At $x_t=0$, outcomes reflect pure noise and $h_{t+1}=h_t$. At $x_t\ne 0$, $Y_t/x_t=\alpha+\beta\omega_t+\varepsilon_t/x_t$ provides a signal of $\alpha+\beta\omega_t$ with precision proportional to $x_t^2$: larger policy interventions generate sharper public evidence for the next electorate.
+
+\section{One-election benchmarks: realignment, moderation, and commitment}\label{sec:prelim}
+
+\subsection{Ex ante voter realignment and delegation stakes}
+
+Fix announced rules $(w_L,w_R)$ and posterior $h$ with means $(a,b)$. Write neutral-forecast positions as $z_i=d_i+\gamma_i a$, $z_j=d_j+w_j a$, and forecast slopes as $\rho_i=\gamma_i b$, $\rho_j=w_j b$.
+
+\begin{proposition}[Policy stakes and realignment under fixed mandates]\label{prop:fixed}
+At public record $h$, actor $i$'s expected current-term policy loss from party $j$'s rule relative to $i$'s ideal rule $x_i^*(m)$ is
+\begin{equation}
+ \Lambda_i^j=(z_j-z_i)^2+S(\rho_j-\rho_i)^2.
+ \label{eq:distance}
+\end{equation}
+The material advantage of installing $R$ rather than $L$ is $\Delta_i(w_L,w_R;S)=\Delta_i^z+S\Delta_i^\rho$, where $\Delta_i^z=(z_L-z_i)^2-(z_R-z_i)^2$ and $\Delta_i^\rho=(\rho_L-\rho_i)^2-(\rho_R-\rho_i)^2$. Cross-pressured voters satisfying $\Delta_i^z<0<\Delta_i^\rho$ realign from $L$ to $R$ as monitoring crosses $S=-\Delta_i^z/\Delta_i^\rho$ (when $\le\sigma_\omega^2$). In a single-term game, defeated incumbent $I$'s net refusal gain is
+\begin{equation}
+ T_{I,1}=q\big(\Lambda_I^J-\Lambda_I^I\big)-k ,
+ \label{eq:termgain}
+\end{equation}
+evaluated at $\gamma_I^P$, which strictly increases in $S$ (for $q>0,b\ne 0$) iff $|w_I-\gamma_I^P|<|w_J-\gamma_I^P|$.
+\end{proposition}
+
+Equation~\eqref{eq:distance} clarifies why opposite-signed party responsiveness ($\gamma_L^P<0<\gamma_R^P$) underpins hands-tying moderation. At $a=0,b\ne 0$, an unresponsive opposition offer ($w_L=0$) lowers a right incumbent's loss relative to the challenger's ideal rule ($w_L=\gamma_L^P$) iff $(\Gamma_R-0)^2<(\Gamma_R-\gamma_L^P)^2$. Given $\gamma_L^P<\Gamma_R$ and $\Gamma_R>0$, this inequality holds iff $\gamma_L^P<0$. When parties instead agree on the direction of crisis intervention ($0<\gamma_L^P<\Gamma_R$), pledging inaction ($w_L=0$) \emph{raises} the incumbent's loss; appeasing the incumbent then requires promising stronger intervention ($w_L>\gamma_L^P$).
+
+\subsection{Pure incumbent-appeasing moderation}
+
+Write $v=a^2+Sb^2$ and $M(\ell,r)=(\Gamma_R+\ell)^2-(\Gamma_R-r)^2>0$. In a single term, right incumbent $R$'s gross policy gain from retaining office with $r$ rather than ceding office to $-\ell$ is
+\begin{equation}
+ g_R(\ell,r;S)=\Dd^2+2\Dd\,a(\Gamma_R+\ell)+v M(\ell,r).
+ \label{eq:g-symbolic}
+\end{equation}
+Let $f_i(j,w,h,S)$ denote actor $i$'s normalized expected current policy payoff (Appendix~\ref{app:one}). To isolate concessions addressed to the incumbent, consider first an environment where valence gaps hold Left's certificate probability constant at $p\in(0,1)$ and enforcement holds $q\in(0,1)$ constant across the menu.
+
+\begin{proposition}[Mandates in a single election]\label{prop:onegen}
+Suppose $v>0$, $\Dd\,a+v\Gamma_R\ge 0$, constant $(p,q)\in(0,1)^2$, and
+\begin{equation}
+ q\big[f_L(L,0)-f_L(R,\bar r)\big]>
+ (1-q)\big[f_L(L,-\bar\ell)-f_L(L,0)\big] .
+ \label{eq:leftone}
+\end{equation}
+The incumbent uniquely offers $r^*=\bar r$. If $g_R(\bar\ell,\bar r;S)\le k/q$, the challenger offers $\ell^*=\bar\ell$ and $R$ concedes. If $g_R(0,\bar r;S)>k/q$, the challenger offers $\ell^*=\bar\ell$ and $R$ refuses defeat. Otherwise, the challenger uniquely offers $\ell^*(S)\in[0,\bar\ell)$ solving $g_R(\ell,\bar r;S)=k/q$ and $R$ concedes.
+\end{proposition}
+
+\subsection{Endogenous voter realignment versus incumbent appeasement}\label{sec:realign-campaign}
+
+Now allow cross-pressured voters of type $(d_v,\gamma_v)$ to govern the neutral ballot. Suppose at $a=0,b\ne 0$ that $\Delta_v^z=(d_L-d_v)^2-(d_R-d_v)^2<0$ while $0<\gamma_v$ with $\bar r\le\gamma_v$, and valence takes values $\{-\bar\eta,0,+\bar\eta\}$ with probabilities $(p_-,p_0,p_+)$ where $\bar\eta$ dominates policy differences. Then Left wins the count with probability $p_-+p_0$ when $\Delta_v(\ell,r;S)\le 0$ and with probability $p_-$ when $\Delta_v(\ell,r;S)>0$. Against $r=\bar r$, define the incumbent-appeasement bound $\ell_{\mathrm{tr}}(S)$ and voter-retention bound $\ell_{\mathrm{vo}}(S)$:
+\[
+ \ell_{\mathrm{tr}}(S)=\sqrt{(\Gamma_R-\bar r)^2+\frac{k/q-\Dd^2}{Sb^2}}-\Gamma_R,\qquad
+ \ell_{\mathrm{vo}}(S)=\sqrt{(\gamma_v-\bar r)^2+\frac{|\Delta_v^z|}{Sb^2}}-\gamma_v.
+\]
+
+\begin{proposition}[Two audiences for pre-electoral moderation]\label{prop:realign}
+Suppose $a=0$, $b\ne 0$, $\Dd^2<k/q$, $0<\bar r\le\gamma_v$, and $\ell_{\mathrm{tr}}(S)<\ell_{\mathrm{vo}}(S)$ whenever either bound lies in $[0,\bar\ell]$, with $0<S_-^{\mathrm{tr}}<S_+^{\mathrm{tr}}<S_+^{\mathrm{vo}}\le\sigma_\omega^2$ defined by $\ell_{\mathrm{tr}}(S_-^{\mathrm{tr}})=\bar\ell$, $\ell_{\mathrm{tr}}(S_+^{\mathrm{tr}})=0$, and $\ell_{\mathrm{vo}}(S_+^{\mathrm{vo}})=0$. Maintain \eqref{eq:leftone} and suppose retaining the swing voter under refusal beats forfeiting her at $\bar\ell$ across $(S_+^{\mathrm{tr}},S_+^{\mathrm{vo}}]$:
+\begin{equation}
+ p_0(1-q)\big[f_L(L,-\ell_{\mathrm{vo}}(S))-f_L(R,\bar r)\big]
+ > p_-(1-q)\big[f_L(L,-\bar\ell)-f_L(L,-\ell_{\mathrm{vo}}(S))\big].
+ \label{eq:voterretain}
+\end{equation}
+Then for every $S>0$, $R$ uniquely offers $r^*=\bar r$ and $L$'s unique equilibrium mandate traverses four regimes:
+\begin{enumerate}
+\item \emph{Unconstrained alignment} ($0<S\le S_-^{\mathrm{tr}}$): $\ell^*(S)=\bar\ell$, $p^*=p_-+p_0$, and $R$ concedes.
+\item \emph{Incumbent-appeasing moderation} ($S_-^{\mathrm{tr}}<S\le S_+^{\mathrm{tr}}$): $\ell^*(S)=\ell_{\mathrm{tr}}(S)<\ell_{\mathrm{vo}}(S)$, $p^*=p_-+p_0$ stays flat, and $R$ concedes.
+\item \emph{Post-breakdown voter-retention moderation} ($S_+^{\mathrm{tr}}<S\le S_+^{\mathrm{vo}}$): $\ell^*(S)$ jumps upward at $S_+^{\mathrm{tr}}$ to $\min\{\bar\ell,\ell_{\mathrm{vo}}(S)\}$ and then declines to $0$; $R$ refuses defeat, and $L$'s installation probability falls to $(p_-+p_0)(1-q)$.
+\item \emph{Voter realignment and full polarization} ($S_+^{\mathrm{vo}}<S\le\sigma_\omega^2$): the neutral voter realigns to $R$ ($p^*=p_-$), $\ell^*(S)$ jumps a second time to $\bar\ell$, $R$ refuses, and $L$'s installation probability falls to $p_-(1-q)$.
+\end{enumerate}
+\end{proposition}
+
+\subsection{Unrestricted policy slopes and partial commitment}\label{sec:unconstrained}
+
+In Proposition~\ref{prop:onegen}, moderation collapses above $S_+$ when $\ell$ hits zero. Allowing unrestricted real slopes $w_L,w_R\in\mathbb R$ proves that the discontinuous jump back to $-\Gamma_L$ is driven by probabilistic enforcement ($q<1$) rather than by a boundary at zero.
+
+\begin{proposition}[Endogenous breakdown on an unrestricted mandate space]\label{prop:unconstrained}
+Let $w_L,w_R\in\mathbb R$ in a single election with $a=0$, $b\ne 0$, $\Dd^2<k/q$, and constant $(p,q)\in(0,1)^2$. Write $K=\sqrt{k/q-\Dd^2}>0$ and $G=\Gamma_R+\Gamma_L>0$. For every $S>0$, $R$ uniquely chooses $w_R^*=\Gamma_R$. Define
+\[
+ S_-=\frac{K^2}{b^2 G^2},\qquad
+ S_0=\frac{K^2}{b^2\Gamma_R^2},\qquad
+ S^{**}=\frac{\left(\sqrt{k/q-\Dd^2}+\sqrt{k-q^2\Dd^2}\right)^2}{(1-q)^2 b^2 G^2},
+\]
+satisfying $0<S_-<S_0<S^{**}<\infty$. When $\sigma_\omega^2>S^{**}$, $L$'s unique equilibrium mandate is
+\[
+ w_L^*(S)=
+ \begin{cases}
+ -\Gamma_L, & 0<S\le S_-,\\
+ \Gamma_R-\dfrac{K}{|b|\sqrt{S}}, & S_-<S\le S^{**},\\
+ -\Gamma_L, & S^{**}<S\le\sigma_\omega^2,
+ \end{cases}
+\]
+with concession on $(0,S^{**}]$ and refusal on $(S^{**},\sigma_\omega^2]$. Across $(S_0,S^{**}]$, $L$ adopts a pro-incumbent crisis slope ($w_L^*(S)>0$) to buy turnover; above $S^{**}$, although conceded offers remain feasible, certain policy capitulation costs more than risking refusal ($q<1$), and $w_L^*(S)$ jumps back to $-\Gamma_L$.
+\end{proposition}
+
+\paragraph{Partial institutional commitment, office rents, and sanctions.}
+Suppose an installed party can deviate from its announced rule $x_j^M(m)$ at institutional friction cost $\chi[x-x_j^M(m)]^2$ ($\chi\ge 0$), representing judicial review, legislative oversight, or central-bank autonomy. Minimizing post-signal loss plus friction yields the effective weight
+\begin{equation}
+ \tilde w_j(w_j)=\frac{\chi}{1+\chi}w_j+\frac{1}{1+\chi}\gamma_j^P .
+ \label{eq:partial}
+\end{equation}
+As $\chi\to\infty$, commitment is exact; as $\chi\to 0$, mandates become cheap talk ($\tilde w_j\to\gamma_j^P$). For finite $\chi$, even a flat challenger offer ($w_L=0$) implements $\tilde w_L(0)=-\Gamma_L/(1+\chi)<0$, raising $R$'s minimum loss and shrinking the upper transfer threshold $S_+(\chi)$; if $\chi$ is too weak, pacted moderation vanishes altogether. Adding pure office rents $\psi\ge 0$ raises the challenger's willingness to capitulate ($S^{**}$ rises) while simultaneously shifting $g_R$ upward by $\psi$ ($S_-,S_+$ fall). Adding post-failure legal sanctions $\kappa\ge 0$ when refusal fails simply replaces $k$ by $k+(1-q)\kappa$ in \eqref{eq:gain} without altering any structural result.
+
+\section{Transitional and consolidated elections under Gaussian learning}\label{sec:two}
+
+\subsection{Delegation risk, record risk, and the three-way decomposition}
+
+To isolate how public learning from a successor's tenure alters today's transfer crisis without end-of-the-world refusal artifacts, model term $1$ as a \emph{transitional election} (with incumbent $R$ and refusal cost $k$) followed in term $2$ either by permanent autocracy under $R$ (if refusal succeeds) or by a \emph{consolidated democratic election} with monitoring $S_2$ (if democracy survives). Let $V_i^\D(j,h')$ and $V_i^\A(R,h')$ denote continuation payoffs at posterior $h'$ when $j$ enters term $2$ as democratic incumbent versus when $R$ rules permanently.
+
+Index a null first-term report by $e=0$ and a revealing report by $e=1$, and let $K_j^e(w)V$ denote $\E[V(h')]$ under mandate $w$ of party $j$. Define endpoint branch values:
+\begin{align}
+ W_{i,e}(r)&=f_i(R,r,h,e\sigma_\omega^2)+\delta K_R^e(r)V_i^\D(R,\cdot),\nonumber\\
+ A_{i,e}(r)&=f_i(R,r,h,e\sigma_\omega^2)+\delta K_R^e(r)V_i^\A(R,\cdot),\nonumber\\
+ C_{i,e}(\ell)&=f_i(L,-\ell,h,e\sigma_\omega^2)+\delta K_L^e(-\ell)V_i^\D(L,\cdot).
+ \label{eq:endpointvalues}
+\end{align}
+Under the news-arrival probability $R^2=S/\sigma_\omega^2\in[0,1]$, each branch payoff at $S$ is the affine interpolation $W_i=(1-R^2)W_{i,0}+R^2 W_{i,1}$ (and analogously for $A_i,C_i$). Incumbent $R$'s transitional refusal gain is
+\begin{equation}
+ T_{R,2}=q(A_R-C_R)-k
+ =q\left\{g_R(\ell,r;S)+\delta
+       \big[K_R(r)V_R^\A(R,\cdot)-K_L(-\ell)V_R^\D(L,\cdot)\big]\right\}-k .
+ \label{eq:twogain}
+\end{equation}
+Setting $D_e(\ell)=A_{R,e}(\bar r)-C_{R,e}(\ell)$ and $\Delta K_j=K_j^1-K_j^0$, the stakes increment from monitoring is
+\begin{equation}
+ D_1(\ell)-D_0(\ell)=
+ \underbrace{\sigma_\omega^2 b^2 M(\ell,\bar r)}_{\text{delegation risk}}
+ +\underbrace{\delta\big[\Delta K_R(\bar r) V_R^\A(R,\cdot)-\Delta K_L(-\ell) V_R^\D(L,\cdot)\big]}_{\text{experimentation / record risk}}.
+ \label{eq:twodecomposition}
+\end{equation}
+
+To separate post-election learning from the mere addition of a second period, let $T_{R,2}^{\mathrm{nl}}(\ell,r;S)$ denote the two-period refusal gain when outcome noise is uninformative ($h'=h$), and let $V_R^{\D,f}(L,h')$ denote term-$2$ democratic continuation holding electoral odds fixed at their prior level (rule $f$ in Section~\ref{sec:counter}) versus ordinary belief-responsive voting $V_R^{\D,o}(L,h')$. Subtracting \eqref{eq:termgain} gives an exact three-way decomposition:
+\begin{align}
+ T_{R,2}-T_{R,1}
+ &=\underbrace{q\delta\big[V_R^\A(R,h)-V_R^\D(L,h)\big]}_{\text{(i) horizon (regime-persistence) effect}}\nonumber\\
+ &\quad+\underbrace{q\delta\Big\{\big[K_R(r)V_R^\A(R,\cdot)-V_R^\A(R,h)\big]-\big[K_L(-\ell)V_R^{\D,f}(L,\cdot)-V_R^\D(L,h)\big]\Big\}}_{\text{(ii) policy-adaptation learning effect}}\nonumber\\
+ &\quad+\underbrace{q\delta\,K_L(-\ell)\big[V_R^{\D,f}(L,\cdot)-V_R^{\D,o}(L,\cdot)\big]}_{\text{(iii) electoral-realignment learning effect}}.
+ \label{eq:threedecomp}
+\end{align}
+
+\subsection{General monitoring cutoffs and the regime phase diagram}
+
+\begin{enumerate}
+\item \textbf{Electoral and enforcement invariance.} For every current offer pair, $L$ wins the count with constant probability $p\in(0,1)$ under either transfer decision, and enforcement yields constant refusal-success probability $q\in(0,1)$ across $S\in[0,\sigma_\omega^2]$, with ballots governed by \eqref{eq:olg} and bloc willingness by $C_i-A_i\ge c$.
+\item \textbf{Within-branch value of responsiveness and accommodation.} For $e\in\{0,1\}$, $W_{R,e}$ and $A_{R,e}$ are nondecreasing in $r$, and $C_{L,e}$ is nondecreasing in $\ell$, with strict increase for $W_{R,1}$ and $C_{L,1}$. At both endpoints a conceded flat offer beats a refused full offer:
+\begin{equation}
+ q[C_{L,e}(0)-A_{L,e}(\bar r)]>
+ (1-q)[C_{L,e}(\bar\ell)-C_{L,e}(0)] .
+ \label{eq:accommodate}
+\end{equation}
+\item \textbf{Monotone stakes and interior refusal cost.} Each $D_e(\ell)$ is continuous and nondecreasing in $\ell$, with strict increase for $D_1$, and
+\begin{equation}
+ D_0(\bar\ell)<k/q<D_1(0).
+ \label{eq:costwindow}
+\end{equation}
+\end{enumerate}
+
+\Needspace{12\baselineskip}
+\begin{proposition}[Accommodation and refusal across two elections]\label{prop:main}
+Under Conditions~1--3, the highest first-period monitoring level at which $R$ honors mandate $\ell$ against $\bar r$ is
+\begin{equation}
+ S^\dagger(\ell)=
+ \sigma_\omega^2\frac{k/q-D_0(\ell)}{D_1(\ell)-D_0(\ell)} ,
+ \label{eq:generalcut}
+\end{equation}
+which is continuous and strictly decreasing on $[0,\bar\ell]$, with $0<S_-\equiv S^\dagger(\bar\ell)<S_+\equiv S^\dagger(0)<\sigma_\omega^2$. For $S>0$, the unique transitional campaign has $r^*=\bar r$ and
+\begin{equation}
+ \ell^*(S)=
+ \begin{cases}
+ \bar\ell, & 0<S\le S_-,\\
+ (S^\dagger)^{-1}(S), & S_-<S\le S_+,\\
+ \bar\ell, & S_+<S\le\sigma_\omega^2 ,
+ \end{cases}
+ \label{eq:genstar}
+\end{equation}
+with concession on $[0,S_+]$ and refusal on $(S_+,\sigma_\omega^2]$. Left's installation probability drops discontinuously from $p$ to $p(1-q)$ above $S_+$; at $S=0$, $(\bar\ell,\bar r)$ with concession is an equilibrium.
+\end{proposition}
+
+\begin{figure}[htbp]\centering\small
+\begin{tikzpicture}[>=Latex, scale=1.0]
+  % Shaded regions (at a=0 where D_0(0)=D_0(\bar\ell)=D_0)
+  \fill[inkblue!6]  (0,1.05) -- (6.8,3.65) -- (6.8,4.35) -- (0,4.35) -- cycle;
+  \fill[inkblue!16] (0,1.05) -- (6.8,2.25) -- (6.8,3.65) -- cycle;
+  \fill[red!7]      (0,0)    -- (6.8,0)    -- (6.8,2.25) -- (0,1.05) -- cycle;
+
+  % Phase boundaries
+  \draw[thick, inkblue] (0,1.05) -- (6.8,3.65) node[right, font=\footnotesize] {$D_1(\bar\ell)$};
+  \draw[thick, inkblue!85!black] (0,1.05) -- (6.8,2.25) node[right, font=\footnotesize] {$D_1(0)$};
+  \draw[dotted, gray!80] (0,3.65) -- (6.8,3.65);
+
+  % Horizontal slice at interior k/q
+  \draw[dashed, black!70, thick] (0,1.92) -- (6.8,1.92);
+  \fill[inkblue] (2.28,1.92) circle (2pt);
+  \fill[inkblue] (4.93,1.92) circle (2pt);
+  \draw[dotted, black!60] (2.28,1.92) -- (2.28,0) node[below, font=\footnotesize] {$S_-$};
+  \draw[dotted, black!60] (4.93,1.92) -- (4.93,0) node[below, font=\footnotesize] {$S_+$};
+
+  % Axes
+  \draw[->, thick] (0,0) -- (7.4,0) node[right, font=\footnotesize] {Monitoring $S$};
+  \draw[->, thick] (0,0) -- (0,4.6) node[above, font=\footnotesize] {Effective refusal cost $k/q$};
+
+  % Ticks and labels
+  \node[left, font=\footnotesize] at (0,1.05) {$D_0$};
+  \node[left, font=\footnotesize] at (0,1.92) {$k/q$};
+  \node[left, font=\footnotesize] at (0,3.65) {$D_1(\bar\ell)$};
+  \node[below, font=\footnotesize] at (0,0) {$0$};
+  \node[below, font=\footnotesize] at (6.8,0) {$\sigma_\omega^2$};
+
+  % Region annotations
+  \node[align=center, font=\footnotesize] at (2.45,3.25) {\textbf{Unconstrained Democracy}\\Full mandates $(\bar\ell,\bar r)$, Concede};
+  \node[align=center, font=\footnotesize, rotate=16] at (4.55,2.42) {\textbf{Pacted Moderation} ($\ell^*(S)<\bar\ell$, Concede)};
+  \node[align=center, font=\footnotesize] at (4.35,0.72) {\textbf{Polarization \& Refusal}\\Full mandates $(\bar\ell,\bar r)$, Refuse defeat};
+\end{tikzpicture}
+\caption{Phase diagram of campaign mandates and democratic compliance in $(S,k/q)$ space (drawn for $D_0(0)=D_0(\bar\ell)=D_0$). Above the upper ray $k/q=(1-R^2)D_0+R^2 D_1(\bar\ell)$, full mandates are honored; inside the wedge, the challenger pays a turnover tribute $\bar\ell-\ell^*(S)>0$ to preserve transfer; below the lower ray $k/q=(1-R^2)D_0+R^2 D_1(0)$, moderation collapses and refusal emerges.}\label{fig:phase}
+\end{figure}
+
+Figure~\ref{fig:phase} illustrates the linear wedge geometry of Proposition~\ref{prop:main}. Two robustness properties hold immediately. First, if valence follows a smooth density $f_\eta$ with sufficiently small $\bar\phi=\sup f_\eta>0$, $p(\ell,r;S)$ varies smoothly ($|\partial_\ell p|=O(\bar\phi)$), the binding locus $T_{R,2}(\ell,r^*;S)=0$ still pins down $\ell^*(S)$ on $(S_-,S_+]$, and crossing $S_+$ still triggers an upward jump from $0$ to $\ell^F(S)=\bar\ell-O(\bar\phi)$. Second, if the challenger's activist bloc shares $\gamma_{b_L}<0$, deep moderation lowers $C_{b_L}(\ell)-A_{b_L}(\bar r)$; if this margin crosses $c$ at $\hat\ell\in(0,\bar\ell)$, activist demobilization raises $q$ to $1$ and precipitates breakdown earlier, whereas cross-partisan endorsement by the incumbent's bloc ($C_{b_R}(\ell)-A_{b_R}(\bar r)\ge c$) lowers $q$ to $0$.
+
+\subsection{Smooth Gaussian experimentation and closed-form cutoffs}\label{sec:family}
+
+Now specialize to the canonical Gaussian learning environment. Let the prior be bivariate normal $(\alpha,\beta)\sim\mathcal N((a,b),\operatorname{diag}(v_\alpha,v_\beta))$ with $v_\alpha\ge 0$, $v_\beta\ge 0$, and $c_0\equiv v_\alpha+\sigma_\omega^2 v_\beta>0$; let $\omega_t\in\{-\sigma_\omega,+\sigma_\omega\}$ with equal probability; and let $\varepsilon_t\sim\mathcal N(0,\sigma_\varepsilon^2)$ with $\sigma_\varepsilon>0$.
+
+Conditional on observing a first-period trial $(x_1,\omega_1,Y_1)$ with $\omega_1^2=\sigma_\omega^2$, standard normal projection shifts the second-period posterior means $(a',b')$ along a one-dimensional Gaussian ray driven by the standardized innovation $Z=[Y_1-x_1(a+b\omega_1)]/\sqrt{c_0 x_1^2+\sigma_\varepsilon^2}\sim\mathcal N(0,1)$:
+\begin{equation}
+ a'(Z)=a+\frac{x_1 v_\alpha}{\sqrt{c_0 x_1^2+\sigma_\varepsilon^2}}Z,\qquad
+ b'(Z)=b+\frac{x_1\omega_1 v_\beta}{\sqrt{c_0 x_1^2+\sigma_\varepsilon^2}}Z,\qquad
+ \psi(x)\equiv\frac{x^2}{c_0 x^2+\sigma_\varepsilon^2}.
+ \label{eq:psi}
+\end{equation}
+Here $\psi(x)\in[0,1/c_0)$ is a $C^\infty$ rational index of public experimentation that vanishes at $x=0$, increases strictly in $|x|$, and has global slope bound $\bar\psi'\equiv\sup_{x\in\mathbb R}|\psi'(x)|=3\sqrt{3}/(8\sigma_\varepsilon\sqrt{c_0})$. Under null ($e=0$) and revealing ($e=1$) first-period reports, party $j$ with mandate weight $w_j$ generates expected experimentation
+\[
+ \Psi_j^0(w_j)=\psi(d_j+w_j a),\qquad
+ \Psi_j^1(w_j)=\frac{1}{2}\Big[\psi\big(d_j+w_j(a+b\sigma_\omega)\big)+\psi\big(d_j+w_j(a-b\sigma_\omega)\big)\Big].
+\]
+
+Consider first a consolidated second election in which $R$ wins the count with constant probability $\pi_2\in(0,1)$ across offers. Because $v_2(h')\equiv a'^2+S_2 b'^2>0$ almost surely under \eqref{eq:psi}, both parties uniquely play their full mandates $(\bar\ell,\bar r)$ in term $2$. Let $v_2(h)=a^2+S_2 b^2$, $Q_2\equiv v_\alpha^2+S_2\sigma_\omega^2 v_\beta^2>0$, and define
+\begin{align*}
+ G_2^{\mathrm{nl}}(\pi_2) &= \pi_2 v_2(h)(\Gamma_R-\bar r)^2+(1-\pi_2)\big[\Dd^2+2\Dd\,a(\Gamma_R+\bar\ell)+v_2(h)(\Gamma_R+\bar\ell)^2\big],\\
+ \kappa_R(\pi_2) &= \pi_2(2\Gamma_R\bar r-\bar r^2)-(1-\pi_2)(2\Gamma_R\bar\ell+\bar\ell^2),\\
+ \kappa_L(\pi_2) &= (1-\pi_2)(2\Gamma_L\bar\ell-\bar\ell^2)-\pi_2(2\Gamma_L\bar r+\bar r^2).
+\end{align*}
+Since $\E[a'\mid x_1,\omega_1]=a$ and $\E[v_2(h')\mid x_1,\omega_1]=v_2(h)+Q_2\psi(x_1)$, the endpoint gross stakes $D_e(\ell)=A_{R,e}(\bar r)-C_{R,e}(\ell)$ take the exact $C^\infty$ closed form
+\begin{equation}
+ D_e(\ell)=g_R(\ell,\bar r;e\sigma_\omega^2)+\delta G_2^{\mathrm{nl}}(\pi_2)
+ +\delta Q_2\Big[\Gamma_R^2\Psi_R^e(\bar r)-\kappa_R(\pi_2)\Psi_L^e(-\ell)\Big].
+ \label{eq:gaussD}
+\end{equation}
+
+\Needspace{12\baselineskip}
+\begin{corollary}[Smooth Gaussian experimentation and closed-form cutoffs]\label{cor:family}
+Let $b\ne 0$, $\bar r<\Gamma_R$, $\bar\ell<\Gamma_L$, and maintain Condition~1 and \eqref{eq:accommodate} with constant term-$2$ odds $\pi_2\in(0,1)$. Suppose at $a=0$ (or more generally across $e\in\{0,1\}$; see Appendix~\ref{app:gaussian} for $a\ne 0$) that
+\[
+ 2\sigma_\omega b^2(\Gamma_R-\bar r)>\delta Q_2\max\{\Gamma_R^2,|\kappa_R(\pi_2)|\}\bar\psi',\qquad
+ 2\sigma_\omega b^2(\Gamma_L-\bar\ell)>\delta Q_2|\kappa_L(\pi_2)|\bar\psi',
+\]
+and $D_0(\bar\ell)<k/q<D_1(0)$ in \eqref{eq:gaussD}. Then Proposition~\ref{prop:main} holds with $C^\infty$ cutoff schedule $S^\dagger(\ell)=\sigma_\omega^2[k/q-D_0(\ell)]/[D_1(\ell)-D_0(\ell)]$, smooth interior moderation $\ell^*(S)=(S^\dagger)^{-1}(S)$ satisfying $d\ell^*/dS=-\partial_S T_{R,2}/\partial_\ell T_{R,2}<0$ without kinks on $(S_-,S_+)$, and strictly nonempty open-set robustness in the Gaussian primitives.
+\end{corollary}
+
+At $a=0$, $\Psi_j^0(w_j)=\psi(d_j)$ is independent of the mandate, so $D_0(\ell)=D_0$ is constant and the phase diagram takes the exact wedge form of Figure~\ref{fig:phase}. Moreover, when $\kappa_R(\pi_2)<0$---which occurs even when $\pi_2>1/2$ if quadratic concavity makes $R$'s loss under a Left victory outweigh $R$'s gain under a Right victory---any increase in Left's experimentation $\Psi_L^1(-\ell)$ directly amplifies $D_1(\ell)$ alongside immediate delegation risk.
+
+\subsection{Ex post voter realignment and the prospect of a lawful return}\label{sec:counter}
+
+Now allow the consolidated second election's neutral ballot to respond to the first-period trial. Hold first-period mandates, enforcement $q$, and trial kernels fixed, and compare ordinary belief-responsive voting ($o$) with the fixed-certificate counterfactual ($f$) that freezes the neutral term-$2$ ballot at its prior winner. Because the autocratic continuation holds no election, \eqref{eq:twogain} yields
+\begin{equation}
+ T_{R,2}^{o}-T_{R,2}^{f}
+ =q\delta\,K_L(-\ell)\!\left[V_R^{\D,f}(L,\cdot)-V_R^{\D,o}(L,\cdot)\right].
+ \label{eq:electoralgain}
+\end{equation}
+Under the Gaussian ray \eqref{eq:psi}, at any posterior $(a'(Z),b'(Z))$ where term-$2$ full mandates remain optimal, a neutral term-$2$ voter of type $(d_v,\gamma_v)$ switches from $R$ to $L$ whenever the quadratic polynomial $\Delta_v(\bar\ell,\bar r;a'(Z),b'(Z),S_2)\le 0$. When this inequality defines an interval $[z_-(x_1,\omega_1),z_+(x_1,\omega_1)]$, Left's trial lowers $R$'s return probability smoothly by $p_0[\Phi(z_+)-\Phi(z_-)]$, shifting $T_{R,2}$ upward and shrinking the range of peaceful turnover.
+
+\section{Repeated elections and posterior-dependent bounds}\label{sec:stationary}
+
+When a single transfer does not permanently consolidate democracy, a party that concedes today may win a future count only to face an opponent that refuses to vacate office, while public beliefs $h_t$ evolve continually under Kalman-Bayesian updating. With a time-homogeneous monitoring Markov process, the public state is $Z=(\mathcal D,I,h,S)$. Under a stationary Markov profile with transition kernel $P$ and expected one-period payoffs $u_i$ (including any attempt/endorsement costs or valence), long-lived party/bloc values and cohort voter values satisfy
+\begin{equation}
+ V_i=u_i+\delta PV_i,\qquad V_v^O=u_v,\qquad
+ V_v^Y=u_v+\delta P u_v ,
+ \label{eq:bellman}
+\end{equation}
+with finite-state party solution $(\Id-\delta P)^{-1}u_i$. Stationary Markov perfect equilibria (MPE) require optimal mandate offers, sincere cohort voting under \eqref{eq:olg}, quorum endorsement under $C_i-A_i\ge c$, and incumbent concession iff $q(A_I-C_I)\le k$ at every public state, including after off-path offers.
+
+Projecting squared losses onto the post-signal filtration yields sharp equilibrium-independent transfer bounds that hold for both unbounded Gaussian priors and bounded priors. At state $Z=(\mathcal D,I,h,S)$ with rival $J$, let $\bar S\in[S,\sigma_\omega^2]$ bound reachable future monitoring, and define the posterior parameter-uncertainty loss
+\[
+ \mathcal U_I(h)=(\gamma_I^P)^2\big(\Var_h(\alpha)+\bar S\Var_h(\beta)\big).
+\]
+Let $\bar\Lambda_I(h)$ and $\underline\Lambda_I^J(h)$ denote, respectively, the supremum of $\Lambda_I^{j,w}(h',S')$ over both parties and the infimum of $\Lambda_I^{J,w_J}(h',S')$ over $J$'s menu across reachable posteriors $h'$ and $S'\le\bar S$ (note $\underline\Lambda_I^J(h)\ge 0$ always, with strict positivity when baseline distance dominates). Let $\underline\pi_J\in[0,1)$ be a lower bound on incumbent $J$'s next-period win probability in democracy.
+
+\begin{proposition}[Posterior-dependent transfer bounds across stationary equilibria]\label{prop:infinite}
+Suppose the exogenous evolution of $\{S_t\}$ is independent of regime and policy choices, and $\bar\Lambda_I(h)<\infty$ (or let $\bar L_I(h)$ bound expected one-term residual rule loss $\E[\Lambda_I^{j_{t'},w_{t'}}(h_{t'},S_{t'})\mid Z_t]$ under unbounded priors). In every stationary MPE, at defeated incumbent $I$'s transfer node with refusal-success probability $q$ and current one-term policy gain $g_I$,
+\begin{equation}
+ q\left(g_I+\delta\underline\pi_J\underline\Lambda_I^J(h)-\frac{\delta\,\mathcal U_I(h)}{1-\delta}\right)-k
+ \ \le\ T_I\ \le\
+ q\left(g_I+\frac{\delta\big[\bar L_I(h)+\mathcal U_I(h)\big]}{1-\delta}\right)-k .
+ \label{eq:infbounds}
+\end{equation}
+As public learning drives $\Var_h(\alpha),\Var_h(\beta)\to 0$, $\mathcal U_I(h)\to 0$, eliminating parameter-uncertainty slack from the lower bound. Whenever the upper bound in \eqref{eq:infbounds} is nonpositive across admissible offers at $h$, every stationary MPE prescribes concession; whenever the lower bound is strictly positive across $J$'s menu against $I$'s equilibrium offer, every stationary MPE prescribes refusal.
+\end{proposition}
+
+Because step-function voting, endorsement, and refusal choices can create discontinuities under purely discrete shocks, stationary MPE existence follows under standard stochastic smoothing: when $\eta_t$, $k_t$, and $c_t$ admit bounded atomless densities around their baseline values and $f_\varepsilon$ is continuous, stage payoffs and Bayesian state transitions are Feller-continuous in mixed mandate profiles, guaranteeing stationary MPE existence on compactified posterior spaces and discretized Kalman grids alike.
+
+% === END OF PART 1: PASTE PART 2 DIRECTLY BELOW THIS LINE ===

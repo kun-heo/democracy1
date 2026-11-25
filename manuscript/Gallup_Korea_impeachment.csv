@@ -1,0 +1,4 @@
+field_start,field_end,report,total_n,ppp_n_unweighted,dp_n_unweighted,all_support_pct,ppp_support_pct,dp_support_pct,no_party_support_pct,dp_minus_ppp_pp,source
+2024-12-10,2024-12-12,606,1002,231,405,75,27,97,79,70,https://www.gallup.co.kr/dir/GallupKoreaDaily/GallupKoreaDailyOpinion_606(20241213).pdf
+2025-01-07,2025-01-09,608,1004,339,373,64,15,99,72,84,https://www.gallup.co.kr/dir/GallupKoreaDaily/GallupKoreaDailyOpinion_608(20250110).pdf
+2025-02-11,2025-02-13,611,1004,396,382,57,10,98,63,88,https://www.gallup.co.kr/dir/GallupKoreaDaily/GallupKoreaDailyOpinion_611(20250214).pdf

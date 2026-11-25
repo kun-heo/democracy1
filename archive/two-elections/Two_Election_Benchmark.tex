@@ -1,0 +1,108 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,geometry,fancyhdr,microtype}
+\geometry{left=1.02in,right=1.02in,top=.90in,bottom=.88in,headheight=15pt,headsep=.18in}
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=black]{hyperref}
+\hypersetup{pdftitle={A Two-Election Benchmark for Political Realignment and the Transfer of Power}}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt plus 1pt minus 1pt}
+\setlength{\emergencystretch}{1.3em}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small\itshape Political Realignment and the Transfer of Power}
+\fancyhead[R]{\small Two-election benchmark}\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{.25pt}
+\newcommand{\E}{\mathbb E}\newcommand{\Var}{\operatorname{Var}}\newcommand{\UU}{\mathsf U}
+\newcommand{\Rcert}{R\text{ certified}}\newcommand{\Lcert}{L\text{ certified}}
+\begin{document}
+\thispagestyle{plain}
+{\LARGE\bfseries A Two-Election Benchmark\par}
+{\large Political realignment and the transfer of power\par}
+\vspace{3pt}
+\section*{1\quad What carries over from the original election?}
+There are two electoral terms, \(t=1,2\). An election opens each democratic term. After a certified defeat the incumbent party chooses whether to concede. The installed government then receives its economic report and implements policy. All players receive the disputed term's payoff. Set \(V_3=0\) for everyone. A successful refusal in term 1 leaves the incumbent in office through term 2 and cancels the second election. A successful refusal in term 2 delivers the last term in office. In democracy the two voter cohorts have equal mass and identical type distributions. A voter who is young in term 1 can vote in both elections. Everyone alive in term 2 has only the last policy payoff at stake.
+
+Write \(m=\E[\omega\mid s]\), with \(\E m=0\) and \(S=\Var(m)\). Given the voter's current causal account, her preferred response is \(\beta_i+\alpha_i m\). With fixed affine rules \(x_j(m)=\beta_j+\alpha_jm\), the gain from having \(R\) govern rather than \(L\) is exactly the original model's policy comparison,
+\begin{align}
+ G_i(S)&=b_i+S d_i,\label{eq:flow}\\[-2pt]
+ b_i&=(\beta_L-\beta_i)^2-(\beta_R-\beta_i)^2,\qquad
+ d_i=(\alpha_L-\alpha_i)^2-(\alpha_R-\alpha_i)^2.\notag
+\end{align}
+This follows by taking the difference in expected squared distances. If \(b_i<0<d_i\), the flow preference switches at \(S=-b_i/d_i\) whenever the cutoff is feasible.
+
+At the final election the two ages agree for a given type, adopted account, and valence. If the certificate determines who governs, the signed comparison including valence is \(G_i(S_2)+\eta_2\). If a losing incumbent \(J\) can retain office, write \(h_J\) for the probability it does so conditional on its challenger \(I\) winning the count. A voter gains \((1-h_J)(u_i^I-u_i^J)-h_J\chi_i\) from certifying the challenger, before valence, when the incumbent governs under its current program after a successful refusal. Here \(u_i^j\) is the current democratic payoff and \(\chi_i\) is the current loss under autocracy.
+
+At the first election let \(\Delta\bar u_{i1}\) be the current payoff difference across the two certificates, including their possible transfers and policy choices. Let \(Z_2\) be the next public state and \(V_{i2}\) the voter's expected payoff then. Before valence the comparisons are
+\begin{align}
+ \Delta^O_{i1}&=\Delta\bar u_{i1},\notag\\[-2pt]
+ \Delta^Y_{i1}&=\Delta\bar u_{i1}+\delta\big\{\E_i[V_{i2}(Z_2)\mid\Rcert]
+                    -\E_i[V_{i2}(Z_2)\mid\Lcert]\big\}.\label{eq:young}
+\end{align}
+A certificate can change who governs, which policy generates evidence, and whether the voter gets another election. If transfers are guaranteed and all continuation payoffs are independent of today's programs, election result, and policy, each term reproduces the original one-election problem under the original menus, implementation rules, and electoral noise.
+
+\newpage
+\section*{2\quad How realignment changes the value of conceding}
+Consider a fixed-program case with a common known policy technology. Each party implements its own affine ideal, including after entrenchment. Set the institutional loss to zero, leave the refusal cost \(k\) and failed-attempt sanction \(\kappa\) in place, and hold success probabilities fixed. For party \(I\) the policy and office benefit of governing for one term is
+\[
+ g_{I,t}=B_I+(\beta_I-\beta_J)^2+S_t(\alpha_I-\alpha_J)^2.
+\]
+Take the two monitoring levels as known in advance. Let \(q_{J,2}\) be the success probability if terminal incumbent \(J\) attempts to refuse. It attempts after losing the final election if
+\[
+ T_{J,2}=q_{J,2}g_{J,2}-k-(1-q_{J,2})\kappa>0.
+\]
+Thus \(h_J=q_{J,2}\mathbf 1\{T_{J,2}>0\}\), with concession at equality.
+
+Suppose incumbent \(I\) has just lost the first vote. If it concedes, let \(p_I\) be its probability of winning the second certificate. It actually regains office with probability \(p_I(1-h_J)\). A successful refusal today secures both terms in office. A failed attempt yields the same installation as a concession and adds a sanction. Subtracting the value of a concession gives
+\begin{equation}
+ \boxed{T_{I,1}=q_{I,1}\{g_{I,1}+\delta[1-p_I(1-h_J)]g_{I,2}\}
+                    -k-(1-q_{I,1})\kappa.} \label{eq:first}
+\end{equation}
+A higher chance of winning the next count reduces today's refusal incentive by \(\delta q_{I,1}(1-h_J)g_{I,2}\) per unit increase in \(p_I\), holding other terms fixed. A rival that will honor fewer future defeats makes today's concession less valuable.
+
+The original voting formula pins down \(p_I\) here. Let \(M\) be a decisive median point as in the original model. Define \(b_M^{I:J},d_M^{I:J}\) as the challenger's advantages over the incumbent in baseline and responsiveness, with the same orientation as \eqref{eq:flow} when \(I=R\). Use the original symmetric uniform valence with density \(\phi\) and attach valence to the certificate. Then
+\[
+ p_I=\big[\tfrac12+\phi(1-h_J)(b_M^{I:J}+S_2d_M^{I:J})\big]_0^1,
+ \qquad [z]_0^1=\min\{1,\max\{0,z\}\}.
+\]
+In the interior, on intervals where the terminal refusal decision is unchanged, varying \(S_2\) alone yields
+\begin{equation}
+ \frac{\partial T_{I,1}}{\partial S_2}
+ =\delta q_{I,1}\left\{[1-p_I(1-h_J)](\alpha_I-\alpha_J)^2
+       -g_{I,2}\phi(1-h_J)^2 d_M^{I:J}\right\}. \label{eq:derivative}
+\end{equation}
+The first term measures how much more it costs to let the opponent govern in the final term. The second measures the change in the chance of a lawful return. If anticipated news moves the decisive voter toward \(I\), that electoral gain can reduce \(I\)'s willingness to refuse today. Equation~\eqref{eq:derivative} gives the condition by comparing the two magnitudes.
+
+\newpage
+\section*{3\quad Two elections at the OLG draft's parameters}
+Restore the parties' mandate and causal-account choices, endogenous policy trials, institutional losses, and bloc enforcement from the OLG draft. Use its stated tie rules and the enforcement equilibrium in which an attainable quorum forms. The only change to the numerical game is the endpoint \(V_3=0\). At the unresolved record \(\UU\), economic variance is one, and a report reveals the state with probability \(S=.12\) or \(.88\). The discount factor is .25, the publication probability .25, the refusal cost .57, and the sanction .30.
+
+\begin{center}\small
+\textbf{Table 1.\ Election outcomes and incentives after defeat at \(\UU\)}\\[5pt]
+\begin{tabular}{@{}cc rr rr@{}}\toprule
+ & &\multicolumn{2}{c}{Left incumbent}&\multicolumn{2}{c}{Right incumbent}\\
+\cmidrule(lr){3-4}\cmidrule(l){5-6}
+Term & \(S\) & \(\Pr(\Rcert)\) & \(T_L\) & \(\Pr(\Rcert)\) & \(T_R\)\\\midrule
+1 & .12 & .68 & $-.0850$ & .78 & $-.8700$\\
+1 & .88 & .68 & $+.3283$ & .89 & $-.0353$\\[2pt]
+2 & .12 & .32 & $-.1916$ & .32 & $-.8700$\\
+2 & .88 & .68 & $+.0516$ & .88 & $-.2274$\\\bottomrule
+\end{tabular}\\[3pt]
+A positive \(T_I\) means the incumbent refuses if defeated.
+\end{center}
+
+At high monitoring the left incumbent refuses and the right incumbent concedes in each term. In the reported infinite-horizon equilibrium both refuse. The left party's offer helps explain the difference for a right incumbent. In the two-term game it proposes \((\beta^M,\gamma^M,a)=(.30,1.20,0)\) in this contest. If it offers \((-.10,-.10,0)\) as in the stationary equilibrium, the right's refusal gain rises to \(+.4643\) in term 1 and \(+.2526\) in term 2. The right offer is \((.50,.70,1)\) throughout this comparison.
+
+The endpoint also changes policy under the same mandate. At \(\UU\), with high monitoring and report \(m=-1\), a lawfully installed right party chooses \(x=-.5\) in term 1 and \(x=0\) in term 2. Its flow ideal is \(-.2\). Choosing \(-.5\) costs .05 more in current expected loss but can generate a public test before the next election.
+
+\begin{center}\small
+\textbf{Table 2.\ The final election after conceding the first, in percent}\\[5pt]
+\begin{tabular}{@{}l rr rr@{}}\toprule
+ &\multicolumn{2}{c}{Low monitoring today}&\multicolumn{2}{c}{High monitoring today}\\
+\cmidrule(lr){2-3}\cmidrule(l){4-5}
+Party conceding & Wins count & Takes office & Wins count & Takes office\\\midrule
+Left  & 63.22 & 63.22 & 29.05 & 29.05\\
+Right & 40.04 & 35.28 & 60.10 & 28.36\\\bottomrule
+\end{tabular}
+\end{center}
+
+Table 2 starts at \(\UU\) and imposes a lawful first transfer, including where the incumbent would refuse. It averages over the successor's policy trial, publication, and the next monitoring environment. The right's chance of winning rises with monitoring even as its chance of regaining control falls.
+
+The replication computes the last term and then the first in exact rational arithmetic. In each of the 12 democratic public states at each date, iterated deletion of strictly dominated campaign programs leaves a single pair. This also resolves mixed campaigns under the specified quorum selection and tie rules. The underlying enforcement game can admit collective inaction at a two-bloc quorum.
+\end{document}

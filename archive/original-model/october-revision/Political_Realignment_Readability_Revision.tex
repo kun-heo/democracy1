@@ -1,0 +1,1792 @@
+\documentclass[12pt,letterpaper]{article}
+
+\usepackage{amsmath,amssymb,amsfonts,mathtools,nccmath}
+\usepackage{array,booktabs,multirow,threeparttable,adjustbox}
+\usepackage{graphicx,svg,pdflscape,float}
+\usepackage{cancel,eurosym,nicefrac}
+\usepackage{sectsty,comment,footmisc,epigraph,enumerate,pifont}
+\usepackage{diagbox,istgame}
+\usepackage[table]{xcolor}
+\usepackage{subcaption,caption}
+\usepackage{palatino}
+\usepackage{microtype}
+\emergencystretch=2em
+\usepackage[margin=1in]{geometry}
+\usepackage[nodisplayskipstretch]{setspace}
+\usepackage[indent]{parskip}
+\usepackage{etoolbox}
+\usepackage{natbib}
+\bibpunct{(}{)}{;}{a}{}{,}
+\usepackage{xurl}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage[section]{placeins}
+\usepackage{needspace}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{tikz-timing}
+\usetikzlibrary{arrows.meta,intersections,fit,calc,decorations.pathreplacing,calligraphy}
+\usetikzlibrary{patterns,patterns.meta}
+\usetikzlibrary{
+arrows.meta, intersections, fit, calc, decorations.pathreplacing, calligraphy }
+
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.18}
+
+\hypersetup{
+colorlinks, linkcolor={red!50!black}, citecolor={blue!50!black}, urlcolor={blue!80!black} }
+
+\onehalfspacing
+\renewcommand{\arraystretch}{0.75}
+\makeatletter
+\patchcmd{\env@cases}{1.2}{0.75}{}{}
+\makeatother
+
+\newcommand{\cmark}{\text{\ding{51}}}
+\newcommand{\xmark}{\text{\ding{55}}}
+\newcommand{\wclear}{\succcurlyeq_{\text{clear}}}
+\newcommand{\wunclear}{\preccurlyeq_{\text{clear}}}
+\newcommand{\clear}{\succ_{\text{clear}}}
+\newcommand{\unclear}{\prec_{\text{clear}}}
+\newcommand{\bio}{\succcurlyeq_{\text{B}}}
+\newcommand{\bioed}{\preccurlyeq_{\text{B}}}
+\newcommand{\ac}{A}
+\newcommand{\tp}{\tau^\mathcal{P}}
+\newcommand{\btp}{\mathbf{t}^\mathcal{P}}
+\newcommand{\DV}{\Delta V}
+\newcommand{\DW}{\Delta W}
+\newcommand{\Dg}{\Delta \gamma}
+\newcommand{\DU}{\Delta U}
+\newcommand{\DL}{\Delta \Lambda}
+\newcommand{\DK}{\Delta K}
+\newcommand{\Dk}{\Delta k}
+
+\usepackage{ntheorem}
+\theorempreskip{10pt}
+\newtheorem{theorem}{Theorem}
+\newtheorem{result}{Result}
+\newtheorem{corollary}{Corollary}
+\newtheorem{assumption}{Assumption}
+\newtheorem{condition}{Condition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{example}{Example}
+\newtheorem{observation}{Observation}
+\newtheorem{claim}{Claim}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem*{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{lemma}{Lemma}
+\newtheorem*{CLT}{The Lindeberg--L\'evy Central Limit Theorem}
+\newtheorem*{RNB}{Theorem 1 in \citet{Mu2021FromAgain}}
+\newtheorem*{FSD}{Theorem 1 in \citet{Pomatto2020StochasticNoise}}
+\newtheorem*{CMR}{Corollary 1 in \citet{Milgrom1994ComparingEquilibria}}
+
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newcommand*{\Scale}[2][4]{\scalebox{#1}{$#2$}}%
+\newcommand*{\Resize}[2]{\resizebox{#1}{!}{$#2$}}%
+\DeclareMathOperator{\inte}{int}
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\To}{\text{To }}
+\newcommand{\st}{\text{s.t. }}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\bt}{{t}}
+\newcommand{\KL}{\mathrm{KL}}
+\newcommand{\LR}{\mathrm{LR}}
+\newcommand{\mbf}[1]{\mathbf{#1}}
+\newcommand{\mbb}[1]{\mathbb{#1}}
+\newcommand{\argmax}{\operatorname*{arg\,max}}
+\newcommand{\argmin}{\operatorname*{arg\,min}}
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
+
+\newtheorem{hyp}{Hypothesis}
+\newtheorem{subhyp}{Hypothesis}[hyp]
+\renewcommand{\thesubhyp}{\thehyp\alph{subhyp}}
+\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\blue}[1]{{\color{blue} #1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}m{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}m{#1}}
+
+
+% Compatibility for the imported strategic proofs.
+\providecommand{\Tilde}{\widetilde}
+\providecommand{\qed}{\hfill\ensuremath{\blacksquare}}
+
+\usepackage{graphicx}
+\begin{document}
+\begin{titlepage}
+\title{\Large Political Realignment and Polarization in an Unpredictable and Better-Informed World}
+\author{Kun Heo\footnote{Post-doctoral Fellow, Department of Government, London School of Economics and Political Science, b.heo@lse.ac.uk}}
+\date{\today}
+\maketitle
+\begin{center}\textbf{MODEL DRAFT}\end{center}
+\thispagestyle{empty}
+\setcounter{page}{0}
+\end{titlepage}
+
+
+\section{Introduction}
+
+Major economic shocks have often been followed by voter realignment, gains for radical parties, and greater policy polarization. These patterns appeared after the Depression, the financial crisis of 2008, and the China shock; Brexit has also been followed by renewed support for the far right \citep{King2008,Funke2016,Autor2020,GurievPapaioannou2022,BornEtAl2019,Curtice2025}. In many of these episodes, the far right gained most. Its success is difficult to explain by proximity to voters' average policy preferences alone.
+
+Elections determine who will govern through circumstances that are not yet known. Political debate reflects this: candidates are asked what they would do if unemployment rose, if banks failed, if migration surged, or if a new technology transformed production. These questions concern a policy rule. Two voters may agree on what government should do today but disagree about how it should respond when circumstances change.
+
+This paper studies that disagreement. Voters, parties, and candidates differ in the policy they want on average, which I call their \emph{base}, and in how they want policy to change with the state of the world, which I call their \emph{responsiveness}. Greater uncertainty, or better information for the eventual officeholder, makes differences in responsiveness more consequential. Voters can then change sides without changing their preferences. Parties respond by nominating candidates who are more alike in type, yet the policies those candidates would implement move farther apart. The party whose responsiveness is closer to that of the decisive voter gains an advantage, even if its average policy is farther from hers.
+
+\paragraph{Base and responsiveness.}
+The distinction is easiest to see in a single policy domain. Consider public ownership of banks. One market liberal opposes nationalization in all circumstances. Another wants little public ownership in normal conditions but extensive nationalization during a financial collapse. They share a low base but differ in responsiveness. Likewise, one socialist wants extensive public ownership in all circumstances, while another wants it to expand substantially as financial distress worsens. The first has a high base and low responsiveness; the second has a high base and high responsiveness. Comparing bases groups the two market liberals together and the two socialists together. Comparing responses can instead bring the second market liberal closer to the second socialist.
+
+Table~\ref{tab:examples} gives further examples. Voters who agree on limited executive authority in ordinary conditions may disagree on the expansion of emergency powers under a severe threat. A voter who supports equal access to welfare for citizens and non-citizens in normal conditions may favour a large gap under scarcity. Questions about current policy alone would miss this conditional preference for exclusion.
+
+In each example, the base is the preferred policy at a reference state. The model normalizes the mean state to zero, so this base is also the preferred policy on average. Responsiveness describes how the preferred policy changes as the state moves away from that reference.
+
+\begin{table}[t]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}L{3.1cm}L{2.7cm}L{4.1cm}L{4.7cm}@{}}
+\toprule
+Policy & State & Base & Responsiveness \\
+\midrule
+Public ownership of banking assets & Financial distress & Desired public ownership at the reference level of distress & How much ownership should rise as distress worsens \\
+Executive authority & Threats to public order & Desired executive powers at the reference level of threat & How far those powers should expand as threats intensify \\
+Citizen priority in welfare or employment & Scarcity of jobs, housing, or resources & Preferred gap in access between citizens and non-citizens at the reference level of scarcity & How much the gap should widen as scarcity increases \\
+Immigration restrictions & Migration and pressure on services & Desired restrictions at the reference level of pressure & How sharply restrictions should change as pressure rises \\
+Tariffs or domestic-content rules & External competition or supply vulnerability & Desired protection at the reference level of pressure & How much protection should rise with that pressure \\
+Public investment in restructuring & Technological disruption & Desired government involvement at the reference level of disruption & How strongly investment and coordination should expand with disruption \\
+\bottomrule
+\end{tabular}
+\caption{Examples of base and responsiveness. Each row is a separate policy domain with its own state and units. The sign of responsiveness depends on how policy and state are coded. The examples illustrate preferences rather than classify actual groups.}
+\label{tab:examples}
+\end{table}
+
+A comparison based only on average policy leaves out part of the choice that voters face. In the model, a voter's expected loss from a candidate has three components: disagreement over average policy, disagreement over responses, and residual uncertainty. The second component receives more weight when the officeholder can learn more about the state. The third is the same under either candidate and therefore cancels from the electoral comparison. A voter may consequently prefer the candidate whose average policy is farther from her own because that candidate would respond more nearly as she wishes. For the same reason, voters who disagree about average policy may support the same candidate because they agree about responses. This offers an explanation for coalitions, including some behind the far right, that appear incongruous when viewed only through conventional policy positions.
+
+\paragraph{The pattern.}
+The composition of left and right has changed substantially. Over seven decades, educated voters in Western democracies have moved toward the left and less educated voters toward the right \citep{Gethin2022}. Politicians once considered fringe have become serious contenders. Trump won the US presidency twice, Sanders mounted two competitive campaigns for the Democratic nomination, and far-left and far-right parties have gained ground in many developed democracies \citep{Rooduijn2024}. These changes have accompanied greater political polarization \citep{Iyengar2019,McCarty2016}.
+
+Shocks often precede these shifts. Across advanced democracies since 1870, financial crises have been followed by far-right gains and greater polarization, whereas ordinary recessions have not produced the same pattern \citep{Funke2016,Mian2014}. Radical challengers also became viable after crises in interwar Europe \citep{deBromhead2013}, Argentina in the 1940s \citep{Rock1987}, Venezuela in the late 1990s \citep{Weyland2003,Seawright2012}, and Southern Europe after 2008 \citep{Hernandez2016}. In Weimar Germany, the Depression strengthened both the Communists and the Nazis. The collapse of liberal parties and the movement of middle-class voters toward the Nazis figure prominently in accounts of this period \citep{Hamilton1982,Falter1991,King2008}. \citet{Lipset1960} described the Nazi movement as an extremism of the centre. More recently, US districts exposed to Chinese import competition replaced moderate legislators at both ends of the spectrum \citep{Autor2020}.
+
+Today's shocks also occur in an environment with extensive information. Climate disasters, global economic volatility, and technological change make the future difficult to predict \citep{UNDP2022,Ahir2022}. At the same time, governments and citizens receive information more quickly and from more sources \citep{Zhuravskaya2020}. During COVID-19, real-time data accompanied sharply partisan differences in policy and public behaviour \citep{Adolph2022,Allcott2020}. Artificial intelligence may both disrupt labour markets and expand what governments can learn; estimates of its economic effects remain far apart \citep{Eloundou2024,Acemoglu2025,Engstrom2020}. Voters also report higher electoral stakes: half of American voters said that it really mattered who won the presidency in 2000, compared with 83 percent in 2020 \citep{Pew2020}.
+
+\paragraph{The theoretical puzzle.}
+Greater uncertainty and better information can increase the policy consequences of electing one candidate rather than another. Yet in standard models of competition between policy-motivated parties, making policy more important to voters and parties pulls platforms toward the median voter \citep{Wittman1983,Calvert1985,Roemer2001}. Voters punish deviations more heavily, so parties moderate to improve their chances of winning. This reasoning predicts convergence as electoral stakes rise.\footnote{Convergence does not hold in every model. With a valence asymmetry, the disadvantaged candidate may move away from the centre \citep{Groseclose2001}. In multiparty settings, greater voter sensitivity to policy can push low-valence parties outward \citep{Schofield2007}. Policy-motivated activists \citep{Aldrich1983} and entry by citizen-candidates \citep{OsborneSlivinski1996,BesleyCoate1997} can also generate divergence that increases with policy stakes. Divergence can likewise arise when policy becomes more important to parties but not to voters.} It also leaves unexplained why a voter near the centre would support a party whose average policy is far from her own.
+
+Existing accounts of polarization emphasize inequality \citep{McCarty2016}, donors and campaign finance \citep{Bonica2014,LaRaja2015,Barber2016}, the declining attractiveness of office to moderate candidates \citep{Thomsen2017,Hall2019}, party discipline \citep{Canen2020}, competition for majority control \citep{Lee2016}, changes in the media \citep{Prior2007,MartinYurukoglu2017}, and trade shocks \citep{Autor2020}. Accounts of realignment also emphasize education and cultural cleavages \citep{Gethin2022}. Many of these mechanisms change the incentives or circumstances of particular groups, such as donors, activists, or candidates. The mechanism here begins with a change common to all players: uncertainty and information increase the consequences of disagreement over policy responses.
+
+\paragraph{Model and results.}
+Two policy-motivated parties each nominate a candidate. After the election, the winner receives information about a policy-relevant state and chooses policy. Every voter, party, and candidate has a base and a responsiveness. Ideal policies are affine in the state, and losses are quadratic. These assumptions reduce the information structure to the variance of the officeholder's posterior mean, denoted by $I_q$. Better information increases this variance. Greater uncertainty also increases it when the signal reveals a fixed positive share of the state's variance. The two changes therefore have the same effect on electoral comparisons, although their welfare effects differ.
+
+The first result concerns voters facing fixed candidates. When the state is predictable or officeholders learn little, voters choose mainly by proximity in base. As $I_q$ rises, proximity in responsiveness matters more. A voter who is closer to the left candidate in base but closer to the right candidate in responsiveness may switch to the right; a voter with the opposite affinities may switch to the left. No preference changes. Voters switch earlier when their disagreement over base is small relative to their disagreement over responses. Some who appeared moderate under the old division become committed partisans under the new one. This provides a possible mechanism for the pattern that Lipset described, without equating a moderate base with his historical category of the centre. If base and responsiveness are correlated across classes, the switchers may also form a class.
+
+The result has a measurement implication. Choices at a given level of informativeness reflect a particular weighting of base and responsiveness. A ranking inferred from those choices need not remain valid when that weighting changes, even if it described the original choices perfectly. Stable preferences over policy rules can therefore produce changing political alignment. A moderate position at the reference state need not imply a moderate response to changes in that state.
+
+The second result concerns party nominations. Greater uncertainty and better information raise each party's value of winning office. Each party moves its candidate toward the decisive voter in both dimensions, including base, even though base does not interact directly with information. Competition does not eliminate the parties' disagreement, however. Information amplifies the remaining difference in responsiveness enough to increase the expected squared gap between the candidates' policies. Candidates thus converge in type while their policies diverge. This result holds exactly in the symmetric benchmark at every level of electoral pressure. It also holds under weak electoral pressure for general voter distributions that satisfy the stated regularity conditions. The numerical reversals found under strong electoral pressure involve a decisive voter who moves as informativeness changes.
+
+With a median point and weak electoral pressure, the party whose ideal type is closer to that point has the electoral advantage. Nominations do not change which party leads. If one party is closer in base and the other in responsiveness, an increase in $I_q$ can transfer the lead to the latter. Each candidate moderates in both dimensions, so a party also concedes on the dimension where it was already closer to the decisive voter.
+
+Uncertainty and information have different welfare effects. Greater uncertainty lowers every player's equilibrium payoff under weak electoral pressure and, in the symmetric benchmark, at every level of electoral pressure. Better information can benefit some players and hurt others. In the symmetric benchmark, it hurts everyone when the decisive voter wants no response to the state. When she does want a response, the party that wants a stronger response in the same direction gains most, the median voter gains less, and the other party gains least. These are comparisons of gains; they do not imply that every gain is positive.
+
+Two extensions change when and how learning occurs. If officeholders choose how much to learn and pay its cost, parties have a reason to nominate candidates who are more responsive than themselves: those candidates acquire more information. Under the conditions of the extension, this motive works against moderation in responsiveness. Greater uncertainty or cheaper learning increases the policy gap, and the gap rises with uncertainty faster than it does at fixed precision. Every officeholder with nonzero responsiveness chooses some learning under the assumed cost function, even when restricting information would improve everyone's ex ante payoff. A candidate with zero responsiveness provides a way to commit to no learning.
+
+Information received before nomination has a different effect. Parties can choose candidates after seeing the news and moderate more when that news makes their disagreement larger. Holding final information fixed, disclosing more of it before nomination reduces expected polarization in the symmetric benchmark. When information improves both before and after the election, these two effects compete. With strong electoral pressure, expected polarization can fall.
+
+The model offers a prospective interpretation of the evidence on shocks. Voters hurt by the same event may move in opposite directions because they want different responses to what may happen next. The model does not inherently favour the right. It predicts an advantage for the side whose responsiveness is closer to that of decisive voters. Section~\ref{sec:evidence} uses this distinction to interpret Weimar Germany, the aftermath of 2008, the China shock, and Brexit, and to develop tests that measure preferred responses directly.
+
+Section~\ref{sec:model} presents the model. Section~\ref{sec:realign} studies realignment with fixed candidates, and Section~\ref{sec:competition} characterizes nominations. Section~\ref{sec:effects} examines uncertainty, information, and welfare. Section~\ref{sec:pre-election} considers endogenous learning and information before the election. Section~\ref{sec:evidence} discusses the evidence and empirical implications. Proofs and generalizations appear in Appendix~\ref{app:proofs}.
+
+\paragraph{Related formal literature.}
+The paper builds on electoral competition with policy-motivated parties \citep{Wittman1983,Calvert1985,Roemer2001} and probabilistic voting \citep{Lindbeck1987}. In the standard comparison, giving policy greater weight in the objectives of both voters and parties encourages moderation. Here the winner responds to information received after the election, as in \citet{KVW2017}. The difference is that candidates disagree about responsiveness as well as base. Information then increases the consequences of their remaining disagreement, even as electoral competition brings their types closer together. \citet{CallanderCarbajal2022} explain polarization through a dynamic feedback between voter preferences and candidate strategies. The mechanism here is static and keeps voters' preferences fixed.
+
+Although policy is one-dimensional, competition over candidate types is two-dimensional. Majority-rule equilibrium generally fails to exist in several dimensions \citep{Plott1967,McKelvey1976}, and a common point on every halving line requires special conditions \citep{DavisDeGrootHinich1972,McKelvey1986}. Here each voter's comparison of two candidates reduces to a single index. An aggregate electoral shock and the stated regularity conditions allow a unique equilibrium under weak electoral pressure; the symmetric benchmark has a unique symmetric equilibrium for every level of pressure. \citet{Vaeth2024} also obtains a reduction to one dimension and a unique equilibrium in a multidimensional model with policy-motivated parties. In that model, voters learn about their own positions along the axis of party disagreement, so their revealed ideology aligns and polarizes. Here voters' types remain fixed, and information changes the consequences of delegating to each candidate.
+
+Several theories connect ideology to learning. In \citet{Izzo2023}, radical policies give voters more information, so a party may accept defeat to influence future beliefs. In \citet{IzzoMartinCallander2023}, parties compete over models of the world that guide voters' inferences. Their analysis suggests a reason why voters might want different responses, although the present model takes those differences as given and assumes common beliefs. \citet{IzzoInvernizziCrosson2025} study how incumbents manage voter learning across correlated policy dimensions. They assume that voters do not interpret new information in opposite ways. Here the officeholder receives the information, and players disagree about the policy that should follow from it. Realignment also arises when voters change the social group with which they identify \citep{BonomiGennaioliTabellini2021,GennaioliTabellini2025}. The mechanism here requires no change in preferences or identity, but can coexist with those changes.
+
+The effect of information depends on the source of disagreement. With heterogeneous priors and appropriate ordering conditions, each agent expects more information to bring the other's posterior mean closer to her own prior mean \citep{KartikLeeSuen2021}. Common observations can nevertheless polarize beliefs \citep{DixitWeibull2007}. If ideal policies instead differ by a constant bias, better common information leaves that gap unchanged, as in the constant-bias benchmark associated with \citet{CrawfordSobel1982} and \citet{KVW2017}. The present model assumes common beliefs and different preferences over responses. Better information increases expected policy disagreement. Parties may also design public information to increase disagreement when doing so helps their candidate \citep{AlonsoCamara2016}.
+
+Differences in desired responses are familiar in delegation and monetary policy. The gap between two ideal policy rules has both a level and a slope:
+\[
+f(\omega,\tau_j)-f(\omega,\tau_i)=(\beta_j-\beta_i)+(\alpha_j-\alpha_i)\,\omega.
+\]
+Delegation models allow such state-dependent biases \citep{MelumadShibano1991,AlonsoMatouschek2008}. An agent may be well aligned at some states yet respond too little when the state changes, so a less biased agent need not receive more discretion \citep{AlonsoMatouschek2008}. More generally, discretion trades off adaptation to circumstances against disagreement over policy \citep{AmadorBagwell2013}. A central banker who gives inflation more weight also responds differently to supply shocks, even without any difference in information or competence \citep{Rogoff1985}.
+
+Implemented responses can also differ from preferred responses. Politicians may disregard policy information to signal ideological alignment \citep{CanesWroneShotts2007}. Costs of changing policy can produce too little adjustment to circumstances and too much adjustment to turnover \citep{LoeperDziuda2024}. These literatures explain where preferred responses come from and how institutions or incentives affect their implementation. This paper asks when voters place more weight on agreement over responses than on agreement over the base, and how that change affects nominations and polarization.
+
+\section{Baseline model}\label{sec:model}
+
+In the baseline, the officeholder learns about the state only after the election. Section~\ref{sec:pre-election} allows learning before nomination and lets the officeholder choose how much to learn.
+
+\paragraph{Players and preferences.}
+There are two parties, $L$ and $R$, a continuum of voters, and candidates whom the parties nominate. Every player $i$ has a type $\tau_i=(\alpha_i,\beta_i)\in\mathbb{R}^2$. The parameter $\alpha_i$ is her responsiveness to the state, and $\beta_i$ is her base. Voter types follow a distribution $G$ with compact, convex support. Its density $g$ is continuously differentiable and bounded away from zero on $\operatorname{supp}(G)$.
+
+After the election, the winner chooses a policy $x\in\mathbb{R}$. The state $\omega\in\mathbb{R}$ has finite variance and mean zero. Player $i$'s ideal policy is
+\[
+f(\omega,\tau_i)=\beta_i+\alpha_i\,\omega ,
+\]
+and her payoff is $-\big(x-f(\omega,\tau_i)\big)^2$.
+
+\paragraph{Information.}
+No information about $\omega$ arrives before the election. After winning, the officeholder observes a signal generated by an information structure $q$, which all players know. Let $\mu$ be her posterior over $\omega$, and let $K_q$ be the distribution of posteriors induced by $q$. Define
+\[
+I_q\equiv\operatorname{Var}_q\!\big(\mathbb{E}_\mu[\omega]\big)\in\big[0,\operatorname{Var}(\omega)\big].
+\]
+This variance measures how much the officeholder can learn and is weakly increasing in the Blackwell order. I refer to $I_q$ as informativeness and to $\operatorname{Var}(\omega)$ as uncertainty. The following example is used throughout the paper.
+
+\begin{example}[Normal--normal]\label{ex:normal}
+Let $\omega\sim N(0,\sigma_\omega^2)$, and let the officeholder observe $s=\omega+\varepsilon$, where $\varepsilon\sim N(0,\sigma_s^2)$ is independent of $\omega$. Then $\mathbb{E}[\omega\mid s]=\frac{\sigma_\omega^2}{\sigma_\omega^2+\sigma_s^2}\,s$, and
+\[
+I_q=\frac{\sigma_\omega^4}{\sigma_\omega^2+\sigma_s^2}=\sigma_\omega^2\cdot\frac{\sigma_\omega^2}{\sigma_\omega^2+\sigma_s^2},
+\]
+with
+\[
+\frac{\partial I_q}{\partial\sigma_\omega^2}=\frac{\sigma_\omega^2\,(\sigma_\omega^2+2\sigma_s^2)}{(\sigma_\omega^2+\sigma_s^2)^2}>0,
+\qquad
+\frac{\partial I_q}{\partial\sigma_s^2}=-\frac{\sigma_\omega^4}{(\sigma_\omega^2+\sigma_s^2)^2}<0 .
+\]
+Thus $I_q$ equals uncertainty multiplied by the share that the signal reveals. Holding $\sigma_s^2$ fixed, greater uncertainty increases both factors. Holding the revealed share fixed instead requires scaling $\sigma_s^2$ in proportion to $\sigma_\omega^2$; $I_q$ then rises in proportion to uncertainty. A more precise signal, obtained by reducing $\sigma_s^2$, increases the revealed share.
+\end{example}
+
+Throughout the paper, a change in uncertainty holds the revealed share $I_q/\operatorname{Var}(\omega)$ fixed. Greater uncertainty and better information therefore both raise $I_q$ when that share is positive. The zero-information case is discussed separately.
+
+\paragraph{Parties and candidates.}
+Party $J\in\{L,R\}$ is policy-motivated and has ideal type $\tau_J=(\alpha_J,\beta_J)\in\operatorname{supp}(G)$. It can nominate a citizen of any type in that support. Write $\tau_l$ and $\tau_r$ for the nominees of $L$ and $R$. Their midpoint has coordinates $\alpha_m=(\alpha_l+\alpha_r)/2$ and $\beta_m=(\beta_l+\beta_r)/2$.
+
+\paragraph{Policy choice.}
+Candidates cannot commit to policy. After winning and forming posterior $\mu$, candidate $j\in\{l,r\}$ chooses
+\[
+x^*_j(\mu)=\arg\max_{x}\;\mathbb{E}_\mu\!\left[-\big(x-f(\omega,\tau_j)\big)^2\right]=\mathbb{E}_\mu\big[f(\omega,\tau_j)\big]=\beta_j+\alpha_j\,\mathbb{E}_\mu[\omega].
+\]
+Before the state and signal are realized, player $i$'s expected payoff from electing $j$ is
+\[
+V_i^j(q)=\int \mathbb{E}_\mu\!\left[-\big(x^*_j(\mu)-f(\omega,\tau_i)\big)^2\right]\mathrm{d}K_q(\mu).
+\]
+
+\paragraph{Elections.}
+Before voting, all voters experience a common shock $\eta\sim U\big[-\tfrac{1}{2h},\tfrac{1}{2h}\big]$, where $h>0$. Define player $i$'s payoff gap as $\Delta V_i(q)\equiv V_i^l(q)-V_i^r(q)$. For party $L$, the value of winning office is $\Delta V_L(q)$; for party $R$, it is $-\Delta V_R(q)$.
+
+Voter $i$ votes for $l$ if and only if $\Delta V_i(q)\ge\eta$. Candidate $l$ wins if
+\[
+G\big(\{\tau_i:\Delta V_i(q)\ge\eta\}\big)>\tfrac12 ,
+\]
+so her winning probability is
+\[
+\Pr(l\text{ wins})=\Pr\nolimits_\eta\Big(G\big(\{\tau_i:\Delta V_i(q)\ge\eta\}\big)>\tfrac12\Big).
+\]
+Party $J$ evaluates nominations $(\tau_l,\tau_r)$ by
+\[
+W_J(\tau_l,\tau_r;q)=\Pr(l\text{ wins})\,V_J^l(q)+\big(1-\Pr(l\text{ wins})\big)\,V_J^r(q).
+\]
+
+\begin{assumption}[Small $h$]\label{ass:small-h}
+The shock is dispersed enough, $h\le\bar h$, where $\bar h>0$ is small enough that, for every pair of candidates and every information structure, the shock at which the vote is tied lies strictly inside $\big[-\tfrac{1}{2h},\tfrac{1}{2h}\big]$, and that the results stated for weak electoral pressure hold.
+\end{assumption}
+
+A small $h$ means that the electoral shock is diffuse. Winning probabilities then respond only weakly to candidate positions. Appendix~\ref{app:small-h} establishes the relevant bounds when varying parameters lie in compact sets away from degenerate cases. Informativeness must be bounded away from zero, party ideal types must be distinct, and winning probabilities must be smooth near the relevant nominations. The median-point condition introduced in Section~\ref{sec:competition} provides the required smoothness. Results stated for every $h$, including the symmetric benchmark, do not rely on Assumption~\ref{ass:small-h}.
+
+\paragraph{Timing.}
+\begin{enumerate}
+  \item Parties simultaneously nominate candidates $\tau_l,\tau_r\in\operatorname{supp}(G)$.
+  \item The shock $\eta$ is realized, voters vote, and the candidate with a majority wins.
+  \item The state $\omega$ is realized, the winner observes the signal, forms posterior $\mu$, and implements $x^*_j(\mu)$.
+  \item Payoffs are realized.
+\end{enumerate}
+
+\paragraph{Equilibrium.}
+An equilibrium is a pair $(\tau_l^*,\tau_r^*)$ in which each nomination maximizes its party's expected payoff, given the other party's nomination and the voting and policy choices described above.
+
+\subsection{Modeling choices}\label{sec:choices}
+
+\paragraph{Affine targets and quadratic loss.}
+Affine targets separate base from responsiveness. Quadratic loss then reduces the information structure to the single index $I_q$. Without affine targets, a player's type need not be a point in a plane, so Proposition~\ref{prop:realign} need not yield a straight line of indifferent voters. The comparison of distances in responsiveness in Corollary~\ref{cor:office} also depends on the affine form.
+
+The effect of information on disagreement is more general. With quadratic loss and any targets, a player's expected loss equals the residual uncertainty that she would face if she governed herself, plus her disagreement with the officeholder. Every refinement of the officeholder's information weakly increases the latter component. The effect of uncertainty requires an additional condition. Under full information, a mean-preserving spread of the state increases disagreement when the squared gap between targets is convex in the state. Affine targets satisfy this condition, but responses that saturate need not; Appendix Lemma~\ref{lem:targets} gives an example.
+
+\paragraph{The distribution of voters.}
+Propositions~\ref{prop:realign}--\ref{prop:auto-polar} compare fixed candidates and do not use $G$. The equilibrium analysis uses a median point to obtain closed forms. Without this condition, the decisive point is the average type on the current median line. That point can move with the candidates and with informativeness, but the nomination formula in Proposition~\ref{prop:nomination} still applies whenever its conditions hold.
+
+Under weak electoral pressure and local regularity, greater informativeness still increases polarization and both parties' values of office for general voter distributions (Proposition~\ref{prop:general}). The parties' moderation weights differ only at order $h^2$, so convergence in type also survives. The party that leads is the one that would lead if both parties nominated their own ideal types (Corollary~\ref{cor:leadgeneral}). What is lost is convergence toward a fixed decisive point and a closed-form threshold for a change in the lead.
+
+\paragraph{The electoral shock.}
+The uniform shock makes the winning probability linear in the electoral margin. This keeps the expressions simple. The appendix also considers $\eta=\varepsilon/h$, where $\varepsilon$ has a log-concave, continuously differentiable density with full support, mean and median zero, and density one at zero. Appropriately scaled normal and logistic distributions satisfy these conditions.
+
+With full support, winning probabilities are always interior. Under the median-point condition, the gain from winning is log-concave in a party's candidate wherever its value of office is positive. Best responses are unique, and an equilibrium exists for every $h$. The symmetric benchmark and the results that depend on electoral ties are unchanged. The results under weak electoral pressure also hold at the same leading order.
+
+For a symmetric shock density, the comparison with the uniform benchmark has a further implication. At the same margin and values of office, both parties place weakly less weight on moderation than under the uniform shock, wherever the latter gives interior winning probabilities. Proposition~\ref{prop:logconcave} establishes this comparison. It concerns moderation at given incentives; the exact symmetric result and the results under weak electoral pressure establish the corresponding polarization conclusions.
+
+\paragraph{Information.}
+In the baseline, both candidates face the same fixed information structure. Section~\ref{sec:pre-election} allows the winner to choose how much to learn and allows some information to arrive before nomination. The relevant information is what the officeholder can learn. Voters know this information structure and evaluate what each candidate would do with it. Table~\ref{tab:general} in the appendix lists the assumptions behind each result.
+
+\section{Political realignment}\label{sec:realign}
+
+This section holds $\tau_l$ and $\tau_r$ fixed and examines how uncertainty and information affect voters' preferences between them. Proofs appear in Appendix~\ref{app:proofs}.
+
+\begin{lemma}\label{lem:payoff}
+For any types $\tau_i$ and $\tau_j$ and any information structure $q$,
+\[
+V_i^j(q)=-\alpha_i^2\operatorname{Var}(\omega)-(\beta_j-\beta_i)^2+\alpha_j(2\alpha_i-\alpha_j)\,I_q,
+\]
+and
+\[
+\Delta V_i(q)=2(\beta_r-\beta_l)(\beta_m-\beta_i)+2(\alpha_r-\alpha_l)(\alpha_m-\alpha_i)\,I_q.
+\]
+\end{lemma}
+
+The electoral comparison depends on uncertainty and information through $I_q$. Under the convention for varying uncertainty, either change therefore has the same effect on that comparison.
+
+\begin{proposition}[Realignment]\label{prop:realign}
+Fix candidates with $\beta_r>\beta_l$, and let
+\[
+k\equiv\frac{(\alpha_r-\alpha_l)\,I_q}{\beta_r-\beta_l},
+\qquad
+\psi(\alpha)\equiv\beta_m-k\,(\alpha-\alpha_m).
+\]
+With no shock, voter $i$ prefers $l$ if and only if $\beta_i<\psi(\alpha_i)$, so the indifferent voters lie on the line $\psi$, which passes through the candidates' midpoint $\tau_m=(\alpha_m,\beta_m)$ and has slope $-k$. As uncertainty or informativeness rises, $|k|$ rises and $\psi$ rotates around $\tau_m$, from the horizontal line $\beta_i=\beta_m$ toward the vertical line $\alpha_i=\alpha_m$. If $\alpha_r>\alpha_l$, voters with $\beta_i<\beta_m$ and $\alpha_i>\alpha_m$ switch from $l$ to $r$, voters with $\beta_i>\beta_m$ and $\alpha_i<\alpha_m$ switch from $r$ to $l$, and each voter switches at most once.
+\end{proposition}
+
+In Example~\ref{ex:normal}, the slope parameter is
+\[
+k=\frac{\alpha_r-\alpha_l}{\beta_r-\beta_l}\cdot\frac{\sigma_\omega^4}{\sigma_\omega^2+\sigma_s^2}.
+\]
+The indifference line always passes through the candidates' midpoint because a voter at that point is equally distant from both candidates in each dimension. When $I_q$ is small, the line is nearly horizontal and voters divide mainly by base. As $I_q$ increases, differences in responsiveness matter more and the line turns toward a vertical division. In the normal example, either a higher state variance or a lower signal-noise variance produces this rotation. The voters' types remain fixed throughout.
+
+Figure~\ref{fig:realign} illustrates a reversal of the majority. Candidate $l$ is closer to the electorate's centre in base, while $r$ is closer in responsiveness. With no information and a uniform distribution on the square, 70 percent prefer $l$. As $I_q$ rises, voters in the lower-right region switch to $r$ because they prefer her response, despite preferring $l$'s base. Voters in the upper-left region switch in the opposite direction. The first group is larger, so only 45 percent prefer $l$ at $I_q=2$. If the two groups had equal mass, the coalitions would change without a change in vote shares.
+
+Preference intensity also changes. Since
+\[
+\Delta V_i(q)=2(\beta_r-\beta_l)\big(\psi(\alpha_i)-\beta_i\big),
+\]
+the vertical distance from a voter's type to the indifference line measures her payoff difference. Consider a voter with $\beta_i=\beta_m$. She is indifferent when $I_q=0$, but for positive $I_q$ her preference has intensity
+\[
+|\Delta V_i(q)|=2|\alpha_r-\alpha_l|\,|\alpha_i-\alpha_m|\,I_q.
+\]
+Her preference can become stronger than that of a voter with an extreme base but responsiveness near $\alpha_m$. A former moderate can thus become a committed partisan without changing her type. Switching and intensification remain distinct: a voter can intensify without switching, or switch while remaining nearly indifferent.
+
+\begin{remark}[Measurement]\label{rem:measurement}
+A ranking inferred from choices at one level of informativeness need not remain valid at another. The comparison
+\[
+V_i^r-V_i^l=2(\beta_r-\beta_l)(\beta_i-\beta_m)+2(\alpha_r-\alpha_l)(\alpha_i-\alpha_m)\,I_q
+\]
+projects a two-dimensional type onto a direction that rotates with $I_q$. Moreover,
+\[
+\frac{\partial\big(V_i^r-V_i^l\big)}{\partial I_q}=(\alpha_l-\alpha_i)^2-(\alpha_r-\alpha_i)^2 .
+\]
+Greater informativeness therefore favours the candidate whose responsiveness is closer to the voter's. It does not inherently favour the right or the more extreme candidate.
+
+For example, two voters at the candidates' base midpoint are indistinguishable when $I_q=0$. If each shares the responsiveness of a different candidate, they favour opposite candidates when $I_q>0$, with payoff differences that grow in magnitude. A ranking may therefore fail across environments even if it described the original choices accurately.
+
+Rankings and votes need not change together. The difference between two voters' comparisons is affine in $I_q$, so their ordering can reverse at most once. Both may nevertheless continue to support the same candidate. Nor must every ranking fail. Changes may be small when voters have similar responsiveness, when candidates respond similarly, or when the two dimensions produce the same ordering. A change in $I_q$ may also be too small to reverse any observed ordering or choice. These claims concern choices and utility differences; the model does not specify how respondents interpret ``left'' and ``right'' or how a particular ideal-point estimator behaves.
+\end{remark}
+
+Proposition~\ref{prop:realign} also restricts the sequence of choices. Write
+\[
+V_i^r-V_i^l=A_i+B_iI_q,
+\qquad
+A_i=2(\beta_r-\beta_l)(\beta_i-\beta_m),
+\qquad
+B_i=2(\alpha_r-\alpha_l)(\alpha_i-\alpha_m).
+\]
+With fixed candidates, the comparison changes sign at most once as $I_q$ rises. If $B_i\ne0$, the threshold is $I_i^*=-A_i/B_i$, provided that it lies in the attainable range. A rise in uncertainty and an improvement in information cannot move this comparison in opposite directions when both raise $I_q$.
+
+This is a restriction on comparisons across information structures. It is not a claim that a switch is irreversible: a fall in $I_q$ can reverse it. Nor does it apply to a sequence of realized news, along which posterior means can move in either direction. Across actual elections, nominations, perceived candidate rules, and the electoral shock may also change. Finally, intensity need not rise monotonically. For a voter who switches, $|A_i+B_iI_q|$ falls to zero before rising on the other side of the threshold.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=3.4, every node/.style={font=\small}]
+  % preferences when I_q = 2, with switchers (relative to I_q = 0) in lighter shades
+  \fill[blue!22] (0,-1) -- (1.4,-1) -- (0.7,0.4) -- (0,0.4) -- cycle;
+  \fill[red!22]  (0.4,1) -- (2,1) -- (2,0.4) -- (0.7,0.4) -- cycle;
+  \fill[red!8]   (0.7,0.4) -- (2,0.4) -- (2,-1) -- (1.4,-1) -- cycle;
+  \fill[blue!8]  (0,0.4) -- (0.7,0.4) -- (0.4,1) -- (0,1) -- cycle;
+  % frame and axes
+  \draw[gray!60] (0,-1) rectangle (2,1);
+  \node[below] at (1,-1.08) {$\alpha$ (responsiveness)};
+  \node[rotate=90,above] at (-0.1,0) {$\beta$ (base)};
+  % indifferent voters for rising I_q
+  \draw[thick,dotted] (0,0.4) -- (2,0.4) node[right] {$\psi(\alpha;0)$};
+  \draw[thick,dashed] (0,0.75) -- (2,-0.25) node[right] {$\psi(\alpha;\tfrac12)$};
+  \draw[thick] (0.4,1) -- (1.4,-1) node[below] {$\psi(\alpha;2)$};
+  \draw[->,thick,gray] (1.05,0.4) arc (0:-60:0.35);
+  % candidates and midpoint
+  \fill (0.2,-0.1) circle (0.03) node[left] {$\tau_l$};
+  \fill (1.2,0.9) circle (0.03) node[right] {$\tau_r$};
+  \draw[fill=white] (0.7,0.4) circle (0.03);
+  \node[below left] at (0.7,0.4) {$\tau_m$};
+  % switching labels
+  \node at (1.65,-0.45) {$l\to r$};
+  \node at (0.18,0.72) {$r\to l$};
+\end{tikzpicture}
+\caption{Realignment with fixed candidates. Types are $\tau_l=(0.2,-0.1)$ and $\tau_r=(1.2,0.9)$. Candidate $l$ is closer to the electorate's centre in base, and $r$ in responsiveness. The indifference line passes through their midpoint and has slope $-I_q$. Voters below it prefer $l$ (blue); voters above it prefer $r$ (red). Shading shows preferences at $I_q=2$, with lighter regions identifying voters who have switched since $I_q=0$. For a uniform electorate on the square, $l$'s support falls from 70 percent at $I_q=0$ to 45 percent at $I_q=2$.}
+\label{fig:realign}
+\end{figure}
+
+For any players $i$ and $j$, define the expected squared gap between the policies that they would choose as
+\[
+\Lambda_i^j(q)\equiv\int\big(x^*_j(\mu)-x^*_i(\mu)\big)^2\,\mathrm{d}K_q(\mu).
+\]
+
+\begin{proposition}[Cost of delegation]\label{prop:office}
+For any players $i$ and $j$,
+\[
+V_i^j(q)=V_i^i(q)-\Lambda_i^j(q),
+\]
+\[
+\Lambda_i^j(q)=(\beta_j-\beta_i)^2+(\alpha_j-\alpha_i)^2\,I_q ,
+\]
+where $V_i^i(q)=-\alpha_i^2\big(\operatorname{Var}(\omega)-I_q\big)$ is $i$'s payoff if she governed herself. The cost of being governed by $j$ rises linearly in $I_q$, with slope $(\alpha_j-\alpha_i)^2$, and so rises with uncertainty and with informativeness.
+\end{proposition}
+
+Delegation is costly because the officeholder may choose a different policy from the one the player would choose herself. Information increases this cost whenever their responsiveness differs. In Example~\ref{ex:normal},
+\[
+\Lambda_i^j(q)=(\beta_j-\beta_i)^2+(\alpha_j-\alpha_i)^2\,\frac{\sigma_\omega^4}{\sigma_\omega^2+\sigma_s^2}.
+\]
+The cost rises with state variance and falls with signal noise when $\alpha_j\ne\alpha_i$. Parties face the same cost of delegation as voters.
+
+\begin{corollary}[Value of office]\label{cor:office}
+Party $L$'s value of office, $\Delta V_L(q)=V_L^l(q)-V_L^r(q)=\Lambda_L^r(q)-\Lambda_L^l(q)$, rises with uncertainty and with informativeness if and only if $|\alpha_l-\alpha_L|<|\alpha_r-\alpha_L|$, and symmetrically for party $R$.
+\end{corollary}
+
+\begin{proposition}[Automatic polarization]\label{prop:auto-polar}
+The expected squared distance between the candidates' policies,
+\[
+D(\tau_l,\tau_r;q)\equiv\Lambda_l^r(q)=(\beta_r-\beta_l)^2+(\alpha_r-\alpha_l)^2\,I_q ,
+\]
+rises with uncertainty and with informativeness whenever $\alpha_r\ne\alpha_l$, while the expected signed gap stays at $\beta_r-\beta_l$.
+\end{proposition}
+
+This increase in polarization requires no change in candidate types. Better information lets each candidate adjust policy more closely to the state. Because they adjust at different rates, the expected squared gap increases. Their average policies remain unchanged.
+
+\section{Electoral competition}\label{sec:competition}
+
+Parties now choose their candidates. For a pair with $\beta_r>\beta_l$, let $k$ and $\psi$ be as in Proposition~\ref{prop:realign}. Given the shock $\eta$, voter $i$ votes for $l$ if and only if
+\[
+2(\beta_r-\beta_l)(\beta_m-\beta_i)+2(\alpha_r-\alpha_l)(\alpha_m-\alpha_i)\,I_q\ge\eta
+\quad\Longleftrightarrow\quad
+\beta_i\le\psi_\eta(\alpha_i),
+\]
+where
+\[
+\psi_\eta(\alpha)\equiv\psi(\alpha)-\frac{\eta}{2(\beta_r-\beta_l)}.
+\]
+The shock shifts the indifference line vertically without changing its slope. Uncertainty and information determine the slope; the shock determines the height. Voters below the line vote for $l$ (Figure~\ref{fig:median}).
+
+\begin{figure}[tbp]
+\centering
+\begin{minipage}[b]{0.49\linewidth}
+\centering
+\begin{tikzpicture}[scale=2.8, every node/.style={font=\small}]
+  % (a) I_q = 1/2: l wins
+  \fill[blue!22] (0,-1) -- (2,-1) -- (2,-0.25) -- (0,0.75) -- cycle;
+  \fill[red!22]  (0,0.75) -- (2,-0.25) -- (2,1) -- (0,1) -- cycle;
+  \fill[pattern=crosshatch, pattern color=gray!70] (0,0.5) -- (0,0.75) -- (2,-0.25) -- (2,-0.5) -- cycle;
+  \draw[gray!60] (0,-1) rectangle (2,1);
+  \node[above] at (1,1.02) {(a) $I_q=\tfrac12$: $l$ wins};
+  \node[below] at (1,-1.04) {$\alpha$ (responsiveness)};
+  \node[rotate=90,above] at (-0.06,-0.5) {$\beta$ (base)};
+  \draw[thick] (0,0.75) -- (2,-0.25);
+  \node[above] at (1.7,-0.1) {$\psi(\alpha;\tfrac12)$};
+  \draw[thick,dashed] (0,0.5) -- (2,-0.5);
+  \node[below] at (1.6,-0.5) {$\psi_M(\alpha;\tfrac12)$};
+  \draw[decorate,decoration={brace,amplitude=4pt}] (-0.02,0.5) -- (-0.02,0.75)
+    node[midway,left=5pt] {$\dfrac{M}{2(\beta_r-\beta_l)}$};
+  \fill (0.2,-0.1) circle (0.03) node[left] {$\tau_l$};
+  \fill (1.2,0.9) circle (0.03) node[right] {$\tau_r$};
+  \draw[fill=white] (0.7,0.4) circle (0.03);
+  \node[below left] at (0.7,0.4) {$\tau_m$};
+  \fill (1,0) ++(-0.025,-0.025) rectangle ++(0.05,0.05);
+  \node[below left] at (0.97,-0.02) {$\tau_M$};
+\end{tikzpicture}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.49\linewidth}
+\centering
+\begin{tikzpicture}[scale=2.8, every node/.style={font=\small}]
+  % (b) I_q = 2: r wins
+  \fill[blue!22] (0,-1) -- (1.4,-1) -- (0.4,1) -- (0,1) -- cycle;
+  \fill[red!22]  (0.4,1) -- (2,1) -- (2,-1) -- (1.4,-1) -- cycle;
+  \fill[pattern=crosshatch, pattern color=gray!70] (0.4,1) -- (0.5,1) -- (1.5,-1) -- (1.4,-1) -- cycle;
+  \draw[gray!60] (0,-1) rectangle (2,1);
+  \node[above] at (1,1.02) {(b) $I_q=2$: $r$ wins};
+  \node[below] at (1,-1.04) {$\alpha$ (responsiveness)};
+  \node[rotate=90,above] at (-0.06,-0.5) {$\beta$ (base)};
+  \draw[thick] (0.4,1) -- (1.4,-1);
+  \node[left] at (1.33,-0.85) {$\psi(\alpha;2)$};
+  \draw[thick,dashed] (0.5,1) -- (1.5,-1);
+  \node[right] at (1.5,-0.85) {$\psi_M(\alpha;2)$};
+  \draw[decorate,decoration={brace,amplitude=4pt}] (0.6,0.6) -- (0.6,0.8);
+  \node[left] (Mlab) at (-0.02,0.7) {$\dfrac{|M|}{2(\beta_r-\beta_l)}$};
+  \draw[->,thin] (Mlab.east) -- (0.555,0.7);
+  \fill (0.2,-0.1) circle (0.03) node[left] {$\tau_l$};
+  \fill (1.2,0.9) circle (0.03) node[right] {$\tau_r$};
+  \draw[fill=white] (0.7,0.4) circle (0.03);
+  \node[below left] at (0.7,0.4) {$\tau_m$};
+  \fill (1,0) ++(-0.025,-0.025) rectangle ++(0.05,0.05);
+  \node[right] at (1.04,0) {$\tau_M$};
+\end{tikzpicture}
+\end{minipage}
+\caption{The electoral margin at two levels of informativeness. Candidates are as in Figure~\ref{fig:realign}, and voters are uniform on the square. The solid line contains voters who are indifferent without a shock. The dashed line is parallel to it, divides the electorate equally, and passes through $\tau_M$. In panel (a), the solid line lies above the median line. The hatched strip contains the voters who give $l$ a majority, and $M>0$. In panel (b), the solid line lies below the median line, the strip favours $r$, and $M<0$.}
+\label{fig:median}
+\end{figure}
+
+For every slope, there is a line that divides the electorate into two equal groups. Such a line is called a median line \citep{DavisDeGrootHinich1972,McKelvey1986}. It is unique for a given slope because the density is bounded away from zero on a convex support.
+
+\begin{lemma}\label{lem:median}
+Fix candidates with $\beta_r>\beta_l$. There is a unique $M(\tau_l,\tau_r;q)$ such that
+\[
+G\big(\{\tau_i:\beta_i\le\psi_{M(\tau_l,\tau_r;q)}(\alpha_i)\}\big)=\tfrac12 ,
+\]
+and candidate $l$ wins if and only if $\eta<M(\tau_l,\tau_r;q)$.
+\end{lemma}
+
+The quantity $M$ is the shock that would make the election a tie. Increasing $\eta$ lowers the indifference line and reduces $l$'s vote share, so $l$ wins precisely when the shock is below $M$. Since $\psi_M=\psi-M/\big(2(\beta_r-\beta_l)\big)$, the ratio $M/\big(2(\beta_r-\beta_l)\big)$ measures the vertical distance between the no-shock indifference line and the parallel median line. A positive $M$ means that more than half the electorate prefers $l$ without a shock.
+
+Relabelling the candidates covers $\beta_r<\beta_l$. If $\beta_r=\beta_l$ but $(\alpha_r-\alpha_l)I_q\ne0$, the lines are vertical and the same argument applies with $\alpha$ and $\beta$ exchanged. If both differences relevant to policy are zero, all voters are indifferent and $M\equiv0$.
+
+\begin{lemma}[Winning probability]\label{lem:win}
+Under Assumption~\ref{ass:small-h}, for any candidates,
+\[
+\Pr(l\text{ wins})=\tfrac12+h\,M(\tau_l,\tau_r;q),
+\]
+and party $J$'s expected payoff is
+\begin{align*}
+W_J(\tau_l,\tau_r;q)
+&=\Big(\tfrac12+h\,M(\tau_l,\tau_r;q)\Big)V_J^l(q)+\Big(\tfrac12-h\,M(\tau_l,\tau_r;q)\Big)V_J^r(q)\\
+&=\tfrac12\big(V_J^l(q)+V_J^r(q)\big)+h\,M(\tau_l,\tau_r;q)\,\Delta V_J(q).
+\end{align*}
+\end{lemma}
+
+When $I_q=0$, responsiveness affects no payoff. Each party is then assumed to nominate a candidate with its own responsiveness.
+
+\paragraph{A median point.}
+Some results use the following restriction on the voter distribution.
+
+\begin{assumption}[Median in all directions]\label{ass:median}
+There is a point $\tau_M=(\alpha_M,\beta_M)$ such that every line through $\tau_M$ splits $G$ in half.
+\end{assumption}
+
+Under this assumption, all median lines pass through a common point. Its coordinates are the marginal medians, and it remains decisive as the direction of candidate disagreement changes. Central symmetry about $\tau_M$ is sufficient \citep{DavisDeGrootHinich1972}. Examples include uniform distributions on squares, parallelograms, and ellipses, so the assumption allows linear correlation between base and responsiveness.
+
+Central symmetry is not necessary. Some skewed distributions also place half their mass on either side of every line through one point. Many do not: for a uniform distribution on a triangle, median lines of different slopes do not meet at a common point (Figure~\ref{fig:median-types}). Results that use Assumption~\ref{ass:median} state it explicitly; the appendix also gives results without it.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[scale=1.9, every node/.style={font=\small}]
+  % (a) centrally symmetric: uniform on the square
+  \begin{scope}
+    \fill[gray!22] (0,-1) rectangle (2,1);
+    \draw[gray!60] (0,-1) rectangle (2,1);
+    \draw[thick] (0,0) -- (2,0);
+    \draw[thick,dashed] (1,-1) -- (1,1);
+    \draw[thick,dotted] (0,1) -- (2,-1);
+    \fill (1,0) ++(-0.04,-0.04) rectangle ++(0.08,0.08);
+    \node[above right] at (1.02,0.02) {$\tau_M$};
+    \node[above] at (1,1.04) {(a) Centrally symmetric};
+    \node[below] at (1,-1.04) {$\alpha$};
+    \node[left] at (-0.04,0) {$\beta$};
+  \end{scope}
+  % (b) linear correlation: uniform on a tilted ellipse
+  \begin{scope}[xshift=2.6cm]
+    \fill[gray!22, rotate around={30:(1,0)}] (1,0) ellipse (0.95 and 0.38);
+    \draw[gray!60] (0,-1) rectangle (2,1);
+    \draw[thick] (0,0) -- (2,0);
+    \draw[thick,dashed] (1,-1) -- (1,1);
+    \draw[thick,dotted] (0,1) -- (2,-1);
+    \fill (1,0) ++(-0.04,-0.04) rectangle ++(0.08,0.08);
+    \node[above right] at (1.02,0.02) {$\tau_M$};
+    \node[above] at (1,1.04) {(b) Linear correlation};
+    \node[below] at (1,-1.04) {$\alpha$};
+  \end{scope}
+  % (c) skewed: uniform on a triangle, no median point
+  \begin{scope}[xshift=5.2cm]
+    \fill[gray!22] (0,-1) -- (2,-1) -- (0,1) -- cycle;
+    \draw[gray!60] (0,-1) rectangle (2,1);
+    \fill[black!45] (0.586,-0.414) -- (0.828,-0.414) -- (0.586,-0.172) -- cycle;
+    \draw[thick] (0,-0.414) -- (2,-0.414);
+    \draw[thick,dashed] (0.586,-1) -- (0.586,1);
+    \draw[thick,dotted] (0,0.414) -- (1.414,-1);
+    \draw[fill=white] (0.586,-0.414) ++(-0.04,-0.04) rectangle ++(0.08,0.08);
+    \node[above] at (1,1.04) {(c) Skewed: excluded};
+    \node[below] at (1,-1.04) {$\alpha$};
+  \end{scope}
+\end{tikzpicture}
+\caption{Voter distributions with and without a median point. In each panel, voters are uniform on the shaded region. The solid, dashed, and dotted lines each divide that region equally. In (a) and (b), every median line passes through $\tau_M$; the tilted ellipse in (b) allows correlation between base and responsiveness. In (c), the support is a triangle. The three median lines enclose the dark region rather than meet at one point. The white square marks the marginal medians and does not lie on the dotted line.}
+\label{fig:median-types}
+\end{figure}
+
+\begin{corollary}[Median voter]\label{cor:median}
+Under Assumption~\ref{ass:median},
+\begin{align*}
+M(\tau_l,\tau_r;q)
+&=2(\beta_r-\beta_l)\big(\psi(\alpha_M)-\beta_M\big)=\Delta V_{\tau_M}(q)\\
+&=2(\beta_r-\beta_l)(\beta_m-\beta_M)+2(\alpha_r-\alpha_l)(\alpha_m-\alpha_M)\,I_q ,
+\end{align*}
+so candidate $l$ wins if and only if the shock is below the payoff gap of a voter at the median point.
+\end{corollary}
+
+Figure~\ref{fig:median} uses a uniform distribution on the square. Candidate $l$ leads without a shock exactly when the median point lies below the indifference line. At low informativeness, $l$ leads because she is closer in base. As $I_q$ rises, the line rotates and crosses the median point at $I_q=4/3$. Candidate $r$ then leads because she is closer in responsiveness. This reversal requires no change in voters or candidates. Without a median point, the parallel halving line can also shift as its slope changes, adding a second source of movement in $M$.
+
+\paragraph{Equilibrium nominations.}
+Party $L$ chooses $\tau_l$ to maximize
+\[
+W_L(\tau_l,\tau_r;q)=\Big(\tfrac12+hM\Big)V_L^l(q)+\Big(\tfrac12-hM\Big)V_L^r(q).
+\]
+Changing the nominee affects this payoff in two ways. It changes the policy obtained if $l$ wins, and it changes the probability of that victory. The first effect is weighted by $\tfrac12+hM$. The second is worth $\Delta V_L(q)$ per unit increase in the winning probability. Party $R$ faces the corresponding trade-off.
+
+\begin{proposition}[Equilibrium nominations]\label{prop:nomination}
+Suppose $I_q>0$, and let $\bar\tau=(\bar\alpha,\bar\beta)$ be the average type of the voters on the median line $\psi_M$, weighted by $g$. In any equilibrium in which both candidates lie in the interior of $\operatorname{supp}(G)$, both values of office are positive, and the tie value $M$ is differentiable in the candidates' types,
+\[
+\tau_l=(1-w_L)\,\tau_L+w_L\,\bar\tau,
+\qquad
+\tau_r=(1-w_R)\,\tau_R+w_R\,\bar\tau,
+\]
+where
+\[
+w_L=\frac{h\,\Delta V_L(q)}{\tfrac12+hM+h\,\Delta V_L(q)},
+\qquad
+w_R=\frac{-h\,\Delta V_R(q)}{\tfrac12-hM-h\,\Delta V_R(q)}
+\]
+are evaluated at the equilibrium candidates and lie in $(0,1)$. Under Assumption~\ref{ass:median}, $\bar\tau=\tau_M$.
+\end{proposition}
+
+Each candidate lies between her party's ideal type and $\bar\tau$, with the same moderation weight in both dimensions. The weight compares the electoral benefit of moderation with its policy cost. That benefit rises with the party's value of office; the policy cost is incurred only if its candidate wins. The average type $\bar\tau$ is therefore the decisive point for nominations. In general, it changes with the slope of the median line, and hence with the candidates and $I_q$. Under Assumption~\ref{ass:median}, it stays at $\tau_M$.
+
+\section{The effects of uncertainty and informativeness}\label{sec:effects}
+
+This section examines how nominations and policies change as $I_q$ rises. A symmetric benchmark gives closed forms. Under weak electoral pressure, the main comparative statics extend to general voter distributions satisfying local regularity.
+
+\paragraph{A symmetric benchmark.}
+
+\begin{proposition}[Symmetric benchmark]\label{prop:symmetric}
+Suppose Assumption~\ref{ass:median} holds, $I_q>0$, and the parties' ideal types are distinct and symmetric about the median point, $\tau_L+\tau_R=2\tau_M$. For every $h>0$, there is a unique symmetric equilibrium, in which $M=0$, each candidate wins with probability $\tfrac12$, and
+\[
+\tau_j=(1-w)\,\tau_J+w\,\tau_M,
+\qquad
+1-w=\frac{2}{1+\sqrt{1+8h\,\Lambda_L^R(q)}},
+\]
+where $\Lambda_L^R(q)=(\beta_R-\beta_L)^2+(\alpha_R-\alpha_L)^2I_q$. If $\alpha_R\ne\alpha_L$, then as uncertainty or informativeness rises:
+\begin{enumerate}
+  \item[(a)] candidates converge in both dimensions: $\tau_r-\tau_l=(1-w)(\tau_R-\tau_L)$ shrinks;
+  \item[(b)] policies diverge: the expected squared policy gap
+  \[
+  D^*(q)=(1-w)^2\,\Lambda_L^R(q)=\frac{w}{2h}=\frac{4\Lambda_L^R(q)}{\big(1+\sqrt{1+8h\,\Lambda_L^R(q)}\big)^2}
+  \]
+  rises, with
+  \[
+  \frac{\mathrm{d}D^*}{\mathrm{d}I_q}=(\alpha_R-\alpha_L)^2\,\frac{(1-w)^3}{1+w}>0,
+  \]
+  toward the ceiling $1/(2h)$;
+  \item[(c)] each party's value of office in equilibrium, $(1-w)\Lambda_L^R(q)$, rises.
+\end{enumerate}
+\end{proposition}
+
+Greater informativeness increases both parties' values of office, so both nominate candidates closer to the median point. This moderation occurs in base as well as responsiveness. It does not eliminate the policy consequences of their disagreement. For large $\Lambda_L^R$, the remaining fraction of the type gap is approximately $1/\sqrt{2h\Lambda_L^R}$. The underlying disagreement $\Lambda_L^R$, meanwhile, grows linearly in $I_q$. The resulting policy gap rises despite convergence in type.
+
+The identity $D^*=w/(2h)$ makes this relationship especially clear. As parties moderate more, the expected squared policy gap increases in proportion to the moderation weight. It remains bounded by $1/(2h)$ because $w<1$. In Example~\ref{ex:normal},
+\[
+\Lambda_L^R=(\beta_R-\beta_L)^2+(\alpha_R-\alpha_L)^2\frac{\sigma_\omega^4}{\sigma_\omega^2+\sigma_s^2},
+\]
+so higher state variance and more precise signals both increase moderation and policy divergence.
+
+\paragraph{Asymmetric parties.}
+For each party, define its disagreement with the median voter as
+\[
+\Lambda_M^J(q)\equiv(\beta_J-\beta_M)^2+(\alpha_J-\alpha_M)^2\,I_q.
+\]
+The next result relates this disagreement to the electoral lead and to nominations.
+
+\begin{proposition}[Asymmetric parties]\label{prop:asymmetric}
+Suppose Assumptions~\ref{ass:small-h} and~\ref{ass:median} hold, $I_q>0$, and $\alpha_R\ne\alpha_L$. In the equilibrium near the parties' ideal types, which is unique (Lemma~\ref{lem:smallh}):
+\begin{enumerate}
+  \item[(a)] candidate $l$ wins with probability above $\tfrac12$ if and only if $\Lambda_M^L(q)<\Lambda_M^R(q)$: the party whose ideal type is closer to the median point leads;
+  \item[(b)] as uncertainty or informativeness rises, $\Lambda_M^R(q)-\Lambda_M^L(q)$ changes at rate $(\alpha_R-\alpha_M)^2-(\alpha_L-\alpha_M)^2$, so the lead moves toward the party whose ideal responsiveness is closer to $\alpha_M$; if $L$ is closer to the median point in base and $R$ in responsiveness, $L$ leads for $I_q<I^*$ and $R$ for $I_q>I^*$, so the lead switches if $I^*$ lies in the attainable range of informativeness, where
+  \[
+  I^*\equiv\frac{(\beta_R-\beta_M)^2-(\beta_L-\beta_M)^2}{(\alpha_L-\alpha_M)^2-(\alpha_R-\alpha_M)^2};
+  \]
+  \item[(c)] as uncertainty or informativeness rises, both candidates move toward $\tau_M$ along the segments from their parties' ideal types, and if the ideal types lie on opposite sides of the median point, $(\tau_L-\tau_M)\cdot(\tau_R-\tau_M)\le0$, the distance between the candidates' types falls;
+  \item[(d)] as uncertainty or informativeness rises, policies diverge: the equilibrium expected squared policy gap rises, and so do both parties' values of office.
+\end{enumerate}
+\end{proposition}
+
+Nomination does not change which party leads. The leading party is the one that would lead if both nominated their own ideal types. When the parties have opposite advantages in base and responsiveness, the lead changes at the same threshold as it would with those fixed nominees. The main result from the symmetric benchmark also survives: both parties moderate, but their nominees' expected squared policy gap increases.
+
+Figure~\ref{fig:equilibrium} uses the earlier candidates as party ideal types: $\tau_L=(0.2,-0.1)$ and $\tau_R=(1.2,0.9)$. Voters are uniform on the square, and $h=\tfrac14$. At low informativeness, $L$ leads because it is closer in base. The trailing party $R$ moderates more, with most of its candidate's movement occurring in base, where the party is farther from the centre.
+
+As $I_q$ rises, responsiveness matters more, reducing $L$'s advantage. Both parties' values of office increase, and both candidates move toward the median point. Most of $L$'s movement occurs in responsiveness. At $I_q=4/3$, the parties tie; beyond it, $R$ leads and $L$ concedes faster. At the tie, both parties face the same electoral stakes and choose the same moderation weight. This is why nomination leaves the threshold unchanged.
+
+Throughout the figure, the candidates become more alike in type while their policy gap increases. Each also moves on the dimension where its party already has an advantage: $L$ moderates slightly in base, and $R$ in responsiveness. Proposition~\ref{prop:nomination} requires the same moderation weight in both dimensions, so a party cannot concede only on the dimension where it is losing.
+
+\begin{figure}[tbp]
+\centering
+\begin{minipage}[b]{0.49\linewidth}
+\centering
+\begin{tikzpicture}[scale=2.8, every node/.style={font=\small}]
+  % preferences at I_q = 4, with switchers (relative to I_q = 1/4) in lighter shades
+  \fill[blue!22] (0,-1) -- (1.268,-1) -- (0.898,0.206) -- (0,0.464) -- cycle;
+  \fill[red!22]  (0.898,0.206) -- (0.655,1) -- (2,1) -- (2,-0.110) -- cycle;
+  \fill[red!8]   (0.898,0.206) -- (2,-0.110) -- (2,-1) -- (1.268,-1) -- cycle;
+  \fill[blue!8]  (0.898,0.206) -- (0,0.464) -- (0,1) -- (0.655,1) -- cycle;
+  \fill[pattern=crosshatch, pattern color=gray!70] (0.655,1) -- (0.693,1) -- (1.307,-1) -- (1.268,-1) -- cycle;
+  \draw[gray!60] (0,-1) rectangle (2,1);
+  \node[above] at (1,1.02) {(a) Equilibrium candidates};
+  \node[below] at (1,-1.04) {$\alpha$ (responsiveness)};
+  \node[rotate=90,above] at (-0.06,0) {$\beta$ (base)};
+  % indifferent voters at I_q = 1/4 (dotted) and I_q = 4 (solid); halving line at I_q = 4 (dashed)
+  \draw[thick,dotted] (0,0.464) -- (2,-0.110);
+  \node[above] at (1.72,-0.02) {$\psi(\alpha;\tfrac14)$};
+  \draw[thick] (0.655,1) -- (1.268,-1);
+  \node[left] at (1.20,-0.85) {$\psi(\alpha;4)$};
+  \draw[thick,dashed] (0.693,1) -- (1.307,-1);
+  \node[right] at (1.29,-0.85) {$\psi_M(\alpha;4)$};
+  % paths of the candidates as I_q rises from 0 to 4
+  \draw[gray,thick,->] plot[smooth] coordinates {(0.337,-0.083) (0.382,-0.077) (0.424,-0.072) (0.491,-0.064) (0.527,-0.059) (0.597,-0.050) (0.648,-0.044) (0.676,-0.040)};
+  \draw[gray,thick,->] plot[smooth] coordinates {(1.131,0.589) (1.127,0.572) (1.124,0.559) (1.120,0.541) (1.118,0.532) (1.114,0.514) (1.111,0.500) (1.109,0.490)};
+  % party ideals (diamonds)
+  \draw[thick] (0.2,-0.1) +(0,0.05) -- +(0.05,0) -- +(0,-0.05) -- +(-0.05,0) -- cycle;
+  \node[below] at (0.2,-0.15) {$\tau_L$};
+  \draw[thick] (1.2,0.9) +(0,0.05) -- +(0.05,0) -- +(0,-0.05) -- +(-0.05,0) -- cycle;
+  \node[right] at (1.25,0.9) {$\tau_R$};
+  % candidates at I_q = 1/4 (gray) and I_q = 4 (black)
+  \fill[gray!60] (0.382,-0.077) circle (0.03);
+  \fill[gray!60] (1.127,0.572) circle (0.03);
+  \fill (0.676,-0.040) circle (0.03) node[below right] {$\tau_l$};
+  \fill (1.109,0.490) circle (0.03) node[right] {$\tau_r$};
+  % switching labels
+  \node at (1.65,-0.62) {$l\to r$};
+  \node at (0.22,0.78) {$r\to l$};
+  % candidates' midpoint at I_q = 4 and median point
+  \draw[fill=white] (0.8925,0.225) circle (0.03);
+  \node[left] at (0.86,0.25) {$\tau_m$};
+  \fill (1,0) ++(-0.025,-0.025) rectangle ++(0.05,0.05);
+  \node[right] at (1.05,0.02) {$\tau_M$};
+\end{tikzpicture}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.49\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=7.2cm, height=6.4cm,
+  xmin=0, xmax=4, ymin=0.4, ymax=1.1,
+  xlabel={$I_q$}, title={(b) Evolution with informativeness},
+  axis lines=left, every axis plot/.append style={thick},
+  tick label style={font=\small}, label style={font=\small}, title style={font=\small}]
+  \addplot[black] table {
+    0.020 0.5828
+    0.219 0.5605
+    0.418 0.5433
+    0.617 0.5299
+    0.816 0.5192
+    1.015 0.5106
+    1.214 0.5036
+    1.413 0.4978
+    1.612 0.4929
+    1.811 0.4888
+    2.010 0.4853
+    2.209 0.4822
+    2.408 0.4795
+    2.607 0.4772
+    2.806 0.4751
+    3.005 0.4733
+    3.204 0.4717
+    3.403 0.4702
+    3.602 0.4689
+    3.801 0.4677
+    4.000 0.4667
+  };
+  \addplot[black, dashed] table {
+    0.020 0.4630
+    0.219 0.5487
+    0.418 0.6188
+    0.617 0.6762
+    0.816 0.7240
+    1.015 0.7641
+    1.214 0.7984
+    1.413 0.8281
+    1.612 0.8542
+    1.811 0.8772
+    2.010 0.8979
+    2.209 0.9166
+    2.408 0.9335
+    2.607 0.9491
+    2.806 0.9634
+    3.005 0.9767
+    3.204 0.9891
+    3.403 1.0007
+    3.602 1.0116
+    3.801 1.0218
+    4.000 1.0315
+  };
+  \addplot[black, dashdotted] table {
+    0.020 1.0379
+    0.219 0.9945
+    0.418 0.9569
+    0.617 0.9242
+    0.816 0.8957
+    1.015 0.8708
+    1.214 0.8487
+    1.413 0.8291
+    1.612 0.8115
+    1.811 0.7957
+    2.010 0.7813
+    2.209 0.7681
+    2.408 0.7561
+    2.607 0.7449
+    2.806 0.7346
+    3.005 0.7249
+    3.204 0.7160
+    3.403 0.7075
+    3.602 0.6996
+    3.801 0.6921
+    4.000 0.6850
+  };
+  \addplot[gray, dotted, domain=0:4] {0.5};
+  \draw[gray, dotted] (axis cs:1.333,0.4) -- (axis cs:1.333,1.1);
+  \node[font=\small, anchor=west] at (axis cs:2.6,0.52) {$\Pr(l\text{ wins})$};
+  \node[font=\small, anchor=west] at (axis cs:1.55,0.94) {$D^*$};
+  \node[font=\small, anchor=west] at (axis cs:2.4,0.65) {$\|\tau_r-\tau_l\|$};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\caption{Equilibrium nominations and policies. Party ideals are $\tau_L=(0.2,-0.1)$ and $\tau_R=(1.2,0.9)$, voters are uniform on the square, and $h=\tfrac14$. In panel (a), diamonds mark party ideals, gray dots mark nominees at $I_q=\tfrac14$, and black dots mark nominees at $I_q=4$. Arrows trace the nominations as $I_q$ rises. Shading shows voter preferences at $I_q=4$; lighter regions contain voters who have switched since $I_q=\tfrac14$. The dotted and solid lines are the indifference lines at those two levels. The dashed median line shows that $r$ leads at $I_q=4$. In panel (b), $l$'s winning probability crosses $\tfrac12$ at $I_q=4/3$. The distance between candidate types falls while their expected squared policy gap $D^*$ rises.}
+\label{fig:equilibrium}
+\end{figure}
+
+\paragraph{Robustness of polarization.}\label{sec:general-G}
+Policy divergence holds exactly in the symmetric benchmark at every $h$. It also holds under weak electoral pressure for general voter distributions and party ideals satisfying the local regularity conditions. A general result under strong electoral pressure remains open.
+
+The numerical reversals found so far involve a decisive point that moves with informativeness. A trailing party may moderate toward that point enough to outweigh the direct increase in policy disagreement. A fixed median point removes this channel. In numerical experiments with a median point and asymmetric parties, the equilibrium policy gap increased at every tested $h$ (Appendix~\ref{app:proofs}). These experiments do not rule out other sources of reversal.
+
+\paragraph{Welfare.}
+The distinction between uncertainty and information matters for welfare, even though both affect electoral comparisons through $I_q$. Let $\kappa\equiv I_q/\operatorname{Var}(\omega)$ be the revealed share, held fixed when uncertainty changes.
+
+\begin{proposition}[Uncertainty hurts everyone]\label{prop:welfare-unc}
+Suppose $I_q>0$ and $\alpha_R\ne\alpha_L$.
+\begin{enumerate}
+  \item[(a)] For any candidates and any player, $\mathrm{d}V_i^j/\mathrm{d}\operatorname{Var}(\omega)=-(1-\kappa)\alpha_i^2-\kappa(\alpha_j-\alpha_i)^2\le0$.
+  \item[(b)] Under Assumption~\ref{ass:small-h}, for any distribution of voters and any party ideal types, every player's equilibrium payoff falls with uncertainty.
+  \item[(c)] Under Assumption~\ref{ass:median} with symmetric parties, every player's equilibrium payoff falls with uncertainty for every $h$.
+\end{enumerate}
+\end{proposition}
+
+At fixed candidates, greater uncertainty increases residual risk and the cost of disagreement over responses. Neither effect benefits a player. In equilibrium, nominations and winning probabilities also change. Under weak electoral pressure, these changes are too small to offset the direct loss. In the symmetric benchmark, the policy lottery between candidates widens as well, so every player loses at any level of electoral pressure.
+
+Better information has a different effect. The symmetric benchmark gives the clearest characterization. Write $\alpha_L=\alpha_M-\delta$ and $\alpha_R=\alpha_M+\delta$, with $\delta\ne0$.
+
+\begin{proposition}[Information is positional]\label{prop:welfare}
+Suppose Assumption~\ref{ass:median} holds and the parties' ideal types are symmetric about the median point. In the equilibrium of Proposition~\ref{prop:symmetric}, player $i$'s expected payoff is
+\[
+W_i=-\alpha_i^2\operatorname{Var}(\omega)-(\beta_M-\beta_i)^2+\alpha_M(2\alpha_i-\alpha_M)\,I_q-\tfrac14D^*(q),
+\]
+and
+\[
+\frac{\mathrm{d}W_i}{\mathrm{d}I_q}=\alpha_M(2\alpha_i-\alpha_M)-\tfrac14\,\frac{\mathrm{d}D^*}{\mathrm{d}I_q}.
+\]
+If $\alpha_M=0$, every player is worse off when informativeness rises, and by continuity this holds for all $\alpha_M$ close enough to zero. If $\alpha_M\ne0$, the gain is increasing in $\alpha_i$ when $\alpha_M>0$ and decreasing when $\alpha_M<0$: the party whose ideal responsiveness has the same sign as $\alpha_M$ and the larger magnitude gains most, the median voter gains less, and the other party gains least. Player $i$ gains if and only if $\alpha_i\operatorname{sign}(\alpha_M)>|\alpha_M|/2+\big(\mathrm{d}D^*/\mathrm{d}I_q\big)/\big(8|\alpha_M|\big)$.
+\end{proposition}
+
+Information affects welfare through two terms. The term $\alpha_M(2\alpha_i-\alpha_M)I_q$ captures the effect of the response at the candidates' midpoint, which is the median point. The term $-D^*/4$ captures the cost of the lottery between candidates. Better information increases that lottery cost.
+
+If $\alpha_M=0$, the midpoint policy does not respond to information. Information then only widens the lottery, making every player worse off, including both parties. If $\alpha_M\ne0$, the midpoint response benefits players differently. Those who want a stronger response in the same direction gain more; those who want a weaker or opposite response gain less and may lose. Figure~\ref{fig:welfare} illustrates this ordering for the parties and the median voter.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=11cm, height=7cm,
+  xmin=-1.5, xmax=1.5, ymin=-0.6, ymax=2,
+  xlabel={$\alpha_M$}, ylabel={$\mathrm{d}W_i/\mathrm{d}I_q$},
+  axis lines=left, samples=200, domain=-1.5:1.5, clip=true,
+  every axis plot/.append style={thick},
+  tick label style={font=\small}, label style={font=\small}]
+  \fill[gray!15] (axis cs:-0.1357,-0.6) rectangle (axis cs:0.1357,2);
+  \addplot[gray, thin] {0};
+  \addplot[red!70!black] {x*(x+1)-0.1541};
+  \addplot[black, dashed] {x^2-0.1541};
+  \addplot[blue!70!black, dashdotted] {x*(x-1)-0.1541};
+  \node[font=\small, anchor=south east, red!70!black] at (axis cs:0.92,1.56) {party $R$};
+  \node[font=\small, anchor=south east] at (axis cs:0.92,0.66) {median voter};
+  \node[font=\small, anchor=south east, blue!70!black] at (axis cs:1.47,0.42) {party $L$};
+  \node[font=\small, anchor=south] at (axis cs:0,1.75) {all lose};
+\end{axis}
+\end{tikzpicture}
+\caption{Welfare effects of information in the symmetric benchmark. The parties have $\alpha_L=\alpha_M-\tfrac12$ and $\alpha_R=\alpha_M+\tfrac12$, with $\beta_R-\beta_L=1$, $h=0.05$, and $I_q=\tfrac12$. Both parties and the median voter lose in the shaded band; at $\alpha_M=0$, every player loses. For $\alpha_M>0$, party $R$ gains most, the median voter next, and party $L$ least. The ordering reverses for $\alpha_M<0$.}
+\label{fig:welfare}
+\end{figure}
+
+Without symmetry, the candidates need not win with equal probability, and the midpoint response no longer separates from the policy lottery. Holding candidates and the winning probability $P$ fixed, the direct effect of information is
+\[
+P\alpha_l(2\alpha_i-\alpha_l)+(1-P)\alpha_r(2\alpha_i-\alpha_r).
+\]
+Under weak electoral pressure, the remaining effects through nominations and winning probabilities are of order $h$. Voters with responsiveness near zero still lose to leading order. A party can also benefit from a change in its winning probability when its responsiveness is closer to that of the decisive voter. Without a median point, that decisive voter can change with informativeness, so the identity of the players who benefit may change too.
+
+\section{Extension: different assumptions on learning}\label{sec:pre-election}
+
+The baseline fixes the officeholder's information and assumes that all learning occurs after the election. This section relaxes these assumptions separately. Endogenous learning adds a reason to select more responsive candidates. Information before nomination gives parties an opportunity to adapt their candidates to the news, which can reduce polarization.
+
+\paragraph{Endogenous learning in office.}
+Suppose that the winner chooses how much to learn and bears the cost herself. In the normal example, she chooses signal precision $P\ge0$, so $\sigma_s^2=1/P$, at cost $C(P)$. Assume that $C$ is twice continuously differentiable and convex, with $C(0)=C'(0)=0$ and $C'(P)>0$ for $P>0$. Writing $S\equiv\sigma_\omega^2$, candidate $j$ maximizes
+\[
+-\alpha_j^2\big(S-I(P)\big)-C(P),
+\qquad
+I(P)=\frac{S^2P}{SP+1}.
+\]
+Let $I_j^*$ be the informativeness that she chooses. Other players anticipate this choice and evaluate her by
+\[
+V_i^j=-\alpha_i^2S-(\beta_j-\beta_i)^2+\alpha_j(2\alpha_i-\alpha_j)\,I_j^*.
+\]
+Responsiveness now affects both how the candidate uses information and how much she acquires. Parties account for both effects when nominating her.
+
+\begin{proposition}[Endogenous learning]\label{prop:endolearn}
+\begin{enumerate}
+  \item[(a)] For $S>0$, candidate $j$ learns, $P_j^*>0$, if and only if $\alpha_j\ne0$; and for $\alpha_j\ne0$, $P_j^*$ rises with $|\alpha_j|$, with uncertainty $S$, and as learning becomes cheaper, that is, as $C$ is scaled down.
+  \item[(b)] For $\alpha_j\ne0$, her informativeness rises with uncertainty faster than at fixed precision:
+  \[
+  \frac{\mathrm{d}I_j^*}{\mathrm{d}S}=\frac{\partial I}{\partial S}+\frac{\partial I}{\partial P}\,\frac{\mathrm{d}P_j^*}{\mathrm{d}S}>\frac{\partial I}{\partial S}.
+  \]
+  \item[(c)] Let $C(P)=\tfrac c2P^2$ with $c>0$, let $\alpha_R=-\alpha_L=A>0$, suppose the nominations below lie in the interior of $\operatorname{supp}(G)$, and consider the limit of weak electoral pressure, $h\to0$. Each party nominates its own base and a candidate who is more responsive than itself, with responsiveness of magnitude
+  \[
+  \widehat a=A\,\frac{z+1}{z+\tfrac23}\in\Big(A,\tfrac32A\Big),
+  \qquad\text{where }z>0\text{ solves }\sqrt z\,\big(z+\tfrac23\big)=\frac{A\,S^{3/2}}{\sqrt c}.
+  \]
+  The expected squared policy gap is $\widehat D=(\beta_R-\beta_L)^2+4A^2S\,\phi(z)$, with $\phi(z)=z(z+1)/(z+\tfrac23)^2$ increasing. As uncertainty rises or learning becomes cheaper, $\widehat a$ falls toward $A$ while $\widehat D$ rises, and $\widehat D$ rises with uncertainty faster than when precision is held fixed at its chosen level and parties nominate their own ideal types.
+  \item[(d)] Under the conditions of (c) and Assumption~\ref{ass:small-h}, there is a unique equilibrium near those nominations, and the conclusions of (c) hold in it: each candidate is more responsive than her party, and the expected squared policy gap rises with uncertainty and as learning becomes cheaper, faster with uncertainty than when precision is held fixed at its equilibrium level.
+\end{enumerate}
+\end{proposition}
+
+The selection motive comes from who pays for learning. The officeholder bears its cost, but her party benefits from the information. A party can induce more learning by selecting a more responsive candidate. Under the conditions of parts (c) and (d), it accepts some disagreement over policy to obtain this benefit and nominates a candidate whose responsiveness exceeds its own in magnitude.
+
+This motive works against the moderation in the baseline. With fixed information, higher stakes encourage parties to move their candidates toward the decisive voter. With endogenous learning, parties also value the additional information that stronger responsiveness induces. As uncertainty rises or learning becomes cheaper, they need less additional responsiveness to induce learning. The selected responsiveness falls toward the party's own, but the expected policy gap still rises. Its increase with uncertainty is greater than in the fixed-precision comparison stated in the proposition.
+
+The extension also creates a commitment problem. Under the assumed costs, every officeholder with nonzero responsiveness chooses some learning. She may do so even when everyone would prefer less information before the election, as in the zero-median-response case of Proposition~\ref{prop:welfare}. Within this model, a party can commit to no learning by selecting a candidate with $\alpha_j=0$. Such a candidate has no use for information. Parts (c) and (d) describe the nomination incentives when electoral pressure is zero in the limit or weakly positive.
+
+\paragraph{Learning before the election.}
+Some information is already public when parties nominate: a crisis may be under way, or a trend may already be visible in the data. Suppose that this news concerns the same state to which the winner will later respond. The infrastructure that produces the early news may also improve the winner's later information.
+
+Before nomination, all players observe a public signal $s_1$. After the election, the winner observes $s_2$ and chooses $\beta_j+\alpha_j\mathbb{E}[\omega\mid s_1,s_2]$. Let
+\[
+m_1\equiv\mathbb{E}[\omega\mid s_1],
+\qquad
+I_2(s_1)\equiv\operatorname{Var}\big(\mathbb{E}[\omega\mid s_1,s_2]\mid s_1\big).
+\]
+The first quantity is the expected state after the news; the second measures how much the winner still learns. Conditional on $s_1$, voter $i$'s expected payoff from candidate $j$ is
+\[
+V_i^j(s_1)=-\alpha_i^2\operatorname{Var}(\omega\mid s_1)-\big[(\beta_j+\alpha_jm_1)-(\beta_i+\alpha_im_1)\big]^2+\alpha_j(2\alpha_i-\alpha_j)\,I_2(s_1).
+\]
+This is the baseline payoff with effective base $\beta_i+\alpha_im_1$ and informativeness $I_2(s_1)$. Early news turns part of the disagreement over future responses into a disagreement over known positions. The remaining uncertainty concerns what the officeholder will learn after the election.
+
+Suppose that the electorate has a median point and that the parties' ideal types are symmetric about it. The transformation from original to effective types is linear and invertible. It preserves the median-point property and party symmetry. The symmetric benchmark therefore applies after each realization of the news. The conditional equilibrium policy gap is $\Gamma_h(\Lambda(s_1))$, where
+\[
+\Gamma_h(\Lambda)\equiv\frac{4\Lambda}{\big(1+\sqrt{1+8h\Lambda}\big)^2},
+\]
+and
+\[
+\Lambda(s_1)\equiv\mathbb{E}\Big[\big(\beta_R-\beta_L+(\alpha_R-\alpha_L)\,\mathbb{E}[\omega\mid s_1,s_2]\big)^2\,\Big|\,s_1\Big].
+\]
+The quantity $\Lambda(s_1)$ measures the parties' disagreement given the news. The function $\Gamma_h$ is increasing and strictly concave. It approaches the identity as $h\to0$ and is bounded by $1/(2h)$.
+
+\begin{proposition}[Timing of information]\label{prop:timing}
+Suppose Assumption~\ref{ass:median} holds and the parties' ideal types are symmetric about the median point.
+\begin{enumerate}
+  \item[(a)] With candidates fixed, the expected squared policy gap depends only on the officeholder's final information: it equals $(\beta_R-\beta_L)^2+(\alpha_R-\alpha_L)^2\operatorname{Var}\big(\mathbb{E}[\omega\mid s_1,s_2]\big)$, whatever part of it arrives before the election.
+  \item[(b)] In equilibrium, holding the officeholder's final information $\mathcal F$ fixed, refining the information disclosed before the election, from $\mathcal H$ to $\mathcal H'$ with $\mathcal H\subseteq\mathcal H'\subseteq\mathcal F$, weakly lowers expected polarization $\mathbb{E}\big[\Gamma_h(\Lambda)\big]$, strictly whenever the refinement changes the parties' disagreement $\Lambda$ with positive probability.
+  \item[(c)] As $h\to0$, expected polarization approaches the expression in (a), so every improvement in the officeholder's final information that raises $\operatorname{Var}\big(\mathbb{E}[\omega\mid s_1,s_2]\big)$ raises it, as in the baseline.
+\end{enumerate}
+\end{proposition}
+
+Early news lets parties adapt nominations to the disagreement that they expect. If the news places their effective positions far apart, both have more at stake and moderate more. If it brings those positions closer, they moderate less. The equilibrium gap therefore rises less than proportionally with disagreement, as captured by the concavity of $\Gamma_h$.
+
+Holding final information fixed, more disclosure before nomination spreads conditional disagreement without changing its mean. Concavity then lowers the average equilibrium gap. This effect is absent when candidates are chosen before any news arrives. It also vanishes as electoral pressure tends to zero: $\Gamma_h(\Lambda)\approx\Lambda-4h\Lambda^2$, so the effect of early disclosure is of order $h$.
+
+\paragraph{Improvements in both signals.}
+When the same infrastructure informs parties before nomination and the officeholder after the election, better information has two effects. Additional learning in office increases policy divergence. Additional news before nomination gives parties more scope to moderate in response to the circumstances.
+
+Figure~\ref{fig:sticky} compares these effects in the normal example, with $\beta_R-\beta_L=\alpha_R-\alpha_L=\sigma_\omega^2=1$. If only the signal in office improves, expected polarization rises at every $h$. If both signals improve together, polarization rises less under weak electoral pressure. Under strong electoral pressure, it can rise initially and then fall below its no-information level, or remain below that level throughout.
+
+\begin{figure}[t]
+\centering
+\begin{subfigure}[b]{0.35\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=5.6cm, height=5.6cm,
+  xmin=0, xmax=1, ymin=0.85, ymax=1.65,
+  xtick={0,0.5,1}, ytick={0.9,1,1.2,1.4,1.6},
+  xlabel={Share revealed by each signal},
+  ylabel={Polarization relative to no information},
+  axis lines=left, every axis plot/.append style={thick},
+  tick label style={font=\scriptsize}, label style={font=\scriptsize}, title style={font=\small},
+  title={(a) $h=0.1$}]
+  \addplot[gray, thin, domain=0:1] {1};
+  \addplot[black] coordinates {(0.00,1.0000) (0.10,1.0728) (0.20,1.1424) (0.30,1.2089) (0.40,1.2726) (0.50,1.3338) (0.60,1.3926) (0.70,1.4491) (0.80,1.5036) (0.90,1.5561) (0.95,1.5817) (0.98,1.5968)};
+  \addplot[black, dashed] coordinates {(0.00,1.0000) (0.10,1.0697) (0.20,1.1243) (0.30,1.1660) (0.40,1.1969) (0.50,1.2188) (0.60,1.2331) (0.70,1.2408) (0.80,1.2427) (0.90,1.2394) (0.95,1.2360) (0.98,1.2334)};
+\end{axis}
+\end{tikzpicture}
+\end{subfigure}\hfill
+\begin{subfigure}[b]{0.31\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=5.6cm, height=5.6cm,
+  xmin=0, xmax=1, ymin=0.85, ymax=1.65,
+  xtick={0,0.5,1}, ytick={0.9,1,1.2,1.4,1.6},
+  xlabel={Share revealed by each signal},
+  yticklabels={},
+  axis lines=left, every axis plot/.append style={thick},
+  tick label style={font=\scriptsize}, label style={font=\scriptsize}, title style={font=\small},
+  title={(b) $h=0.5$}]
+  \addplot[gray, thin, domain=0:1] {1};
+  \addplot[black] coordinates {(0.00,1.0000) (0.10,1.0427) (0.20,1.0818) (0.30,1.1177) (0.40,1.1510) (0.50,1.1818) (0.60,1.2106) (0.70,1.2375) (0.80,1.2628) (0.90,1.2866) (0.95,1.2980) (0.98,1.3046)};
+  \addplot[black, dashed] coordinates {(0.00,1.0000) (0.10,1.0065) (0.20,1.0172) (0.30,1.0273) (0.40,1.0337) (0.50,1.0357) (0.60,1.0330) (0.70,1.0257) (0.80,1.0133) (0.90,0.9955) (0.95,0.9843) (0.98,0.9767)};
+\end{axis}
+\end{tikzpicture}
+\end{subfigure}\hfill
+\begin{subfigure}[b]{0.31\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=5.6cm, height=5.6cm,
+  xmin=0, xmax=1, ymin=0.85, ymax=1.65,
+  xtick={0,0.5,1}, ytick={0.9,1,1.2,1.4,1.6},
+  xlabel={Share revealed by each signal},
+  yticklabels={},
+  axis lines=left, every axis plot/.append style={thick},
+  tick label style={font=\scriptsize}, label style={font=\scriptsize}, title style={font=\small},
+  title={(c) $h=2$}]
+  \addplot[gray, thin, domain=0:1] {1};
+  \addplot[black] coordinates {(0.00,1.0000) (0.10,1.0229) (0.20,1.0433) (0.30,1.0617) (0.40,1.0784) (0.50,1.0936) (0.60,1.1076) (0.70,1.1205) (0.80,1.1324) (0.90,1.1436) (0.95,1.1488) (0.98,1.1519)};
+  \addplot[black, dashed] coordinates {(0.00,1.0000) (0.10,0.9902) (0.20,0.9882) (0.30,0.9894) (0.40,0.9895) (0.50,0.9871) (0.60,0.9814) (0.70,0.9716) (0.80,0.9566) (0.90,0.9341) (0.95,0.9186) (0.98,0.9072)};
+\end{axis}
+\end{tikzpicture}
+\end{subfigure}
+\caption{Information timing and expected polarization. Polarization is measured relative to its no-information level in the symmetric normal example, with $\beta_R-\beta_L=\alpha_R-\alpha_L=\sigma_\omega^2=1$. Each panel uses a different electoral pressure $h$. The horizontal axis is the variance share revealed by each signal, $\sigma_\omega^2/(\sigma_\omega^2+\sigma_s^2)$. Along the solid curves, only the officeholder's signal improves. Along the dashed curves, the signals before nomination and after the election have equal precision and improve together. Values below one indicate less polarization than without information.}
+\label{fig:sticky}
+\end{figure}
+
+The timing of information therefore matters when parties can adjust nominations. Holding final information fixed, news that arrives before nomination allows more moderation than news that arrives only in office. This suggests a comparison between shocks whose consequences become visible during a term and shocks whose consequences are already visible when candidates are selected.
+
+\section{Reinterpretation of existing evidence}\label{sec:evidence}
+
+The model offers a way to interpret political changes after shocks. It does not identify the mechanism behind any particular episode. The studies discussed below document changes in voting, party support, policy, or behaviour; they do not jointly measure the model's base, responsiveness, and informativeness. Table~\ref{tab:episodes} summarizes the cases and the responses at stake.
+
+The proposed interpretation is prospective. A shock can change how much voters care about the government's response to future events, even if it leaves their preferences unchanged. Voters who want different responses may then move in opposite directions. This mechanism can coexist with retrospective punishment, cultural backlash, and changes in identity \citep{GurievPapaioannou2022}. It may also contribute to the long-run changes in the social composition of left and right documented by \citet{Gethin2022}.
+
+The model uses ``centre'' in a specific sense: a base near the candidates' midpoint. This need not coincide with middle-class status, previous support for a centrist party, or a weak partisan preference. Some voters near this centre switch because they prefer one candidate's base and the other's response. Others become more committed without switching. When parties choose their candidates, the equilibrium results add a second prediction: candidates can moderate in type while the policies they would implement diverge.
+
+The distinction also bears on ideology measurement. In the Netherlands between 1980 and 2006, left--right self-placement came to depend more on immigration attitudes and less on redistribution attitudes \citep{deVries2013}. Respondents also attach systematically different meanings to the labels ``left'' and ``right'' \citep{Bauer2017}. These findings show that the mapping from attitudes to a conventional scale can vary. Remark~\ref{rem:measurement} supplies one reason why the mapping from stable preferences to electoral choices may change, but the cited studies do not identify that reason.
+
+\begin{table}[t]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}L{2.1cm}L{2.7cm}L{3.8cm}L{2.4cm}L{3.2cm}@{}}
+\toprule
+Shock & Response at stake & Political changes & Side that gained & Sources \\
+\midrule
+Depression, Weimar Germany (1929--33) & Recovery, property, order, and redistribution & Working poor moved toward the Nazis and unemployed toward the Communists; liberal parties collapsed & Both extremes; the right more & \citet{King2008}; \citet{Falter1991}; \citet{Hamilton1982} \\
+Financial crisis (2008) & Bailouts, austerity, and regulation & Mainstream parties lost support to challengers on both sides; parliaments fragmented & Far right on average; radical left in Southern Europe & \citet{Funke2016}; \citet{Mian2014}; \citet{Hernandez2016} \\
+China shock (2000s) & Trade protection, transfers, and immigration & Moderate legislators were replaced at both ends & Both ends; Republicans more & \citet{Autor2020} \\
+Brexit (2016--) & Trade, regulation, and immigration outside the EU & Far-right support rose despite estimates of economic costs & Far right & \citet{BornEtAl2019}; \citet{Curtice2025} \\
+COVID-19 (2020--) & Lockdowns, distancing, and vaccination & Partisan differences in policy and behaviour & Evidence concerns divergent responses & \citet{Allcott2020}; \citet{Adolph2022} \\
+Climate change (under way) & Mitigation and adaptation & Prediction: voters realign by preferred responses & Prediction: advantage for the side closer to decisive voters in responsiveness & \citet{IPCC2023} \\
+Artificial intelligence (under way) & Labour-market adjustment, redistribution, and the state's use of AI & Prediction: voters realign by preferred responses; cheaper learning amplifies policy divergence & Prediction: advantage for the side closer to decisive voters in responsiveness & \citet{Eloundou2024}; \citet{Acemoglu2025}; \citet{Engstrom2020} \\
+\bottomrule
+\end{tabular}
+\caption{Episodes interpreted through the model. The historical cases illustrate patterns rather than test the model's primitives. The climate and AI rows state predictions.}
+\label{tab:episodes}
+\end{table}
+
+The far right's appeal to voters with moderate bases follows from the same comparison. In Figures~\ref{fig:realign} and~\ref{fig:median}, candidate $r$ has an average policy farther from the electorate's centre than candidate $l$. At low $I_q$, most voters prefer $l$. At higher $I_q$, some switch to $r$ because her responsiveness is closer to theirs. She eventually acquires an electoral advantage, although the common shock can still determine the outcome of a particular election. Proposition~\ref{prop:asymmetric} shows that the threshold for this change in the lead survives endogenous nominations under its assumptions.
+
+In this interpretation, a voter may accept the far right as the preferable alternative without moving closer to its average policy. Votes described as opposition to the other side are consistent with such a comparison \citep{AbramowitzWebster2016}, although negative partisanship alone does not establish the mechanism. The model's claim is that the dimension on which the far right is closer to decisive voters can become more consequential.
+
+\paragraph{Weimar Germany.}
+Lipset, Hamilton, and King and coauthors use different categories and offer accounts that partly disagree. For \citet{Lipset1960}, the centre refers to a class and a party family: middle-class voters who had supported liberal parties turned toward the Nazis during the Depression. \citet{Hamilton1982} challenges the lower-middle-class account and finds high Nazi support in middle-class and upper-middle-class districts. His account, consistent with the broad social base documented by \citet{Childers1983}, also emphasizes the available alternatives. Established bourgeois parties offered little response to the crisis, while many voters who wanted a response rejected the parties of the left.
+
+\citet{King2008} classify groups by economic position rather than centrism. Among groups severely affected by the Depression, the working poor moved toward the Nazis and the unemployed toward the Communists. The authors interpret these movements as economic voting. The present model can organize this divergence if the groups wanted different government responses. It does not settle the historical dispute or equate Lipset's centre with a moderate base in the model.
+
+The Nazi programme itself illustrates a distinction between unconditional exclusion and contingent escalation. Its 1920 provisions denied Jews citizenship and demanded the expulsion of non-citizens if the state could not feed the whole population \citep{NSDAP1920}. These provisions show that policy commitments could contain both a baseline exclusion and an additional response to adverse circumstances. They do not establish voters' types or explain the party's subsequent rise. In a different setting, experiments show that situational triggers can mobilize support for exclusionary policies beyond an already predisposed constituency \citep{SnidermanHagendoornPrior2004}. That mechanism differs from the change in anticipated informativeness studied here, but also shows why preferences elicited in ordinary conditions may be incomplete.
+
+The model's interpretation requires a particular comparison: some voters must prefer the far right's response to the left's response, even if they are less aligned with its base. Other voters can make the opposite comparison and move toward the Communists. Communist support rose from about a tenth of the vote in 1928 to about a sixth in November 1932. The Nazis and Communists together held a majority of seats, while liberal and Protestant middle-class parties collapsed \citep{Falter1991}. Professionals such as physicians joined the Nazi party in large numbers \citep{Kater1989}. After the Reichstag fire in February 1933, the Nazis also exploited fear of a Communist response \citep{Evans2003}.
+
+If base and responsiveness were correlated across classes, a class could be especially likely to switch. For example, some middle-class voters might have combined a moderate base with a preference for a strong response that the left did not offer in the form they wanted. This would connect the mechanism to Lipset's argument, but class correlation is not required. The ecological estimates in these accounts cannot establish that individual preferences stayed fixed or that information caused the changes.
+
+\paragraph{The financial crisis of 2008.}
+Financial crises since 1870 have been followed by far-right gains, parliamentary fragmentation, and greater polarization more consistently than ordinary recessions \citep{Funke2016,Mian2014}. After 2008, mainstream European parties lost to challengers on both sides, with radical-left gains concentrated in the South \citep{Hernandez2016}.
+
+A financial crisis can reveal previously underestimated uncertainty about the financial system. It also makes future choices over bailouts, austerity, and regulation more consequential. The distinction between financial crises and ordinary recessions is therefore consistent with the model: losses alone do not determine realignment. The response that voters expect the next government to make also matters.
+
+\paragraph{The China shock.}
+US districts exposed to Chinese import competition replaced moderate legislators at both ends. Majority-white districts moved toward conservative Republicans, while majority-minority districts moved toward liberal Democrats. Exposed areas also shifted toward Republicans in presidential elections \citep{Autor2020}. The model can account for gains at both ends if voters in these districts wanted different responses. It predicts the larger Republican gain if the Republican response to trade, transfers, or immigration was closer to that of decisive voters in the affected areas. The electoral evidence alone does not establish this condition.
+
+\paragraph{Brexit.}
+Brexit increased uncertainty about trade, regulation, and immigration, and estimates of its economic cost are negative \citep{BornEtAl2019}. Far-right support nevertheless rose afterward. In the national polls discussed by \citet{Curtice2025}, Reform UK stood at about twice its 2024 vote share.
+
+A purely retrospective account would look for punishment of those whom voters held responsible for Brexit's costs. The model supplies an additional consideration: uncertainty can increase the importance of the next government's response, regardless of who caused it. Evaluation of the past shock and preference over future responses can therefore favour different parties.
+
+\paragraph{Shocks under way.}
+COVID-19 combined extensive real-time data \citep{Chetty2024} with partisan differences in policy and behaviour \citep{Allcott2020,Adolph2022}. Climate change similarly creates uncertainty about damages while monitoring improves \citep{IPCC2023}. These cases motivate separate measurement of the state, what governments can learn, and the responses that voters want.
+
+AI may affect both uncertainty and learning. It exposes a substantial share of labour-market tasks to technological change \citep{Eloundou2024}, while estimates of aggregate effects range from modest \citep{Acemoglu2025} to transformative. Earlier automation has been associated with greater radical-right support among exposed workers \citep{Frey2018,Anelli2021}. AI can also expand the state's capacity to learn \citep{Engstrom2020} and reduce learning costs. In the endogenous-learning extension, cheaper learning increases the information acquired by officeholders and widens the policy gap under the stated conditions. Greater uncertainty lowers welfare, whereas the benefits of better information depend on the player's preferred response and on who governs.
+
+\paragraph{Information and high modernism.}
+Most empirical work on information shocks studies what voters learn from broadband or mobile internet \citep{Falck2014,Campante2018,Guriev2021,Zhuravskaya2020}. The channel here concerns what officeholders can learn. The growth of the state's capacity to collect and process information is therefore directly relevant \citep{Brambor2020}.
+
+High modernism offers one interpretation of strong desired responses across conventional ideological divisions. \citet{Scott1998} describes ambitious reconstruction supported by confidence in technical knowledge, with examples ranging from Lenin and Nyerere to Robert Moses. Actors may disagree about markets or ownership yet favour similarly extensive adjustments when circumstances change. If they instead want strong adjustments in opposite directions, the same increase in information can deepen their disagreement.
+
+This interpretation distinguishes three things: how much policy a player wants to change, measured by $|\alpha_i|$; what she believes the state can learn; and how much intervention she is willing to authorize. They may be related, but they are not interchangeable. High modernism suggests a source of strong responsiveness when its ambitions take a contingent form. Ambition alone does not determine a slope. A preference for the same extensive intervention in every state would instead be reflected in the base. Different weights on policy objectives provide another foundation for different preferred responses, as in \citet{Rogoff1985}.
+
+Neither technical ambition nor demand for expertise belongs exclusively to one side. \citet{Herf1984} describes the coexistence of technological enthusiasm and reactionary ends on the Weimar right. \citet{BertsouCaramani2022} find demand for expertise among citizens with populist as well as technocratic profiles. In the model, a player governing herself gains $\alpha_i^2$ per unit of informativeness. Under another officeholder, the gain depends on how their preferred responses compare.
+
+One possible application is the movement of some prominent technology-sector figures toward the US right. The mechanism would apply to individuals who were closer to the left in base but preferred the right's response to the contingencies that became more consequential. Their production or use of information, or their support for forceful intervention, would not by itself establish these preferences. The relevant evidence would concern the policy rules that they wanted and expected from the candidates.
+
+\paragraph{Testable implications.}
+A direct test must measure preferred responses separately from electoral choices. Left--right self-placement and ideal points inferred from choices do not generally distinguish a preferred policy at a reference state from a preferred response to changes in that state. Their empirical interpretation can also vary across environments \citep{deVries2013,Bauer2017}. Partisan differences in behaviour after common news, such as social distancing during the pandemic \citep{Allcott2020}, provide indirect evidence about responses, but do not by themselves recover the model's preference parameters.
+
+Survey vignettes could elicit these parameters within one policy domain. Respondents would see several specified states, such as unemployment rates or infection levels, and report the policy that they would want in each. The intercept would estimate base and the slope would estimate responsiveness. Questions should use the same policy units and reference state across respondents and waves, and precede questions about candidates. The same scenarios could then elicit the policies that respondents expect each candidate to choose. Both sets of rules are needed to measure agreement between voters and candidates.
+
+Four tests follow.
+\begin{enumerate}
+  \item[(i)] \emph{Direction.} For fixed candidates,
+  \[
+  \frac{\partial(V_i^r-V_i^l)}{\partial I_q}=(\alpha_l-\alpha_i)^2-(\alpha_r-\alpha_i)^2.
+  \]
+  As informativeness rises, a voter should move toward the candidate whose responsiveness is closer to hers. When this candidate differs from the one she prefers in base, a switch may occur. Choice and preference intensity should be measured separately, since a voter may switch without becoming strongly partisan or intensify without switching.
+
+  \item[(ii)] \emph{Uncertainty versus information.} Let the future state be $\pm\sqrt S$ with equal probability. Suppose that the winner observes a signal that is correct with probability $p\ge\tfrac12$. Then $I_q=S(2p-1)^2$. Hold the candidates' rules fixed. At $p=\tfrac12$, raising $S$ should leave their relative evaluation unchanged through this mechanism, although it weakly lowers welfare. At $p>\tfrac12$, raising $S$ should increase the weight on agreement over responses. Raising $p$ at fixed $S$ should do the same. A general demand for a strong leader under uncertainty does not by itself predict the null at $p=\tfrac12$.
+
+  \item[(iii)] \emph{Comparisons across environments.} Estimate the relationship between a conventional ideology measure and choices where informativeness is low. Test it on held-out observations or a later wave where informativeness is higher. If prediction worsens, independently measured agreement over responses should explain the errors in the direction predicted by the model. The old ranking may persist when base and responsiveness order voters in the same way.
+
+  \item[(iv)] \emph{Candidates.} Under the conditions for equilibrium convergence, candidates' policy rules should become more alike in responsiveness while their expected squared policy gap rises. The same scenarios can measure actual or perceived rules. Preferred rules should also be distinguished from implemented behaviour, because electoral incentives and adjustment costs may distort the latter \citep{CanesWroneShotts2007,LoeperDziuda2024}.
+\end{enumerate}
+
+Individual panels provide two further tests. First, an experiment can hold candidate profiles fixed and assign successively higher levels of informativeness. Policy-based comparisons should then show at most one change of side, apart from response noise. The prediction concerns evaluations before the state is learned; it does not rule out reversals after successive pieces of realized news.
+
+Second, observed switching can bound a voter's type. Suppose that $\beta_r>\beta_l$, $\alpha_r>\alpha_l$, and $0\le I_0<I_1$. In the comparison without a changing nonpolicy shock, a strict switch from $l$ to $r$ implies
+\[
+A_i<0<B_i,
+\qquad
+-I_1B_i<A_i<-I_0B_i.
+\]
+Thus $\beta_i<\beta_m$ and $\alpha_i>\alpha_m$: the voter is left-aligned in base and right-aligned in responsiveness. The switch does not reveal how far she lies from either midpoint. Multiplying both distances by the same positive factor preserves all binary choices against this fixed pair. Even a long panel of those choices therefore cannot distinguish a moderate base and small response difference from larger differences in both dimensions.
+
+Policies elicited at several states, or sufficiently rich variation in candidate pairs, can provide the additional information needed to recover these magnitudes. The preferred test estimates responses independently and then predicts switching. Defining strong responsiveness from the switch itself would provide no independent evidence for the mechanism. Its interpretation would be weakened if prior agreement over responses failed to predict the direction of movement, if effects arose only after party labels were supplied, or if changes in the composition of the electorate accounted for the apparent realignment.
+
+\section{Conclusion}\label{sec:conclusion}
+
+Voters choose people who will respond to events, so a policy position at one state does not fully describe their preferences. In this model, greater uncertainty and better information increase the consequences of disagreement over those responses. Voters can change sides or become more committed without changing their policy rules. Parties moderate their nominees, yet the expected squared gap between the policies that those nominees would implement can increase.
+
+This distinction changes how moderation and realignment should be interpreted. A voter who wants a moderate policy at the reference state may want a large adjustment elsewhere. A coalition that appears divided over average policy may agree about the response to future events. Neither pattern can be assessed from average policy alone.
+
+Comparisons across time, countries, or information environments therefore require common reference states and policy units, together with measures of preferred responses. Observed changes in alignment are consistent with changes in preferences, but do not establish them: the same preferences can produce different choices when the consequences of delegation change.
+
+\clearpage
+\begin{thebibliography}{99}
+\setlength{\itemsep}{2pt}
+
+\bibitem[{Abramowitz and Webster(2016)}]{AbramowitzWebster2016}
+Abramowitz, A. I., and S. Webster (2016). ``The Rise of Negative Partisanship and the Nationalization of U.S. Elections in the 21st Century.'' \textit{Electoral Studies} 41: 12--22.
+
+\bibitem[{Acemoglu(2025)}]{Acemoglu2025}
+Acemoglu, D. (2025). ``The Simple Macroeconomics of AI.'' \textit{Economic Policy} 40(121): 13--58.
+
+\bibitem[{Adolph et~al.(2022)}]{Adolph2022}
+Adolph, C., K. Amano, B. Bang-Jensen, N. Fullman, and J. Wilkerson (2022). ``Pandemic Politics: Timing State-Level Social Distancing Responses to COVID-19.'' \textit{Journal of Health Politics, Policy and Law} 47(2).
+
+\bibitem[{Ahir, Bloom and Furceri(2022)}]{Ahir2022}
+Ahir, H., N. Bloom, and D. Furceri (2022). ``The World Uncertainty Index.'' NBER Working Paper 29763.
+
+\bibitem[{Aldrich(1983)}]{Aldrich1983}
+Aldrich, J. H. (1983). ``A Downsian Spatial Model with Party Activism.'' \textit{American Political Science Review} 77(4): 974--990.
+
+\bibitem[{Allcott et~al.(2020)}]{Allcott2020}
+Allcott, H., L. Boxell, J. Conway, M. Gentzkow, M. Thaler, and D. Yang (2020). ``Polarization and Public Health: Partisan Differences in Social Distancing during the Coronavirus Pandemic.'' \textit{Journal of Public Economics} 191: 104254.
+
+\bibitem[{Alonso and C\^{a}mara(2016)}]{AlonsoCamara2016}
+Alonso, R., and O. C\^{a}mara (2016). ``Persuading Voters.'' \textit{American Economic Review} 106(11): 3590--3605.
+
+\bibitem[{Alonso and Matouschek(2008)}]{AlonsoMatouschek2008}
+Alonso, R., and N. Matouschek (2008). ``Optimal Delegation.'' \textit{Review of Economic Studies} 75(1): 259--293.
+
+\bibitem[{Amador and Bagwell(2013)}]{AmadorBagwell2013}
+Amador, M., and K. Bagwell (2013). ``The Theory of Optimal Delegation with an Application to Tariff Caps.'' \textit{Econometrica} 81(4): 1541--1599.
+
+\bibitem[{Anelli, Colantone and Stanig(2021)}]{Anelli2021}
+Anelli, M., I. Colantone, and P. Stanig (2021). ``Individual Vulnerability to Industrial Robot Adoption Increases Support for the Radical Right.'' \textit{Proceedings of the National Academy of Sciences} 118(47): e2111611118.
+
+\bibitem[{Autor et~al.(2020)}]{Autor2020}
+Autor, D., D. Dorn, G. Hanson, and K. Majlesi (2020). ``Importing Political Polarization? The Electoral Consequences of Rising Trade Exposure.'' \textit{American Economic Review} 110(10): 3139--3183.
+
+\bibitem[{Barber(2016)}]{Barber2016}
+Barber, M. J. (2016). ``Ideological Donors, Contribution Limits, and the Polarization of American Legislatures.'' \textit{Journal of Politics} 78(1): 296--310.
+
+\bibitem[{Bauer et~al.(2017)}]{Bauer2017}
+Bauer, P. C., P. Barber\'{a}, K. Ackermann, and A. Venetz (2017). ``Is the Left-Right Scale a Valid Measure of Ideology? Individual-Level Variation in Associations with `Left' and `Right' and Left-Right Self-Placement.'' \textit{Political Behavior} 39(3): 553--583.
+
+\bibitem[{Bertsou and Caramani(2022)}]{BertsouCaramani2022}
+Bertsou, E., and D. Caramani (2022). ``People Haven't Had Enough of Experts: Technocratic Attitudes among Citizens in Nine European Democracies.'' \textit{American Journal of Political Science} 66(1): 5--23.
+
+\bibitem[{Besley and Coate(1997)}]{BesleyCoate1997}
+Besley, T., and S. Coate (1997). ``An Economic Model of Representative Democracy.'' \textit{Quarterly Journal of Economics} 112(1): 85--114.
+
+\bibitem[{Bonica(2014)}]{Bonica2014}
+Bonica, A. (2014). ``Mapping the Ideological Marketplace.'' \textit{American Journal of Political Science} 58(2): 367--386.
+
+\bibitem[{Bonomi, Gennaioli and Tabellini(2021)}]{BonomiGennaioliTabellini2021}
+Bonomi, G., N. Gennaioli, and G. Tabellini (2021). ``Identity, Beliefs, and Political Conflict.'' \textit{Quarterly Journal of Economics} 136(4): 2371--2411.
+
+\bibitem[{Born et~al.(2019)}]{BornEtAl2019}
+Born, B., G. J. M\"{u}ller, M. Schularick, and P. Sedl\'{a}\v{c}ek (2019). ``The Costs of Economic Nationalism: Evidence from the Brexit Experiment.'' \textit{Economic Journal} 129(623): 2722--2744.
+
+\bibitem[{Brambor et~al.(2020)}]{Brambor2020}
+Brambor, T., A. Goenaga, J. Lindvall, and J. Teorell (2020). ``The Lay of the Land: Information Capacity and the Modern State.'' \textit{Comparative Political Studies} 53(2): 175--213.
+
+\bibitem[{Callander and Carbajal(2022)}]{CallanderCarbajal2022}
+Callander, S., and J. C. Carbajal (2022). ``Cause and Effect in Political Polarization: A Dynamic Analysis.'' \textit{Journal of Political Economy} 130(4): 825--880.
+
+\bibitem[{Calvert(1985)}]{Calvert1985}
+Calvert, R. L. (1985). ``Robustness of the Multidimensional Voting Model: Candidate Motivations, Uncertainty, and Convergence.'' \textit{American Journal of Political Science} 29(1): 69--95.
+
+\bibitem[{Campante, Durante and Sobbrio(2018)}]{Campante2018}
+Campante, F., R. Durante, and F. Sobbrio (2018). ``Politics 2.0: The Multifaceted Effect of Broadband Internet on Political Participation.'' \textit{Journal of the European Economic Association} 16(4): 1094--1136.
+
+\bibitem[{Canen, Kendall and Trebbi(2020)}]{Canen2020}
+Canen, N., C. Kendall, and F. Trebbi (2020). ``Unbundling Polarization.'' \textit{Econometrica} 88(3): 1197--1233.
+
+\bibitem[{Canes-Wrone and Shotts(2007)}]{CanesWroneShotts2007}
+Canes-Wrone, B., and K. W. Shotts (2007). ``When Do Elections Encourage Ideological Rigidity?'' \textit{American Political Science Review} 101(2): 273--288.
+
+\bibitem[{Chetty et~al.(2024)}]{Chetty2024}
+Chetty, R., J. N. Friedman, M. Stepner, and the Opportunity Insights Team (2024). ``The Economic Impacts of COVID-19: Evidence from a New Public Database Built Using Private Sector Data.'' \textit{Quarterly Journal of Economics} 139(2): 829--889.
+
+\bibitem[{Childers(1983)}]{Childers1983}
+Childers, T. (1983). \textit{The Nazi Voter: The Social Foundations of Fascism in Germany, 1919--1933}. Chapel Hill: University of North Carolina Press.
+
+\bibitem[{Crawford and Sobel(1982)}]{CrawfordSobel1982}
+Crawford, V. P., and J. Sobel (1982). ``Strategic Information Transmission.'' \textit{Econometrica} 50(6): 1431--1451.
+
+\bibitem[{Curtice(2025)}]{Curtice2025}
+Curtice, J. (2025). ``Reform's Rise Has Been Dizzying, but the Polls Hide a Landmine.'' \textit{GB News}, 29 October.
+
+\bibitem[{Davis, DeGroot and Hinich(1972)}]{DavisDeGrootHinich1972}
+Davis, O. A., M. H. DeGroot, and M. J. Hinich (1972). ``Social Preference Orderings and Majority Rule.'' \textit{Econometrica} 40(1): 147--157.
+
+\bibitem[{de~Bromhead, Eichengreen and O'Rourke(2013)}]{deBromhead2013}
+de Bromhead, A., B. Eichengreen, and K. H. O'Rourke (2013). ``Political Extremism in the 1920s and 1930s: Do German Lessons Generalize?'' \textit{Journal of Economic History} 73(2): 371--406.
+
+\bibitem[{de~Vries, Hakhverdian and Lancee(2013)}]{deVries2013}
+de Vries, C. E., A. Hakhverdian, and B. Lancee (2013). ``The Dynamics of Voters' Left/Right Identification: The Role of Economic and Cultural Attitudes.'' \textit{Political Science Research and Methods} 1(2): 223--238.
+
+\bibitem[{Dixit and Weibull(2007)}]{DixitWeibull2007}
+Dixit, A. K., and J. W. Weibull (2007). ``Political Polarization.'' \textit{Proceedings of the National Academy of Sciences} 104(18): 7351--7356.
+
+\bibitem[{Eloundou et~al.(2024)}]{Eloundou2024}
+Eloundou, T., S. Manning, P. Mishkin, and D. Rock (2024). ``GPTs Are GPTs: Labor Market Impact Potential of LLMs.'' \textit{Science} 384(6702): 1306--1308.
+
+\bibitem[{Engstrom et~al.(2020)}]{Engstrom2020}
+Engstrom, D. F., D. E. Ho, C. M. Sharkey, and M.-F. Cu\'{e}llar (2020). \textit{Government by Algorithm: Artificial Intelligence in Federal Administrative Agencies}. Report submitted to the Administrative Conference of the United States.
+
+\bibitem[{Evans(2003)}]{Evans2003}
+Evans, R. J. (2003). \textit{The Coming of the Third Reich}. London: Allen Lane.
+
+\bibitem[{Falck, Gold and Heblich(2014)}]{Falck2014}
+Falck, O., R. Gold, and S. Heblich (2014). ``E-lections: Voting Behavior and the Internet.'' \textit{American Economic Review} 104(7): 2238--2265.
+
+\bibitem[{Falter(1991)}]{Falter1991}
+Falter, J. W. (1991). \textit{Hitlers W\"{a}hler}. Munich: C.~H. Beck.
+
+\bibitem[{Frey, Berger and Chen(2018)}]{Frey2018}
+Frey, C. B., T. Berger, and C. Chen (2018). ``Political Machinery: Did Robots Swing the 2016 US Presidential Election?'' \textit{Oxford Review of Economic Policy} 34(3): 418--442.
+
+\bibitem[{Funke, Schularick and Trebesch(2016)}]{Funke2016}
+Funke, M., M. Schularick, and C. Trebesch (2016). ``Going to Extremes: Politics after Financial Crises, 1870--2014.'' \textit{European Economic Review} 88: 227--260.
+
+\bibitem[{Gennaioli and Tabellini(2025)}]{GennaioliTabellini2025}
+Gennaioli, N., and G. Tabellini (2025). ``Presidential Address: Identity Politics.'' \textit{Econometrica} 93(6): 1937--1967.
+
+\bibitem[{Gethin, Mart\'{i}nez-Toledano and Piketty(2022)}]{Gethin2022}
+Gethin, A., C. Mart\'{i}nez-Toledano, and T. Piketty (2022). ``Brahmin Left versus Merchant Right: Changing Political Cleavages in 21 Western Democracies, 1948--2020.'' \textit{Quarterly Journal of Economics} 137(1): 1--48.
+
+\bibitem[{Groseclose(2001)}]{Groseclose2001}
+Groseclose, T. (2001). ``A Model of Candidate Location When One Candidate Has a Valence Advantage.'' \textit{American Journal of Political Science} 45(4): 862--886.
+
+\bibitem[{Guriev, Melnikov and Zhuravskaya(2021)}]{Guriev2021}
+Guriev, S., N. Melnikov, and E. Zhuravskaya (2021). ``3G Internet and Confidence in Government.'' \textit{Quarterly Journal of Economics} 136(4): 2533--2613.
+
+\bibitem[{Guriev and Papaioannou(2022)}]{GurievPapaioannou2022}
+Guriev, S., and E. Papaioannou (2022). ``The Political Economy of Populism.'' \textit{Journal of Economic Literature} 60(3): 753--832.
+
+\bibitem[{Hall(2019)}]{Hall2019}
+Hall, A. B. (2019). \textit{Who Wants to Run? How the Devaluing of Political Office Drives Polarization}. Chicago: University of Chicago Press.
+
+\bibitem[{Hamilton(1982)}]{Hamilton1982}
+Hamilton, R. F. (1982). \textit{Who Voted for Hitler?} Princeton: Princeton University Press.
+
+\bibitem[{Herf(1984)}]{Herf1984}
+Herf, J. (1984). \textit{Reactionary Modernism: Technology, Culture, and Politics in Weimar and the Third Reich}. Cambridge: Cambridge University Press.
+
+\bibitem[{Hern\'{a}ndez and Kriesi(2016)}]{Hernandez2016}
+Hern\'{a}ndez, E., and H. Kriesi (2016). ``The Electoral Consequences of the Financial and Economic Crisis in Europe.'' \textit{European Journal of Political Research} 55(2): 203--224.
+
+\bibitem[{IPCC(2023)}]{IPCC2023}
+Intergovernmental Panel on Climate Change (2023). \textit{Climate Change 2023: Synthesis Report. Contribution of Working Groups I, II and III to the Sixth Assessment Report}. Geneva: IPCC.
+
+\bibitem[{Iyengar et~al.(2019)}]{Iyengar2019}
+Iyengar, S., Y. Lelkes, M. Levendusky, N. Malhotra, and S. J. Westwood (2019). ``The Origins and Consequences of Affective Polarization in the United States.'' \textit{Annual Review of Political Science} 22: 129--146.
+
+\bibitem[{Izzo(2023)}]{Izzo2023}
+Izzo, F. (2023). ``Ideology for the Future.'' \textit{American Political Science Review} 117(3): 1089--1104.
+
+\bibitem[{Izzo, Invernizzi and Crosson(2025)}]{IzzoInvernizziCrosson2025}
+Izzo, F., G. M. Invernizzi, and J. M. Crosson (2025). ``Learning in a Complex World: How Multidimensionality Affects Policymaking.'' Working paper.
+
+\bibitem[{Izzo, Martin and Callander(2023)}]{IzzoMartinCallander2023}
+Izzo, F., G. J. Martin, and S. Callander (2023). ``Ideological Competition.'' \textit{American Journal of Political Science} 67(3): 687--700.
+
+\bibitem[{Kartik, Lee and Suen(2021)}]{KartikLeeSuen2021}
+Kartik, N., F. X. Lee, and W. Suen (2021). ``Information Validates the Prior: A Theorem on Bayesian Updating and Applications.'' \textit{American Economic Review: Insights} 3(2): 165--182.
+
+\bibitem[{Kartik, Van~Weelden and Wolton(2017)}]{KVW2017}
+Kartik, N., R. Van Weelden, and S. Wolton (2017). ``Electoral Ambiguity and Political Representation.'' \textit{American Journal of Political Science} 61(4): 958--970.
+
+\bibitem[{Kater(1989)}]{Kater1989}
+Kater, M. H. (1989). \textit{Doctors under Hitler}. Chapel Hill: University of North Carolina Press.
+
+\bibitem[{King et~al.(2008)}]{King2008}
+King, G., O. Rosen, M. Tanner, and A. F. Wagner (2008). ``Ordinary Economic Voting Behavior in the Extraordinary Election of Adolf Hitler.'' \textit{Journal of Economic History} 68(4): 951--996.
+
+\bibitem[{La~Raja and Schaffner(2015)}]{LaRaja2015}
+La Raja, R. J., and B. F. Schaffner (2015). \textit{Campaign Finance and Political Polarization: When Purists Prevail}. Ann Arbor: University of Michigan Press.
+
+\bibitem[{Lee(2016)}]{Lee2016}
+Lee, F. E. (2016). \textit{Insecure Majorities: Congress and the Perpetual Campaign}. Chicago: University of Chicago Press.
+
+\bibitem[{Lindbeck and Weibull(1987)}]{Lindbeck1987}
+Lindbeck, A., and J. W. Weibull (1987). ``Balanced-Budget Redistribution as the Outcome of Political Competition.'' \textit{Public Choice} 52(3): 273--297.
+
+\bibitem[{Lipset(1960)}]{Lipset1960}
+Lipset, S. M. (1960). \textit{Political Man: The Social Bases of Politics}. Garden City, NY: Doubleday.
+
+\bibitem[{Loeper and Dziuda(2024)}]{LoeperDziuda2024}
+Loeper, A., and W. Dziuda (2024). ``Voters and the Trade-Off between Policy Stability and Responsiveness.'' \textit{Journal of Public Economics} 232: 105093.
+
+\bibitem[{Martin and Yurukoglu(2017)}]{MartinYurukoglu2017}
+Martin, G. J., and A. Yurukoglu (2017). ``Bias in Cable News: Persuasion and Polarization.'' \textit{American Economic Review} 107(9): 2565--2599.
+
+\bibitem[{McCarty, Poole and Rosenthal(2016)}]{McCarty2016}
+McCarty, N., K. T. Poole, and H. Rosenthal (2016). \textit{Polarized America: The Dance of Ideology and Unequal Riches}, 2nd ed. Cambridge, MA: MIT Press.
+
+\bibitem[{McKelvey(1976)}]{McKelvey1976}
+McKelvey, R. D. (1976). ``Intransitivities in Multidimensional Voting Models and Some Implications for Agenda Control.'' \textit{Journal of Economic Theory} 12(3): 472--482.
+
+\bibitem[{McKelvey(1986)}]{McKelvey1986}
+McKelvey, R. D. (1986). ``Covering, Dominance, and Institution-Free Properties of Social Choice.'' \textit{American Journal of Political Science} 30(2): 283--314.
+
+\bibitem[{Melumad and Shibano(1991)}]{MelumadShibano1991}
+Melumad, N. D., and T. Shibano (1991). ``Communication in Settings with No Transfers.'' \textit{RAND Journal of Economics} 22(2): 173--198.
+
+\bibitem[{Mian, Sufi and Trebbi(2014)}]{Mian2014}
+Mian, A., A. Sufi, and F. Trebbi (2014). ``Resolving Debt Overhang: Political Constraints in the Aftermath of Financial Crises.'' \textit{American Economic Journal: Macroeconomics} 6(2): 1--28.
+
+\bibitem[{NSDAP(1920)}]{NSDAP1920}
+Nationalsozialistische Deutsche Arbeiterpartei (1920). \textit{Programm der Nationalsozialistischen Deutschen Arbeiterpartei}, 24 February 1920.
+
+\bibitem[{Osborne and Slivinski(1996)}]{OsborneSlivinski1996}
+Osborne, M. J., and A. Slivinski (1996). ``A Model of Political Competition with Citizen-Candidates.'' \textit{Quarterly Journal of Economics} 111(1): 65--96.
+
+\bibitem[{Pew Research Center(2020)}]{Pew2020}
+Pew Research Center (2020). ``Election 2020: Voters Are Highly Engaged, but Nearly Half Expect to Have Difficulties Voting.'' Report, August 13.
+
+\bibitem[{Plott(1967)}]{Plott1967}
+Plott, C. R. (1967). ``A Notion of Equilibrium and Its Possibility Under Majority Rule.'' \textit{American Economic Review} 57(4): 787--806.
+
+\bibitem[{Prior(2007)}]{Prior2007}
+Prior, M. (2007). \textit{Post-Broadcast Democracy: How Media Choice Increases Inequality in Political Involvement and Polarizes Elections}. Cambridge: Cambridge University Press.
+
+\bibitem[{Rock(1987)}]{Rock1987}
+Rock, D. (1987). \textit{Argentina, 1516--1987: From Spanish Colonization to Alfons\'{i}n}. Berkeley: University of California Press.
+
+\bibitem[{Roemer(2001)}]{Roemer2001}
+Roemer, J. E. (2001). \textit{Political Competition: Theory and Applications}. Cambridge, MA: Harvard University Press.
+
+\bibitem[{Rogoff(1985)}]{Rogoff1985}
+Rogoff, K. (1985). ``The Optimal Degree of Commitment to an Intermediate Monetary Target.'' \textit{Quarterly Journal of Economics} 100(4): 1169--1189.
+
+\bibitem[{Rooduijn et~al.(2024)}]{Rooduijn2024}
+Rooduijn, M., A. L. P. Pirro, D. Halikiopoulou, et al. (2024). ``The PopuList: A Database of Populist, Far-Left, and Far-Right Parties Using Expert-Informed Qualitative Comparative Classification (EiQCC).'' \textit{British Journal of Political Science}.
+
+\bibitem[{Schofield(2007)}]{Schofield2007}
+Schofield, N. (2007). ``The Mean Voter Theorem: Necessary and Sufficient Conditions for Convergent Equilibrium.'' \textit{Review of Economic Studies} 74(3): 965--980.
+
+\bibitem[{Scott(1998)}]{Scott1998}
+Scott, J. C. (1998). \textit{Seeing Like a State: How Certain Schemes to Improve the Human Condition Have Failed}. New Haven: Yale University Press.
+
+\bibitem[{Seawright(2012)}]{Seawright2012}
+Seawright, J. (2012). \textit{Party-System Collapse: The Roots of Crisis in Peru and Venezuela}. Stanford: Stanford University Press.
+
+\bibitem[{Sniderman, Hagendoorn and Prior(2004)}]{SnidermanHagendoornPrior2004}
+Sniderman, P. M., L. Hagendoorn, and M. Prior (2004). ``Predisposing Factors and Situational Triggers: Exclusionary Reactions to Immigrant Minorities.'' \textit{American Political Science Review} 98(1): 35--49.
+
+\bibitem[{Thomsen(2017)}]{Thomsen2017}
+Thomsen, D. M. (2017). \textit{Opting Out of Congress: Partisan Polarization and the Decline of Moderate Candidates}. Cambridge: Cambridge University Press.
+
+\bibitem[{UNDP(2022)}]{UNDP2022}
+United Nations Development Programme (2022). \textit{Human Development Report 2021/2022: Uncertain Times, Unsettled Lives}. New York: UNDP.
+
+\bibitem[{Vaeth(2026)}]{Vaeth2024}
+Vaeth, M. (2026). ``Rational Voter Learning, Issue Alignment, and Polarization.'' Working paper, version of August 31, 2026.
+
+\bibitem[{Weyland(2003)}]{Weyland2003}
+Weyland, K. (2003). ``Economic Voting Reconsidered: Crisis and Charisma in the Election of Hugo Ch\'{a}vez.'' \textit{Comparative Political Studies} 36(7): 822--848.
+
+\bibitem[{Wittman(1983)}]{Wittman1983}
+Wittman, D. (1983). ``Candidate Motivation: A Synthesis of Alternative Theories.'' \textit{American Political Science Review} 77(1): 142--157.
+
+\bibitem[{Zhuravskaya, Petrova and Enikolopov(2020)}]{Zhuravskaya2020}
+Zhuravskaya, E., M. Petrova, and R. Enikolopov (2020). ``Political Effects of the Internet and Social Media.'' \textit{Annual Review of Economics} 12: 415--438.
+
+\end{thebibliography}
+
+\clearpage
+\appendix
+\section{Proofs and generality}\label{app:proofs}
+\setcounter{equation}{0}\renewcommand{\theequation}{A.\arabic{equation}}
+\setcounter{lemma}{0}\renewcommand{\thelemma}{A.\arabic{lemma}}
+\setcounter{proposition}{0}\renewcommand{\theproposition}{A.\arabic{proposition}}
+\setcounter{corollary}{0}\renewcommand{\thecorollary}{A.\arabic{corollary}}
+\setcounter{assumption}{0}\renewcommand{\theassumption}{A.\arabic{assumption}}
+
+This appendix collects the proofs of the results in the text and the arguments for their generality. Formal statements and equations introduced here are numbered A.1, A.2, and so on.
+
+\subsection*{Notation}
+For a quantity $a$ that depends on $h$, write $a=O(h)$ if there exist constants $C>0$ and $\hat h>0$, depending only on the primitives, such that $|a|\le Ch$ for all $h\le\hat h$, uniformly over candidates in $\operatorname{supp}(G)$ and information structures $q$. The bounds are uniform because $\operatorname{supp}(G)$ is compact, $I_q\in[0,\operatorname{Var}(\omega)]$, and $g$ is continuously differentiable and bounded away from zero on $\operatorname{supp}(G)$. A statement of the form ``$X=Y+O(h)$, so $X>0$ for $h$ small enough'' with $Y>0$ therefore means that there are $C$ and $\hat h$ such that $|X-Y|\le Ch$ for all $h\le\hat h$, so that $X>0$ whenever $h<\min\{\hat h,\,Y/C\}$.
+
+\subsection*{Requirements of each result}
+Table~\ref{tab:general} lists, for each result, what it requires of the distribution of voters, the parties' ideal types, the targets and electoral pressure.
+
+\begin{table}[p]
+\begin{spacing}{1}
+\centering
+\footnotesize
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}L{4.0cm}L{2.8cm}L{2.0cm}L{3.0cm}L{2.4cm}@{}}
+\toprule
+Result & Voter distribution $G$ & Party ideals & Targets & Electoral pressure $h$ \\
+\midrule
+Prop.~\ref{prop:realign} (realignment) & Not used & Any & Affine & Not used \\
+Prop.~\ref{prop:office} (cost of delegation), Prop.~\ref{prop:auto-polar} (automatic polarization) & Not used & Any & Information: any (weakly); uncertainty: convex squared gap, full information & Not used \\
+Cor.~\ref{cor:office} (value of office) & Not used & Any & Affine & Not used \\
+Lemma~\ref{lem:median} (tie value) & Any & Any & Affine & Not used \\
+Lemma~\ref{lem:win} (winning probability) & Any & Any & Affine & Assumption~\ref{ass:small-h} \\
+Cor.~\ref{cor:median} (median voter) & Median point & Any & Affine & Not used \\
+Prop.~\ref{prop:nomination} (nominations) & Any, with interior candidates and differentiable $M$ & Any & Affine & Assumption~\ref{ass:small-h} \\
+Prop.~\ref{prop:symmetric} (symmetric benchmark) & Median point & Symmetric, distinct & Affine & Any \\
+Prop.~\ref{prop:asymmetric}(a) (who leads) & Median point; any under Assumption~\ref{ass:local} (Cor.~\ref{cor:leadgeneral}) & Any, distinct & Affine & Assumption~\ref{ass:small-h} \\
+Prop.~\ref{prop:asymmetric}(b)--(d) (switching point, convergence, divergence) & Median point & Any, distinct & Affine & Assumption~\ref{ass:small-h} \\
+Prop.~\ref{prop:general} (general distributions) & Assumption~\ref{ass:local} & Any, distinct & Affine & Assumption~\ref{ass:small-h} \\
+Prop.~\ref{prop:welfare-unc} (uncertainty hurts everyone) & (a) not used; (b) Assumption~\ref{ass:local}; (c) median point & (a), (b) any; (c) symmetric & Affine & (a) not used; (b) Assumption~\ref{ass:small-h}; (c) any \\
+Prop.~\ref{prop:welfare} (information is positional) & Median point & Symmetric & Affine & Any \\
+Prop.~\ref{prop:endolearn} (endogenous learning) & (a)--(c) not used; (d) $M$ smooth near the nominations & (a), (b) any; (c), (d) $\alpha_R=-\alpha_L$ & Affine, normal signals; (c), (d) quadratic cost & (a), (b) not used; (c) limit $h\to0$; (d) Assumption~\ref{ass:small-h} \\
+Prop.~\ref{prop:timing} (timing of information) & Median point & Symmetric & Affine & Any \\
+\bottomrule
+\end{tabular}
+\caption{What each result requires. ``Not used'' means the result does not involve the condition. Results citing Assumption~\ref{ass:small-h} for weak electoral pressure take informativeness in a compact interval bounded away from zero; ``Any'' means the result holds for every $h>0$. Section~\ref{sec:choices} discusses the alternative of a log-concave electoral shock (Proposition~\ref{prop:logconcave}).}
+\label{tab:general}
+\end{spacing}
+\end{table}
+
+\subsection*{Proofs for Section~\ref{sec:realign}}
+
+\begin{proof}[Proof of Lemma~\ref{lem:payoff}]
+Write $m=\mathbb{E}_\mu[\omega]$. Then $x^*_j(\mu)=\beta_j+\alpha_j m$, $\mathbb{E}[m]=\mathbb{E}[\omega]=0$, and, by the law of iterated expectations,
+\begin{equation}\label{eq:moments}
+\mathbb{E}[m\,\omega]=\mathbb{E}[m^2]=I_q,\qquad \mathbb{E}[\omega^2]=\operatorname{Var}(\omega).
+\end{equation}
+Hence
+\[
+V_i^j(q)=-\mathbb{E}\big[(\beta_j-\beta_i+\alpha_j m-\alpha_i\omega)^2\big]
+=-(\beta_j-\beta_i)^2-\alpha_j^2I_q+2\alpha_i\alpha_jI_q-\alpha_i^2\operatorname{Var}(\omega),
+\]
+which is the first expression. Subtracting the expressions for $j=r$ and $j=l$,
+\[
+\Delta V_i(q)=(\beta_r-\beta_i)^2-(\beta_l-\beta_i)^2+\big[\alpha_l(2\alpha_i-\alpha_l)-\alpha_r(2\alpha_i-\alpha_r)\big]I_q ,
+\]
+and $(\beta_r-\beta_i)^2-(\beta_l-\beta_i)^2=2(\beta_r-\beta_l)(\beta_m-\beta_i)$ and $\alpha_l(2\alpha_i-\alpha_l)-\alpha_r(2\alpha_i-\alpha_r)=2(\alpha_r-\alpha_l)(\alpha_m-\alpha_i)$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:realign}]
+By Lemma~\ref{lem:payoff}, voter $i$ prefers $l$ if and only if $\Delta V_i(q)>0$. Dividing by $2(\beta_r-\beta_l)>0$, this is $\beta_i-\beta_m+k(\alpha_i-\alpha_m)<0$, that is, $\beta_i<\psi(\alpha_i)$. The line $\psi$ passes through $\tau_m$ for every $I_q$, and its slope $-k$ is proportional to $I_q$, so it rotates around $\tau_m$ as $I_q$ rises; uncertainty and informativeness raise $I_q$. Let $\alpha_r>\alpha_l$, so $k>0$. A voter with $\beta_i<\beta_m$ and $\alpha_i>\alpha_m$ prefers $l$ when $I_q=0$; the term $k(\alpha_i-\alpha_m)$ is positive and increasing in $I_q$, so she prefers $r$ once it exceeds $\beta_m-\beta_i$, and never switches back. The argument for voters with $\beta_i>\beta_m$ and $\alpha_i<\alpha_m$ is symmetric, and the preference of any other voter does not change sign. Since $\Delta V_i(q)$ is linear in $I_q$, no voter switches more than once.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:office}]
+With $m=\mathbb{E}_\mu[\omega]$, $x^*_j-x^*_i=\beta_j-\beta_i+(\alpha_j-\alpha_i)m$, so by \eqref{eq:moments}, $\Lambda_i^j(q)=(\beta_j-\beta_i)^2+(\alpha_j-\alpha_i)^2I_q$. Lemma~\ref{lem:payoff} with $j=i$ gives $V_i^i(q)=-\alpha_i^2\big(\operatorname{Var}(\omega)-I_q\big)$, and
+\[
+V_i^j(q)-V_i^i(q)=-(\beta_j-\beta_i)^2+\big[\alpha_j(2\alpha_i-\alpha_j)-\alpha_i^2\big]I_q=-\Lambda_i^j(q).
+\]
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:office}]
+By Proposition~\ref{prop:office}, $\Delta V_L(q)=\Lambda_L^r(q)-\Lambda_L^l(q)$, whose derivative with respect to $I_q$ is $(\alpha_r-\alpha_L)^2-(\alpha_l-\alpha_L)^2$. This is positive if and only if $|\alpha_l-\alpha_L|<|\alpha_r-\alpha_L|$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:auto-polar}]
+By Proposition~\ref{prop:office}, $D=\Lambda_l^r=(\beta_r-\beta_l)^2+(\alpha_r-\alpha_l)^2I_q$, which increases in $I_q$ when $\alpha_r\ne\alpha_l$. The expected signed gap is $\mathbb{E}[x^*_r-x^*_l]=\beta_r-\beta_l+(\alpha_r-\alpha_l)\mathbb{E}[m]=\beta_r-\beta_l$.
+\end{proof}
+
+\subsection*{Equilibrium: existence, uniqueness and regularity}\label{app:small-h}
+
+Two results support the equilibrium analysis. The first covers the symmetric benchmark at every level of electoral pressure; the second covers general distributions and asymmetric parties when electoral pressure is weak. Under Assumption~\ref{ass:small-h}, $M$ is bounded, since $|\Delta V_i(q)|$ is bounded over the compact set $\operatorname{supp}(G)$ and over $I_q\in[0,\operatorname{Var}(\omega)]$, so the tie value lies inside the support of the shock for $h$ small enough.
+
+\begin{lemma}[Global best responses in the symmetric benchmark]\label{lem:global}
+Suppose Assumption~\ref{ass:median} holds, $I_q>0$, and the parties' ideal types are distinct and symmetric about the median point. For every $h>0$, the profile of Proposition~\ref{prop:symmetric} is an equilibrium, with the winning probability given by the clipped expression $\min\{1,\max\{0,\tfrac12+hM\}\}$, and it is the unique symmetric equilibrium, that is, the unique equilibrium in which the candidates are symmetric about the median point.
+\end{lemma}
+
+\begin{proof}
+Use coordinates in which the inner product is $u\cdot v=u_\beta v_\beta+u_\alpha v_\alpha I_q$, place the median point at zero, and write the parties' ideal types as $-a$ and $a$, with $A_0=a\cdot a$, so that $\Lambda_L^R=4A_0$. Fix $R$'s candidate at $ta$, where $t=1-w$. By Corollary~\ref{cor:median}, $M=\|\tau_r\|^2-\|\tau_l\|^2$, so $L$'s winning probability depends on its candidate only through $\|\tau_l\|$. For a given norm, moving the candidate toward the direction of $-a$ improves $L$'s payoff when $l$ wins and leaves the winning probability unchanged. A candidate whose norm exceeds that of $L$'s ideal type, with a positive value of office, is dominated by the ideal type, which improves the policy and weakly raises the winning probability; a candidate with a negative value of office cannot do better than the proposed profile. It therefore suffices to consider candidates $-sa$ with $0\le s\le1$, which are feasible because the support is convex. Relative to losing, $L$'s gain from such a candidate is
+\begin{align*}
+F(s)&=A_0\,p(s)\,B_0(s),
+\qquad
+B_0(s)=(1+t)^2-(1-s)^2>0,\\
+p(s)&=\min\Big\{1,\max\big\{0,\tfrac12+hA_0(t^2-s^2)\big\}\Big\}.
+\end{align*}
+On the interval where $p$ is interior,
+\[
+F''(s)=-2A_0\,p(s)-2hA_0^2B_0(s)-8hA_0^2s(1-s)<0.
+\]
+Where $p=1$, $F$ is increasing in $s$; where $p=0$, $F=0$. At $s=t$, $p=\tfrac12$ and $F'(t)=A_0\big[(1-t)-8hA_0t^2\big]=0$ by the condition $1-t=2h\Lambda_L^Rt^2$ of Proposition~\ref{prop:symmetric}. Hence $s=t$ is a global best response, and by symmetry the same holds for $R$.
+
+For uniqueness, consider any symmetric profile, with candidates $-x$ and $x$. The argument above, applied with the rival at an arbitrary $x$, shows that $L$'s best response points in the direction of $-a$ and has norm at most $\|a\|$; by symmetry, $x$ must then point in the direction of $a$, so $x=ta$ for some $t\in[0,1]$. Neither endpoint is an equilibrium: at $s=0$, $F'(0)=2A_0\,p(0)>0$, and at $s=1$, $F'(1)=-2hA_0^2(1+t)^2<0$ whenever $p$ is interior there ($p(1)\le\tfrac12$, so it cannot equal one), while if $p(1)=0$ the gain at $s=1$ is zero and is improved upon by smaller $s$. A symmetric equilibrium therefore requires an interior best response equal to $t$, which requires $F'(t)=0$, that is, $1-t=2h\Lambda_L^Rt^2$. This equation has a unique root in $(0,1)$, so the symmetric equilibrium is unique.
+\end{proof}
+
+Lemma~\ref{lem:global} establishes existence and uniqueness of the symmetric equilibrium for every $h$; whether asymmetric equilibria exist when $h$ is large remains open, and no result in the paper depends on it.
+
+For general distributions, smoothness of the density does not by itself make the tie value $M$ differentiable in the candidates' types everywhere: for the uniform distribution on a triangle, the average type on a median line has kinks when the line passes through a vertex. The following condition is imposed only where it is needed.
+
+\begin{assumption}[Local regularity]\label{ass:local}
+The parties' ideal types are distinct and lie in the interior of $\operatorname{supp}(G)$, and for informativeness in a compact interval $[\underline I,\overline I]$ with $\underline I>0$, the tie value $M$ is twice continuously differentiable in the candidates' types in a neighbourhood of $(\tau_L,\tau_R)$.
+\end{assumption}
+
+\begin{lemma}[Weak electoral pressure]\label{lem:smallh}
+Under Assumption~\ref{ass:local}, there is $\hat h>0$ such that for all $h\le\hat h$ and all $I_q\in[\underline I,\overline I]$: every best response lies in the neighbourhood of Assumption~\ref{ass:local}; there is a unique equilibrium there; and the equilibrium candidates are continuously differentiable in $I_q$, with $\tau_j=\tau_J+O(h)$ and $\mathrm{d}\tau_j/\mathrm{d}I_q=O(h)$.
+\end{lemma}
+
+\begin{proof}
+Write $\underline\lambda=\min\{1,\underline I\}>0$ and let $B$ bound $|M|$ and $|\Delta V_J|$ over candidates in $\operatorname{supp}(G)$ and $I_q\in[\underline I,\overline I]$. Let $N$ be a convex neighbourhood of $(\tau_L,\tau_R)$, of the form $N_L\times N_R$, on which Assumption~\ref{ass:local} holds, and let $B_1$ and $B_2$ bound the first and second derivatives of $M\Delta V_L$ and $M\Delta V_R$ on $N$.
+
+\emph{Step 1: best responses lie near the ideal types.} By Lemma~\ref{lem:win}, $W_L=\tfrac12\big(V_L^l+V_L^r\big)+hM\Delta V_L$. The first term depends on $\tau_l$ only through $\tfrac12V_L^l$, and by Lemma~\ref{lem:payoff}, $V_L^l(\tau_L)-V_L^l(\tau_l)=(\beta_l-\beta_L)^2+(\alpha_l-\alpha_L)^2I_q\ge\underline\lambda\,\|\tau_l-\tau_L\|^2$. If $\tilde\tau_l$ maximizes $W_L$ against any rival, then comparing with $\tau_L$ gives $\tfrac12\underline\lambda\,\|\tilde\tau_l-\tau_L\|^2\le2hB^2$, so $\|\tilde\tau_l-\tau_L\|\le2B\sqrt{h/\underline\lambda}$, uniformly in the rival's candidate and in $I_q$. For $h$ small enough, every best response of $L$ therefore lies in $N_L$, and likewise for $R$.
+
+\emph{Step 2: uniqueness of best responses.} On $N$, the Hessian of $W_L$ with respect to $(\beta_l,\alpha_l)$ is $-\operatorname{diag}(1,I_q)$ plus $h$ times a matrix of norm at most $B_2$, so for $h\le\underline\lambda/(2B_2)$ it is bounded above by $-\tfrac12\underline\lambda$ times the identity. $W_L$ is then strictly concave on $N_L$, so its maximizer there is unique and interior, solves the first-order conditions of Proposition~\ref{prop:nomination}, and by Step 1 it is $L$'s unique best response, $b_L(\tau_r)$. The same holds for $R$.
+
+\emph{Step 3: a contraction.} The term $\tfrac12\big(V_L^l+V_L^r\big)$ is additively separable in $\tau_l$ and $\tau_r$, so the cross derivative of $W_L$ with respect to $\tau_l$ and $\tau_r$ is $h$ times a matrix of norm at most $B_2$. By the implicit function theorem applied to the first-order conditions, $\|Db_L\|\le hB_2/(\tfrac12\underline\lambda)$, and likewise for $b_R$. For $h$ small enough, the map $(\tau_l,\tau_r)\mapsto\big(b_L(\tau_r),b_R(\tau_l)\big)$ is a contraction of the convex set $N$ into itself, so it has a unique fixed point: there is a unique equilibrium, and by Step 1 every equilibrium lies in $N$.
+
+\emph{Step 4: regularity and bounds.} The first-order condition for $\tau_l$ reads $\operatorname{diag}(1,I_q)(\tau_l-\tau_L)=h\nabla_{\tau_l}(M\Delta V_L)$, so $\|\tau_l-\tau_L\|\le hB_1/\underline\lambda$, and likewise for $R$. The equilibrium solves a system of first-order conditions whose Jacobian is invertible on $N$ by Steps 2 and 3, so by the implicit function theorem it is continuously differentiable in $I_q$ and in $h$. Differentiating the first-order conditions with respect to $I_q$, the derivative of the left-hand side at fixed candidates is $(0,\alpha_l-\alpha_L)=O(h)$ and the right-hand side is $h$ times a bounded term, so $\mathrm{d}\tau_j/\mathrm{d}I_q=O(h)$. All bounds are uniform on $[\underline I,\overline I]$.
+\end{proof}
+
+At $I_q=0$, responsiveness is irrelevant to payoffs and the tie-breaking rule in Section~\ref{sec:competition} applies; the selected nomination need not coincide with the limit as $I_q\to0$, which is why the interval of informativeness is bounded away from zero.
+
+\subsection*{Proofs for Section~\ref{sec:competition}}
+
+\begin{proof}[Proof of Lemma~\ref{lem:median}]
+The line $\psi_\eta$ has slope $-k$, which does not depend on $\eta$, and a height that is strictly decreasing and affine in $\eta$. Exactly one median line has this slope, so exactly one $\eta$, which is $M(\tau_l,\tau_r;q)$, makes $\psi_\eta$ that line. The share of voters voting for $l$, $G(\{\tau_i:\beta_i\le\psi_\eta(\alpha_i)\})$, is decreasing in $\eta$, so it exceeds $\tfrac12$ if and only if $\eta<M(\tau_l,\tau_r;q)$.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lem:win}]
+By Lemma~\ref{lem:median}, $l$ wins if and only if $\eta<M(\tau_l,\tau_r;q)$. By Assumption~\ref{ass:small-h}, $M(\tau_l,\tau_r;q)$ lies in the support of $\eta$, which is uniform with density $h$, so $\Pr(\eta<M)=\tfrac12+hM$. Substituting into $W_J$ gives the expression for the payoff. Uniqueness of best responses and existence of equilibrium follow from the strict concavity in Assumption~\ref{ass:small-h} and the compactness and convexity of $\operatorname{supp}(G)$ (Appendix~\ref{app:small-h}).
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:median}]
+The halving line $\psi_M$ has slope $-k$ and, by Assumption~\ref{ass:median}, passes through $\tau_M$, so $\psi_M(\alpha_M)=\beta_M$. Since $\psi_M=\psi-M/\big(2(\beta_r-\beta_l)\big)$, this gives $M=2(\beta_r-\beta_l)\big(\psi(\alpha_M)-\beta_M\big)$, which equals $\Delta V_{\tau_M}(q)$ by Lemma~\ref{lem:payoff}.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:nomination}]
+By Lemma~\ref{lem:win}, $\partial W_L/\partial\tau_l=\big(\tfrac12+hM\big)\,\partial V_L^l/\partial\tau_l+h\,(\partial M/\partial\tau_l)\,\Delta V_L(q)$. Differentiating the condition that defines $M$ in Lemma~\ref{lem:median} gives $\partial M/\partial\tau_l$ as the $g$-weighted average of $\partial\Delta V_i/\partial\tau_l$ over the voters on $\psi_M$. By Lemma~\ref{lem:payoff}, $\partial\Delta V_i/\partial\beta_l=-2(\beta_l-\beta_i)$ and $\partial\Delta V_i/\partial\alpha_l=-2(\alpha_l-\alpha_i)I_q$, so $\partial M/\partial\beta_l=-2(\beta_l-\bar\beta)$ and $\partial M/\partial\alpha_l=-2(\alpha_l-\bar\alpha)I_q$. The first-order condition for $\beta_l$ is therefore
+\[
+-2\Big(\tfrac12+hM\Big)(\beta_l-\beta_L)-2h(\beta_l-\bar\beta)\,\Delta V_L(q)=0,
+\]
+and the first-order condition for $\alpha_l$ is the same with $\alpha$ in place of $\beta$, multiplied by $I_q>0$. Solving each gives the expression for $\tau_l$; the argument for $\tau_r$ is symmetric. The first-order conditions hold because the candidates are interior and $M$ is differentiable, and since the values of office are positive and the winning probabilities lie in $(0,1)$, each weight lies in $(0,1)$, so each candidate is a convex combination of her party's ideal type and $\bar\tau$. The $g$-weighted average along $\psi_M$ arises because the indifference line is affine, so the factor from the coarea formula is constant along it and cancels. Under Assumption~\ref{ass:median}, Corollary~\ref{cor:median} gives $M=\Delta V_{\tau_M}(q)$, so the same steps hold with $\tau_M$ in place of $\bar\tau$.
+\end{proof}
+
+\subsection*{Proofs for Section~\ref{sec:effects}}
+
+\begin{proof}[Proof of Proposition~\ref{prop:symmetric}]
+At symmetric candidates, the candidates' midpoint is $\tau_M$, so $M=\Delta V_{\tau_M}(q)=0$. The distance from $\tau_L$ to $\tau_l$ is $w$ times, and from $\tau_L$ to $\tau_r$ is $2-w$ times, half the distance between the ideals, so $\Delta V_L(q)=\Lambda_L^r-\Lambda_L^l=(1-w)\Lambda_L^R(q)$. Proposition~\ref{prop:nomination} then requires $w=2h\Lambda_L^R(1-w)^2$, whose unique solution in $(0,1)$ is the expression above. Since $1-w$ falls with $\Lambda_L^R$, part (a) follows. Parts (b) and (c) follow because $4\Lambda/(1+\sqrt{1+8h\Lambda})^2$ and $2\Lambda/(1+\sqrt{1+8h\Lambda})$ are increasing in $\Lambda$, and $\Lambda_L^R$ rises with $I_q$ whenever $\alpha_R\ne\alpha_L$.
+The condition $w=2h\Lambda_L^R(1-w)^2$ gives $D^*=(1-w)^2\Lambda_L^R=w/(2h)$. By Lemma~\ref{lem:global}, the profile is an equilibrium for every $h>0$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:asymmetric}]
+By Lemma~\ref{lem:smallh}, for $h$ small enough there is a unique equilibrium near the parties' ideal types, continuous in $h$. By Proposition~\ref{prop:nomination} and Assumption~\ref{ass:median}, $\tau_j-\tau_M=t_J(\tau_J-\tau_M)$ with $t_J\equiv1-w_J$. Use the inner product $u\cdot v=u_\beta v_\beta+u_\alpha v_\alpha I_q$ and write $a=\tau_M-\tau_L$, $b=\tau_M-\tau_R$, $A_0=a\cdot a=\Lambda_M^L$, $B_0=b\cdot b=\Lambda_M^R$ and $C_0=a\cdot b$. By Corollary~\ref{cor:median} and Proposition~\ref{prop:office},
+\begin{equation}\label{eq:Masym}
+M=\Lambda_M^r(q)-\Lambda_M^l(q)=t_R^2B_0-t_L^2A_0.
+\end{equation}
+
+(a) First, ties. Suppose $M=0$, so that $t_L^2A_0=t_R^2B_0\equiv\rho^2$. The parties' values of office are then $S_L=2(t_LA_0-t_RC_0)$ and $S_R=2(t_RB_0-t_LC_0)$. Both win with probability $\tfrac12$, so the conditions of Proposition~\ref{prop:nomination} reduce to $w_J=2ht_JS_J$, and
+\[
+w_L=4h\big(\rho^2-t_Lt_RC_0\big)=w_R .
+\]
+Hence $t_L=t_R$, and \eqref{eq:Masym} gives $A_0=B_0$. Conversely, if $A_0=B_0$, the profile with a common weight satisfies these conditions with $M=0$, and by uniqueness it is the equilibrium. So the equilibrium margin is zero if and only if $\Lambda_M^L=\Lambda_M^R$. Second, signs. Hold the primitives and $I_q$ fixed and vary $h$. As $h\to0$, the candidates converge to the parties' ideal types, so $M\to\Lambda_M^R-\Lambda_M^L$. Since the equilibrium margin is continuous in $h$ and can vanish only if $\Lambda_M^L=\Lambda_M^R$, it keeps the sign of $\Lambda_M^R-\Lambda_M^L$ for all $h$ small enough, and $l$ wins with probability above $\tfrac12$ if and only if $\Lambda_M^L<\Lambda_M^R$.
+
+(b) The rate follows from the definition of $\Lambda_M^J$. Under the stated conditions, $\Lambda_M^R-\Lambda_M^L$ is positive at $I_q=0$, since $L$ is closer in base, and decreasing in $I_q$, since $R$ is closer in responsiveness; it is affine and zero at $I^*$. Part (a) then gives the result whenever $I^*$ lies in the attainable range of informativeness.
+
+(c) The conditions of Proposition~\ref{prop:nomination} give $w_J=2h\Delta_J+O(h^2)$, where $\Delta_J$ is party $J$'s value of office, and by Lemma~\ref{lem:smallh} the remainder has a derivative in $I_q$ of order $h^2$. By Proposition~\ref{prop:general}, $\mathrm{d}\Delta_J/\mathrm{d}I_q=(\alpha_R-\alpha_L)^2+O(h)>0$. Both weights therefore rise with $I_q$ for $h$ small enough, and each candidate moves toward $\tau_M$ along her segment. The distance between the candidates' types is $\|t_R(\tau_R-\tau_M)-t_L(\tau_L-\tau_M)\|$, whose derivatives with respect to $t_R$ and $t_L$ are nonnegative when $(\tau_L-\tau_M)\cdot(\tau_R-\tau_M)\le0$; so it falls as both weights rise.
+
+(d) This is Proposition~\ref{prop:general}.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:welfare-unc}]
+(a) By Lemma~\ref{lem:payoff} with $I_q=\kappa\operatorname{Var}(\omega)$, $V_i^j=-\alpha_i^2\operatorname{Var}(\omega)-(\beta_j-\beta_i)^2+\kappa\,\alpha_j(2\alpha_i-\alpha_j)\operatorname{Var}(\omega)$, so $\mathrm{d}V_i^j/\mathrm{d}\operatorname{Var}(\omega)=-\alpha_i^2+\kappa\alpha_j(2\alpha_i-\alpha_j)=-(1-\kappa)\alpha_i^2-\kappa(\alpha_j-\alpha_i)^2$.
+
+(b) Player $i$'s equilibrium payoff is $W_i=PV_i^l+(1-P)V_i^r$, where $P=\tfrac12+hM$ by Lemma~\ref{lem:win}. Its derivative with respect to $\operatorname{Var}(\omega)$ has three parts. The direct part, at fixed candidates and $P$, is $-(1-\kappa)\alpha_i^2-\kappa\big[P(\alpha_l-\alpha_i)^2+(1-P)(\alpha_r-\alpha_i)^2\big]\le-\kappa P(1-P)(\alpha_r-\alpha_l)^2$, since a weighted sum of squared distances to two points is smallest at their weighted mean. With $\alpha_r-\alpha_l=\alpha_R-\alpha_L+O(h)$ and $P=\tfrac12+O(h)$, this bound is negative and bounded away from zero. The part through $P$ is $(\mathrm{d}P/\mathrm{d}\operatorname{Var}(\omega))(V_i^l-V_i^r)$, which is $O(h)$ because $P=\tfrac12+hM$ with $M$ and its derivatives bounded. The part through the candidates is $O(h)$ because $\mathrm{d}\tau_j/\mathrm{d}I_q=O(h)$ (proof of Proposition~\ref{prop:general}). Hence the derivative is negative for $h$ small enough.
+
+(c) This follows from the expression for $W_i$ in Proposition~\ref{prop:welfare}: holding $\kappa$ fixed,
+\[
+\frac{\mathrm{d}W_i}{\mathrm{d}\operatorname{Var}(\omega)}=-(1-\kappa)\alpha_i^2-\kappa(\alpha_i-\alpha_M)^2-\tfrac{\kappa}{4}\,\frac{\mathrm{d}D^*}{\mathrm{d}I_q}<0,
+\]
+because $\mathrm{d}D^*/\mathrm{d}I_q>0$ by Proposition~\ref{prop:symmetric}.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:welfare}]
+In the symmetric equilibrium each candidate wins with probability $\tfrac12$ and the candidates' midpoint is $\tau_M$. By Proposition~\ref{prop:office}, $W_i=V_i^i-\tfrac12\big(\Lambda_i^l+\Lambda_i^r\big)$, and since $\Lambda_i^j$ is a squared distance in the inner product $u\cdot v=u_\beta v_\beta+u_\alpha v_\alpha I_q$, the parallelogram identity gives $\tfrac12\big(\Lambda_i^l+\Lambda_i^r\big)=\Lambda_i^{\tau_M}+\tfrac14\Lambda_l^r$, where $\Lambda_i^{\tau_M}=(\beta_M-\beta_i)^2+(\alpha_M-\alpha_i)^2I_q$ and $\Lambda_l^r=D^*$. Substituting $V_i^i=-\alpha_i^2\big(\operatorname{Var}(\omega)-I_q\big)$ gives the expression for $W_i$, and differentiating gives $\mathrm{d}W_i/\mathrm{d}I_q$. At $\alpha_M=0$, the derivative is negative for every $i$, since it then equals minus a quarter of $\mathrm{d}D^*/\mathrm{d}I_q$. The derivative is affine in $\alpha_i$ with slope $2\alpha_M$, which gives the ranking, since $\alpha_R-\alpha_M=\delta$ and $\alpha_L-\alpha_M=-\delta$; solving for a positive derivative gives the threshold.
+\end{proof}
+
+\subsection*{Proofs for Section~\ref{sec:pre-election}}
+
+\begin{proof}[Proof of Proposition~\ref{prop:endolearn}]
+(a) Candidate $j$'s first-order condition is $\alpha_j^2\,\partial I/\partial P=C'(P)$, with $\partial I/\partial P=S^2/(SP+1)^2$, which is positive and decreasing in $P$ for $S>0$. Since $C'(0)=0$ and $C$ is convex, the objective is strictly concave and its maximizer is positive if and only if $\alpha_j\ne0$. For $\alpha_j\ne0$, the implicit function theorem gives
+\[
+\frac{\mathrm{d}P_j^*}{\mathrm{d}\alpha_j^2}=\frac{\partial I/\partial P}{C''(P)-\alpha_j^2\,\partial^2I/\partial P^2}>0,
+\qquad
+\frac{\mathrm{d}P_j^*}{\mathrm{d}S}=\frac{\alpha_j^2\,\partial^2I/\partial P\,\partial S}{C''(P)-\alpha_j^2\,\partial^2I/\partial P^2}>0,
+\]
+because $\partial^2I/\partial P^2<0$ and $\partial^2I/\partial P\,\partial S=2S/(SP+1)^3>0$. With $C=cK$ for a convex $K$ and $c>0$, the same argument gives $\mathrm{d}P_j^*/\mathrm{d}c=-K'(P)/\big(cK''(P)-\alpha_j^2\,\partial^2I/\partial P^2\big)<0$.
+
+(b) This follows from (a), since $\partial I/\partial P>0$.
+
+(c) As $h\to0$, the electoral terms in $W_J$ vanish, and party $J$ chooses its candidate to maximize its payoff when the candidate wins, $V_J^j=-\alpha_J^2S-(\beta_j-\beta_J)^2+\alpha_j(2\alpha_J-\alpha_j)I_j^*$, where $I_j^*$ depends only on $\alpha_j$. The base enters only through $(\beta_j-\beta_J)^2$, so $\beta_j=\beta_J$. Consider party $R$, with $\alpha_R=A$, and write $a$ for its candidate's responsiveness. With $C(P)=\tfrac c2P^2$, the candidate's first-order condition $cP=a^2S^2/(1+SP)^2$ gives $a=\sqrt{cP}\,(1+SP)/S$, so the party's problem can be written in terms of the induced precision. Since $aI=S\sqrt c\,P^{3/2}$ and $a^2I=cP^2(1+SP)$, the party maximizes
+\[
+2AS\sqrt c\,P^{3/2}-cP^2(1+SP),
+\]
+whose first-order condition is $3AS/\sqrt c=2\sqrt P+3SP^{3/2}$. The right-hand side increases from zero to infinity, and the objective increases below the root and decreases above it, so the optimum is unique. With $z=SP$, the condition becomes $\sqrt z\,(z+\tfrac23)=AS^{3/2}/\sqrt c$, and substituting back gives $\widehat a=A(z+1)/(z+\tfrac23)$, which lies in $(A,\tfrac32A)$. Party $L$ chooses $-\widehat a$ by symmetry. The expected squared policy gap is then $(\beta_R-\beta_L)^2+4\widehat a^2I(\widehat P)=(\beta_R-\beta_L)^2+4A^2S\,\phi(z)$, with $\phi(z)=z(z+1)/(z+\tfrac23)^2$ and
+\[
+\phi'(z)=\frac{z+2}{3\,(z+\tfrac23)^3}>0 .
+\]
+Since $z$ rises with $S$ and falls with $c$, $\widehat a$ falls toward $A$ and $\widehat D$ rises as uncertainty rises or learning becomes cheaper. For the comparison, hold precision fixed at $\widehat P$ as $S$ changes locally; with exogenous information, the parties nominate their own ideal types in the limit, so the gap is $(\beta_R-\beta_L)^2+4A^2I(\widehat P,S)$, with derivative $4A^2z(z+2)/(z+1)^2$. Differentiating the condition for $z$ gives $S\,\mathrm{d}z/\mathrm{d}S=3z(3z+2)/(9z+2)$, and substituting,
+\[
+\frac{\mathrm{d}\widehat D}{\mathrm{d}S}-4A^2\frac{z(z+2)}{(z+1)^2}=\frac{4A^2z\,(93z^2+142z+56)}{(z+1)^2(3z+2)^2(9z+2)}>0 .
+\]
+For $A=S=c=1$, $\widehat a\approx1.261$, $\widehat P\approx0.612$, and the two derivatives are approximately $3.98$ and $2.46$.
+
+
+(d) The argument follows the proof of Lemma~\ref{lem:smallh}, with the limiting nominations of (c), $\widehat\tau_L=(\beta_L,-\widehat a)$ and $\widehat\tau_R=(\beta_R,\widehat a)$, in place of the ideal types. As $h\to0$, $W_J$ converges uniformly to $\tfrac12\big(V_J^l+V_J^r\big)$, which depends on $J$'s candidate only through $\tfrac12V_J^j$. This limiting objective has a unique global maximizer at $\widehat\tau_J$: the base enters only through $-(\beta_j-\beta_J)^2$; for party $R$, the objective $a(2A-a)I_j^*$ is negative for $a<0$ and for $a>2A$, positive at $\widehat a$, and maximized uniquely there by (c). The maximizer is nondegenerate: in terms of induced precision, the first-order condition is $c\sqrt P$ times $3AS/\sqrt c-2\sqrt P-3SP^{3/2}$, a strictly decreasing function of $P$, so the second derivative is strictly negative at $\widehat P$, and since the map from $a$ to induced precision is smooth and strictly increasing, the second derivative in $a$ is strictly negative at $\widehat a$. By compactness, for any neighbourhood of $\widehat\tau_J$ there is $\delta>0$ such that the limiting objective is at least $\delta$ below its maximum outside it, uniformly over the compact parameter intervals; since the electoral terms are bounded by $hB^2$, every best response lies in that neighbourhood once $2hB^2<\delta$. In a neighbourhood on which $M$ is twice continuously differentiable, the objective is strictly concave for $h$ small, best responses are unique and move with the rival only at order $h$, and the best-response map is a contraction, so the equilibrium near $(\widehat\tau_L,\widehat\tau_R)$ is unique. By the implicit function theorem, it is continuously differentiable in $h$, $S$ and $c$, and its derivatives converge to those of the limiting nominations as $h\to0$, uniformly on the compact parameter intervals. The strict inequalities in (c), $\widehat a>A$ and the positive derivatives of the policy gap, including the positive difference from the fixed-precision benchmark, whose equilibrium derivative also converges to its limiting value, therefore hold for $h$ small enough.
+\end{proof}
+
+\begin{lemma}\label{lem:soc}
+Suppose Assumption~\ref{ass:median} holds and the parties' ideal types are symmetric about the median point. At the symmetric profile of Proposition~\ref{prop:symmetric}, the Hessian of $W_L$ with respect to $(\beta_l,\alpha_l)$ is
+\begin{equation}\label{eq:hessian}
+H=-\big(1+2h\,\Delta V_L\big)\operatorname{diag}(1,I_q)-8hw(1-w)\,uu^{\top},
+\qquad u=\big(\beta_M-\beta_L,\;I_q(\alpha_M-\alpha_L)\big)^{\top},
+\end{equation}
+which is negative definite for every $h>0$ whenever $I_q>0$.
+\end{lemma}
+
+\begin{proof}
+By Lemma~\ref{lem:win} and Corollary~\ref{cor:median}, $W_L=\tfrac12\big(V_L^l+V_L^r\big)+hM\Delta V_L$ with $M=V_{\tau_M}^l-V_{\tau_M}^r$, and $M=0$ at the symmetric profile. By Lemma~\ref{lem:payoff}, the Hessians of $V_L^l$ and of $M$ with respect to $(\beta_l,\alpha_l)$ both equal $-2\operatorname{diag}(1,I_q)$. With $\tau_l=\tau_L+w(\tau_M-\tau_L)$, the gradients are $\nabla\Delta V_L=\nabla V_L^l=-2w\,u$ and $\nabla M=2(1-w)\,u$. Hence $H=-\operatorname{diag}(1,I_q)-2h\Delta V_L\operatorname{diag}(1,I_q)+h\big(\nabla M\,\nabla\Delta V_L^{\top}+\nabla\Delta V_L\,\nabla M^{\top}\big)$, which is \eqref{eq:hessian}. Since $\Delta V_L>0$ and $w\in(0,1)$, $H$ is the sum of a negative definite matrix and a negative semidefinite one.
+\end{proof}
+
+Lemma~\ref{lem:soc} is a local calculation; global optimality of the symmetric profile is established in Lemma~\ref{lem:global}.
+
+\begin{proof}[Proof of Proposition~\ref{prop:timing}]
+Conditional on $s_1$, the payoffs are those of Lemma~\ref{lem:payoff} with effective bases $\beta_i+\alpha_im_1$ and informativeness $I_2(s_1)$, by the computation in the text, which uses $\mathbb{E}[\omega\mid s_1,s_2]=m_1+u$ with $\operatorname{Var}(u\mid s_1)=\operatorname{Cov}(u,\omega\mid s_1)=I_2(s_1)$. The map $(\alpha,\beta)\mapsto(\alpha,\beta+\alpha m_1)$ is linear and invertible, so it maps every line through $\tau_M$ to a line through its image and preserves the median-point property, as well as the symmetry of the parties' ideal types about the median point; it preserves central symmetry when $G$ is centrally symmetric. Proposition~\ref{prop:symmetric}, whose profile is an equilibrium for every $h$ by Lemma~\ref{lem:global}, then gives an equilibrium gap of $\Gamma_h(\Lambda(s_1))$ after every realization of $s_1$.
+
+(a) With candidates fixed at the parties' ideal types, the expected squared gap is
+\[
+\mathbb{E}\big[\Lambda(s_1)\big]=\mathbb{E}\Big[\big(\beta_R-\beta_L+(\alpha_R-\alpha_L)\,\mathbb{E}[\omega\mid s_1,s_2]\big)^2\Big],
+\]
+which by the law of iterated expectations depends only on the distribution of $\mathbb{E}[\omega\mid s_1,s_2]$ and equals the stated expression because its mean is zero.
+
+(b) Let $X=\big(\beta_R-\beta_L+(\alpha_R-\alpha_L)\,\mathbb{E}[\omega\mid\mathcal F]\big)^2$, which depends only on the final information $\mathcal F$. The parties' disagreement given the information disclosed before the election is $\Lambda=\mathbb{E}[X\mid\mathcal H]$. If $\mathcal H\subseteq\mathcal H'\subseteq\mathcal F$, then $\Lambda=\mathbb{E}[\Lambda'\mid\mathcal H]$ with $\Lambda'=\mathbb{E}[X\mid\mathcal H']$, and since $\Gamma_h$ is concave, conditional Jensen's inequality gives $\mathbb{E}[\Gamma_h(\Lambda')]\le\mathbb{E}[\Gamma_h(\Lambda)]$, strictly if $\Lambda'$ differs from $\Lambda$ with positive probability, because $\Gamma_h$ is strictly concave. A Blackwell comparison of signals about $\omega$ alone does not deliver this comparison, which concerns nested information about the squared policy gap with the final information held fixed.
+
+(c) Since $0\le\Gamma_h(\Lambda)\le\Lambda$ and $\mathbb{E}[\Lambda]<\infty$, dominated convergence gives $\mathbb{E}[\Gamma_h(\Lambda)]\to\mathbb{E}[\Lambda]$ as $h\to0$; this handles unbounded news, as in Example~\ref{ex:normal}. The limit is the expression in (a), which increases with $\operatorname{Var}\big(\mathbb{E}[\omega\mid s_1,s_2]\big)$. When the remaining informativeness after the news is zero, responsiveness no longer matters conditional on the news, and the effective policy problem is one-dimensional; the gap is then the squared difference in effective bases, and the argument applies to that problem.
+\end{proof}
+
+Figure~\ref{fig:sticky} uses Example~\ref{ex:normal}: $m_1$ is normal with variance $\sigma_\omega^2-1/(1/\sigma_\omega^2+P_1)$, $I_2=1/(1/\sigma_\omega^2+P_1)-1/(1/\sigma_\omega^2+P_1+P_2)$ does not depend on $s_1$, and $\mathbb{E}[\Gamma_h(\Lambda(s_1))]$ is computed by Gauss--Hermite quadrature, where $P_1$ and $P_2$ are the precisions of the two signals. The solid lines set $P_1=0$ and vary $P_2$; the dashed lines set $P_1=P_2$. Holding the total precision fixed at $P_1+P_2=2$ and moving it from after to before the election lowers expected polarization monotonically for each $h$ in the figure, as part (b) predicts.
+
+\subsection*{General distributions}
+
+Suppose Assumption~\ref{ass:local} holds. Let $D^*(q)$ and $\Delta V_J^*(q)$ denote the expected squared policy gap and party $J$'s payoff gap at the equilibrium of Lemma~\ref{lem:smallh}, which is unique near the parties' ideal types and differentiable in $I_q$ for $h$ small enough.
+
+\begin{proposition}[General distributions]\label{prop:general}
+Under Assumption~\ref{ass:local}, for all $I_q\in[\underline I,\overline I]$,
+\begin{equation}\label{eq:general}
+\frac{\mathrm{d}D^*}{\mathrm{d}I_q}=(\alpha_R-\alpha_L)^2+O(h),
+\qquad
+\frac{\mathrm{d}\Delta V_L^*}{\mathrm{d}I_q}=(\alpha_R-\alpha_L)^2+O(h),
+\qquad
+-\frac{\mathrm{d}\Delta V_R^*}{\mathrm{d}I_q}=(\alpha_R-\alpha_L)^2+O(h),
+\end{equation}
+where the two remainders for the values of office may differ. Hence, if $\alpha_R\ne\alpha_L$, for $h$ small enough the equilibrium policy gap and both parties' values of office rise with uncertainty and with informativeness.
+\end{proposition}
+
+\begin{proof}
+By Lemma~\ref{lem:smallh}, $\tau_j=\tau_J+O(h)$ and $\mathrm{d}\tau_j/\mathrm{d}I_q=O(h)$, uniformly on $[\underline I,\overline I]$. Differentiating $D=(\beta_r-\beta_l)^2+(\alpha_r-\alpha_l)^2I_q$ at the equilibrium candidates gives $(\alpha_r-\alpha_l)^2$ plus terms proportional to $\mathrm{d}\tau_j/\mathrm{d}I_q$, which are $O(h)$, and $(\alpha_r-\alpha_l)^2=(\alpha_R-\alpha_L)^2+O(h)$. The same argument applies to $\Delta V_L=\Lambda_L^r-\Lambda_L^l$, whose derivative at $\tau_l=\tau_L$, $\tau_r=\tau_R$ is $(\alpha_R-\alpha_L)^2$, and to $-\Delta V_R=\Lambda_R^l-\Lambda_R^r$, with separate remainders.
+\end{proof}
+
+The gap between the candidates' types is
+\begin{equation}\label{eq:typegap}
+\tau_r-\tau_l=(1-w_R)\,\tau_R-(1-w_L)\,\tau_L+(w_R-w_L)\,\bar\tau .
+\end{equation}
+The conditions of Proposition~\ref{prop:nomination} give $w_J=2h\Delta_J+O(h^2)$, and the two values of office differ by $O(h)$, so $w_R-w_L=O(h^2)$. When electoral pressure is weak, the movement of $\bar\tau$ therefore enters the gap only at order $h^2$, and rising weights pull the candidates together, as in Proposition~\ref{prop:symmetric}. When electoral pressure is strong and the weights differ, the movement of $\bar\tau$ can widen or narrow the gap. The electoral advantage also moves with the decisive point: as uncertainty rises, the winning probability shifts toward the party whose responsiveness is closer to that of the voters around $\bar\tau$. Under strong electoral pressure, outside the range of Proposition~\ref{prop:general}, numerical examples with skewed $G$ show that a trailing party's convergence toward a moving $\bar\tau$ can outweigh the direct effect, so that the policy gap falls; these are numerical findings, not a characterization of when the result fails. With a median point, $\bar\tau=\tau_M$ does not move, and this channel is absent. For $G$ uniform on the square and party ideal types drawn at random, we solved the equilibrium on a grid of $I_q\in[0.05,3]$ for $h\in\{0.05,0.1,0.25,0.5,1,2\}$, keeping configurations in which the winning probability stays interior; the policy gap rose with $I_q$ in all of them.
+
+\begin{corollary}\label{cor:leadgeneral}
+Under Assumption~\ref{ass:local}, for $h$ small enough, in the equilibrium of Lemma~\ref{lem:smallh}, candidate $l$ wins with probability above $\tfrac12$ if and only if $M(\tau_L,\tau_R;q)>0$, where $M(\tau_L,\tau_R;q)$ is the tie value of the shock when each party nominates its own ideal type.
+\end{corollary}
+
+\begin{proof}
+The argument follows the proof of Proposition~\ref{prop:asymmetric}(a), with the median point replaced by the relevant average type on the median line. Let $\bar\tau_0$ be the average type of the voters on the median line for candidates $\tau_L$ and $\tau_R$. Candidates of the form $\tau_j=t\,\tau_J+(1-t)\bar\tau_0$ with a common $t$ leave the direction of the candidates' difference, and hence the slope of the line of indifferent voters, the median line with that slope and $\bar\tau_0$, unchanged. If $M(\tau_L,\tau_R;q)=0$, the parties' midpoint lies on that median line, and so does the candidates' midpoint, so $M=0$; with $\bar\tau_0$ in place of $\tau_M$, the computation in the proof of Proposition~\ref{prop:asymmetric}(a) shows that both parties then choose the same weight, so this profile is the equilibrium. Conversely, if the equilibrium margin is zero, both parties win with probability $\tfrac12$ and the same computation forces equal weights, so the ideal pair and the nominated pair share the median line and $M(\tau_L,\tau_R;q)=0$. Holding the primitives fixed and varying $h$, the equilibrium margin is continuous, tends to $M(\tau_L,\tau_R;q)$ as $h\to0$, and can vanish only if $M(\tau_L,\tau_R;q)=0$, so it keeps the sign of $M(\tau_L,\tau_R;q)$.
+\end{proof}
+
+\subsection*{Log-concave electoral shocks}
+
+\begin{proposition}[Log-concave shocks]\label{prop:logconcave}
+Let $\eta=\varepsilon/h$, where $\varepsilon$ has a log-concave, continuously differentiable density $f$ with full support on $\mathbb{R}$, mean and median zero, and $f(0)=1$, and let $F$ be its distribution function. Then $\Pr(l\text{ wins})=F(hM)$, and:
+\begin{enumerate}
+  \item[(a)] the probability of winning lies in $(0,1)$ for every pair of candidates;
+  \item[(b)] under Assumption~\ref{ass:median} and $I_q>0$, each party's expected payoff is strictly log-concave in its own candidate's type on the set where its value of office is positive, which contains its best response; best responses are unique and continuous, and an equilibrium exists for every $h>0$;
+  \item[(c)] under Assumption~\ref{ass:median}, $I_q>0$, and distinct party ideal types symmetric about the median point, for every $h>0$ the profile of Proposition~\ref{prop:symmetric} is the unique symmetric equilibrium;
+  \item[(d)] in any equilibrium with interior candidates and positive values of office, the weights of Proposition~\ref{prop:nomination} are
+  \[
+  w_L=\frac{hf(hM)\,\Delta V_L}{F(hM)+hf(hM)\,\Delta V_L},
+  \qquad
+  w_R=\frac{hf(hM)\,(-\Delta V_R)}{1-F(hM)+hf(hM)\,(-\Delta V_R)},
+  \]
+  and if $f$ is symmetric, then at any margin and values of office, each weight is weakly smaller than under the uniform shock with the same $h$, wherever the uniform probability of winning is interior;
+  \item[(e)] the results stated under Assumption~\ref{ass:small-h} continue to hold, with $F(hM)=\tfrac12+hM+O(h^2)$ in place of $\tfrac12+hM$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) This follows from full support.
+
+(b) Party $L$'s payoff is $W_L=V_L^r+F(hM)\,\Delta V_L$, and $V_L^r$ does not depend on $L$'s candidate. If $\tau_r\ne\tau_L$, nominating $\tau_L$ gives a positive value of office, so any candidate with $\Delta V_L\le0$ does worse, and the best response lies in the convex set where $\Delta V_L>0$. There, $\log W_L-V_L^r$ is $\log F(hM)+\log\Delta V_L$. Under Assumption~\ref{ass:median}, $M=\|\tau_r-\tau_M\|^2-\|\tau_l-\tau_M\|^2$ in the inner product $u\cdot v=u_\beta v_\beta+u_\alpha v_\alpha I_q$, which is concave in $\tau_l$; $\log F$ is concave and increasing, because a log-concave density has a log-concave distribution function; so $\log F(hM)$ is concave in $\tau_l$. The value of office, $\Delta V_L=\Lambda_L^r-\|\tau_l-\tau_L\|^2$, is strictly concave and positive on the set, so its logarithm is strictly concave. Hence the objective is strictly log-concave and has a unique maximizer. The argument for $R$ is the same, using $1-F(hM)$, whose logarithm is concave and decreasing in $M$, with $M$ convex in $\tau_r$. If $\tau_r=\tau_L$, $L$'s unique best response is $\tau_L$. By the maximum theorem, best responses are continuous on the compact convex set $\operatorname{supp}(G)^2$, and Brouwer's theorem gives an equilibrium.
+
+(c) At symmetric candidates, $M=0$, $F(0)=\tfrac12$ and $f(0)=1$, so the first-order conditions coincide with those under the uniform shock, and the profile of Proposition~\ref{prop:symmetric} solves them. By (b), it is a global best response. Uniqueness among symmetric profiles follows as in the proof of Lemma~\ref{lem:global}.
+
+(d) The first-order condition for $\tau_l$ is $F(hM)\,\nabla V_L^l+hf(hM)\,\Delta V_L\,\nabla M=0$, which gives $w_L$, and similarly for $R$. Write $w_L=\big[1+k(hM)/(h\Delta V_L)\big]^{-1}$ and $w_R=\big[1+g(hM)/(h(-\Delta V_R))\big]^{-1}$, with $k=F/f$ and $g=(1-F)/f$; under the uniform shock, $k(x)=\tfrac12+x$ and $g(x)=\tfrac12-x$. If $f$ is symmetric and log-concave, its mode is at zero, so $f'\le0$ on $(0,\infty)$ and $f'\ge0$ on $(-\infty,0)$. Then $k'=1-Ff'/f^2$ is at least one on $(0,\infty)$ and at most one on $(-\infty,0)$, and with $k(0)=\tfrac12$ this gives $k(x)\ge\tfrac12+x$ for all $x$; likewise $g'=-1-(1-F)f'/f^2$ gives $g(x)\ge\tfrac12-x$. Each weight is decreasing in $k$ or $g$, so it is weakly smaller than under the uniform shock.
+
+(e) The arguments under Assumption~\ref{ass:small-h} use the probability of winning only through bounds on its level and derivatives near the relevant candidates, and through its value and slope at ties. Since $f$ is bounded and continuously differentiable, $F(hM)=\tfrac12+hM+O(h^2)$ with derivatives controlled in the same way, and at a tie both parties face $F(0)=\tfrac12$ and the same density, so the tie identity in the proof of Proposition~\ref{prop:asymmetric}(a) is unchanged.
+\end{proof}
+
+\subsection*{Beyond affine targets}
+
+\begin{lemma}\label{lem:targets}
+For any targets $f(\cdot,\tau_i)$ with finite second moments, with $x^*_j(\mu)=\mathbb{E}_\mu[f(\omega,\tau_j)]$,
+\begin{align}
+V_i^j(q)&=-\int\operatorname{Var}_\mu\big(f(\omega,\tau_i)\big)\,\mathrm{d}K_q(\mu)-\Lambda_i^j(q),\label{eq:targets}\\
+\Lambda_i^j(q)&=\int\Big(\mathbb{E}_\mu\big[f(\omega,\tau_j)\big]-\mathbb{E}_\mu\big[f(\omega,\tau_i)\big]\Big)^2\mathrm{d}K_q(\mu).\nonumber
+\end{align}
+\end{lemma}
+
+\begin{proof}
+For each posterior, $\mathbb{E}_\mu\big[(x-f(\omega,\tau_i))^2\big]=\operatorname{Var}_\mu\big(f(\omega,\tau_i)\big)+\big(x-\mathbb{E}_\mu[f(\omega,\tau_i)]\big)^2$. Setting $x=x^*_j(\mu)$ and integrating over $K_q$ gives \eqref{eq:targets}.
+\end{proof}
+
+The first term in \eqref{eq:targets} is a player's own residual uncertainty, which she would bear even if she governed herself; the second is her disagreement with $j$. Since $\Lambda_i^j(q)$ is the expectation of a convex function of the posterior, and a Blackwell improvement spreads the distribution of posteriors, every Blackwell improvement raises $\Lambda_i^j(q)$, as it does the expectation of any convex function of the policy gap. The effects of information in Propositions~\ref{prop:office} and~\ref{prop:auto-polar} therefore hold for any target. The effects of uncertainty need more. Under full information the policy gap is $\mathbb{E}\big[(f(\omega,\tau_r)-f(\omega,\tau_l))^2\big]$, which a mean-preserving spread of $\omega$ raises when the squared gap between targets is convex in $\omega$, as with affine targets, but not in general. With saturating responses, $f(\omega,\tau_i)=\alpha_i\tanh(\omega)$, moving from $\omega=\pm2$ with equal probability to $\omega\in\{0,\pm4\}$, with half the mass at $0$, is a mean-preserving spread that lowers $\mathbb{E}[\tanh^2(\omega)]$ from about $0.93$ to about $0.50$, so the policy gap falls. Proposition~\ref{prop:realign} uses the two-dimensional representation of types, and so the affine form.
+
+\end{document}

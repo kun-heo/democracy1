@@ -1,0 +1,152 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=.92in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,array,microtype,fancyhdr}
+\setlength{\emergencystretch}{1.5em}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\linespread{1.035}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}\fancyhf{}
+\lhead{\small Endogenous mandates and the transfer of power}\rhead{\small Technical note}
+\cfoot{\thepage}
+\newcommand{\EE}{\mathbb E}
+\begin{document}
+\thispagestyle{plain}
+\begin{center}
+{\LARGE\bfseries Endogenous mandates and the transfer of power}\\[5pt]
+{\large Continuous accommodation and the stationary equilibrium set}\\[4pt]
+{\small Companion to \emph{Political Realignment and the Transfer of Power in an Unpredictable World}}
+\end{center}
+
+\section*{1\quad How much must a challenger give up?}
+Suppose a party can choose any degree of responsiveness. If a challenger can secure office with a modest program, it has reason to offer the most responsive program a defeated incumbent will honor. Once even a flat program induces refusal, the challenger regains its incentive to campaign on its preferred response. These incentives give an exact equilibrium for every level of current monitoring in the two-election game below.
+
+Keep the paper's two-period voters, long-lived parties, public learning about the persistent return $\alpha+\beta\omega$, sincere voting, and enforcement rule. Take two elections, an initial right incumbent, the independent equiprobable prior on $\alpha=\pm.02$ and $\beta=0,1$, refusal cost $k=2.40$, discount factor $\delta=.25$ and final monitoring $.05$. Current monitoring is $S\in[0,1]$. Expand each party's menu \emph{at both elections}. Left chooses $\gamma_L^M=-\ell$, right chooses $\gamma_R^M=r$, and both $\ell,r$ range over $[0,1]$. Each party retains its own ordinary policy.
+
+\textbf{Proposition 1.} For $S>0$ the first-election mandate choices are unique, including against mixed campaign strategies. The incumbent chooses $r=1$. Define
+\[
+ S_-=\frac{31788}{209683}\simeq .151600,\qquad S_+=.402648,\qquad c=.150993 .
+\]
+There is a continuous strictly increasing function $G$ specified in Table~\ref{tab:g} such that
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Current monitoring & Challenger's magnitude $\ell$ & Decision after a right defeat\\
+\midrule
+$0<S\le S_-$       & $1$ & Concede\\
+$S_-<S\le S_+$     & $G^{-1}(c/S)$ & Concede\\
+$S_+<S\le 1$       & $1$ & Refuse\\
+\bottomrule
+\end{tabular}
+\end{center}
+At $S=0$ every offer of a given party implements its ordinary policy and the incumbent concedes. For $301986/1015625\le S\le S_+$, or approximately $.297340\le S\le .402648$, the middle solution simplifies to
+\[
+                     \ell^*(S)=\sqrt{1+\frac{1.207944}{S}}-2 .
+\]
+
+For example, at $S=.35$ the challenger offers $\ell^*=.109803$. Its weight is $-.109803$ and its initial policy slope is $-.0549015$, since the posterior mean of $\beta$ is $1/2$. A slightly more responsive offer induces refusal. At $S_+$ only the flat mandate secures transfer. Immediately above that cutoff the challenger returns to its full mandate, even though the incumbent will refuse if defeated. The equilibrium uses the paper's tie rule of concession at zero net gain.
+
+\newpage
+\section*{2\quad The final election and the public trial}
+Let $(d_i,\gamma_i)$ be an actor's ordinary policy and material outcome weight. Write $a=\EE[\alpha]$, $b=\EE[\beta]$ at the public record and $m=\EE[\omega\mid\text{report}]$. A government of party $j$ with mandate weight $w$ implements $x=d_j+ w(a+bm)$. Up to a policy-independent term the actor's expected flow payoff is
+\[
+ f_i(j,w)=-(d_j+wa-d_i)^2+2\gamma_i(d_j+wa)a+Sb^2(2\gamma_i w-w^2).
+\]
+The party ideals are $(d_L,-2)=(-.5,-2)$ and $(d_R,2)=(1.5,2)$. Each term independently draws $\omega=\pm1$ with equal probability. With probability $S$ the installed government sees $\omega$, and otherwise its forecast is zero. An entrenched party keeps its announced mandate for the disputed term and uses its permanent objective thereafter. The two age groups share the type $(.505,1)$. Right certification adds common valence $-100,0,100$ with probabilities $.45,.10,.45$. Ties go left. Each bloc shares its party's ordinary policy and has zero outcome weight. An endorsement costs $.5$. One or two endorsements are required with equal probability, and an attainable quorum forms. There are no office rents, sanctions for failed refusal, or intrinsic regime payoffs.
+
+\textbf{Proof of Proposition 1, final election.} Policy, the state, and $Y=x(\alpha+\beta\omega)+\varepsilon$ are observed. Noise is uniform on $[-1/80,1/80]$. Each compatible world has the same likelihood, so each posterior is uniform on a subset of the four worlds. The continuous game can reach more records than the binary game. The following argument covers all 15 nonempty subsets, including those reached by a unilateral deviation.
+
+Only the challenger bloc is willing to enforce. At the last election it prefers its own installed rule by more than $1.98^2-(.02^2+.05)>.5$. The incumbent bloc prefers its party by the same bound. The refusal success probability is $1/2$. A party's final policy advantage is at most
+\[
+       2.02^2+ 4(.02)(2.04)+ .05(8)<4.65 .
+\]
+Thus its refusal gain is below $4.65/2-2.40<0$ at every pair of continuous offers. Each party strictly prefers installation throughout the menu. Its loss from its own mandate relative to its ideal is at most $4(.02^2+.05)$, while a rival mandate's baseline loss alone is at least $(2-3(.02))^2$. Conditional on winning, a party's own flow has derivative $2(2-t)(a^2+.05b^2)$ in its own mandate magnitude $t$.
+
+When $a\ge0$ the neutral voter likes a left mandate best at $\ell=0$. Even against that offer the right advantage at $r=0$ and $r=1$ is, respectively, $.02+4a$ and $.02+2.01a+a^2+.05b^2$. Both are positive. The voter's payoff from $r$ is concave, so right wins the neutral vote throughout. When $a<0$, increasing $r$ increases right's attractiveness to the voter as well as to the right party. Thus $r=1$. Given this choice the neutral voter's right advantage is
+\[
+       .02+2.01a\,y+(a^2+.05b^2)y^2,\qquad y=1+\ell\in[1,2].
+\]
+For each possible record with $a<0$ this quadratic has a constant strict sign on $[1,2]$. Its maximum is negative for $(a,b)=(-.02,0),(-.02,1/2)$. Its minimum is positive for the remaining negative-intercept records, as evaluation at the endpoints and any interior vertex verifies. Thus left also maximizes its own weight. Final mandates have magnitudes $(1,1)$ except when $a=b=0$, where all weights implement the same policies. This specifies continuation payoffs after every possible first-period trial.
+
+\newpage
+\section*{3\quad Competition at the initial election}
+At the prior the right instrument lies in $[1,2]$ for every $r$. The four conditional noise intervals are disjoint there, so every right mandate fully reveals the world. A left mandate implements $x=-.5-\ell m/2$. As $\ell$ changes, the endpoints of the four noise intervals can cross. Between consecutive crossings the probability of each posterior is affine in $\ell$, because the mass of an intersection is proportional to its length. Mixing the null and revealing reports makes each branch value affine in $S$ for fixed offers. Crossing points appear in Table~\ref{tab:g}.
+
+The first-election enforcement probability is also $1/2$ for every pair of offers. The challenger's bloc gains at least $4-1/4$ in current flow from installation. The future term can reduce this by at most $.25(2.04^2+.05\cdot4)$, leaving more than $.5$. The incumbent bloc prefers its party by the corresponding bound. Extreme valence decides either age's vote. Even a young voter's maximum possible difference in material utility plus discounted future valence is below $100$. At zero valence both ages favor right under either transfer decision for all initial offers. To verify the last claim, set $r=0$, which minimizes both ages' right advantage because right's trial is independent of $r$. On every interval in Table~\ref{tab:g}, check the endpoints and any vertex of the quadratic in $\ell$ at $S=0,1$. The global lower bounds for the old and young are $.02$ and $.0200575$ under concession and $.01$ and $5.6315475$ under refusal. Right is therefore certified with probability $.55$.
+
+Against any left offer, increasing $r$ strictly improves right's payoff upon victory for $S>0$. After defeat, right can take the better of a fixed concession value and a refusal value increasing in $r$. The vote stays fixed. Thus $r=1$ is strictly dominant. With this choice right's refusal gain against $\ell$ is $T_R(\ell,S)=-c+SG(\ell)$.
+
+\begin{table}[h]\centering\small
+\caption{Coefficients of $G(\ell)=\ell^2/8+B\ell+C$}\label{tab:g}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Left mandate interval & $B$ & $C$\\ \midrule
+$[0,1/4]$ & $.5$ & $.375$\\
+$[1/4,91/96]$ & $.495284$ & $.376179$\\
+$[91/96,19/20]$ & $.377744$ & $.487597125$\\
+$[19/20,99/104]$ & $.492419$ & $.378655875$\\
+$[99/104,1]$ & $.490742$ & $.38025225$\\ \bottomrule
+\end{tabular}
+\end{table}
+On the first interval a left trial reveals $\beta$ and leaves $\alpha$ unresolved with probability $.20$ at every mandate magnitude after averaging the reports. The continuation distribution is constant. Relative to a flat challenger, left responsiveness raises right's gain by $S(4\ell+\ell^2)/8$. The other rows integrate the same likelihood over the changed overlaps.
+
+Conditional on either transfer decision, left's expected payoff strictly increases in $\ell$ for $S>0$. At $S=0$ it is constant. At $S=1$ the minimum one-sided derivatives on every interval exceed $.14$ under concession and $.07$ under refusal. Each derivative at monitoring $S$ is $S$ times its value at $1$, so it is strictly positive for $S>0$. Over the whole menu and $S\in[0,1]$, left's lowest payoff under concession is $-3.4249742$ and its highest under refusal is $-3.75810885$. Hence left chooses the largest mandate consistent with concession whenever one exists, and chooses $1$ otherwise. Solving $T_R=0$ proves the formula and both cutoffs. All interval comparisons use rational arithmetic. \hfill$\square$
+
+\newpage
+\section*{4\quad Stationary equilibria with the paper's binary menu}
+Now restore the flat and responsive menu and an infinite horizon with permanent monitoring. Each party chooses at every election, both voter cohorts use the current record, and the government in office determines what is learned. The state is the public posterior, incumbent, monitoring environment and regime. The next result allows independent mixing over mandates, with the paper's sincere ballots, concession at a refusal tie, and attainable-quorum enforcement.
+
+\textbf{Proposition 2.} At $k=2.55$ there are exactly two economically distinct stationary MPE at $S=.05$ and exactly two at $S=.14$. At $k=2.40,S=.05$ there is exactly one. At every stationary record both parties use responsive mandates, except at $\beta=0$ with $\alpha$ unresolved, where all labels implement the same policy for each party. There is no further equilibrium involving randomization over distinct mandates at these parameter values.
+
+\begin{center}\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Public record & $k=2.55,\ S=.05$ & $k=2.55,\ S=.14$ & $k=2.40,\ S=.05$\\
+\midrule
+Prior & Concede & Refuse & Refuse\\
+Only $\beta=0$ known & Concede & Concede & Refuse\\
+Only $\beta=1$ known & Refuse & Refuse & Refuse\\
+$(\alpha,\beta)=(-.02,0)$ & Concede & Concede & Concede\\
+$(-.02,1)$ & Concede & Refuse & Refuse\\
+$(+.02,0)$ & Either & Either & Refuse\\
+$(+.02,1)$ & Refuse & Refuse & Refuse\\
+\bottomrule
+\end{tabular}
+\end{center}
+Each entry gives either defeated party's action at the equilibrium offers. \emph{Either} means that one equilibrium has mutual concession and another has mutual refusal. At $S=.05,k=2.55$ the one-shot refusal gains at $(+.02,0)$ are $(-.039373,-.110093)$ under the concession continuation and $(+.117471,+.117471)$ under the refusal continuation. A defeated party values the option of regaining office more when it expects its own future electoral victory to be honored.
+
+\begin{center}\small
+\begin{tabular}{@{}llcc@{}}
+\toprule
+Permanent $S$ & Transfer at $(+.02,0)$ & Initial left incumbent & Initial right incumbent\\
+\midrule
+.05 & Mutual concession & 25.55\% & 25.55\%\\
+.05 & Mutual refusal & 50.55\% & 50.55\%\\
+.14 & Mutual concession & 61.70\% & 61.43\%\\
+.14 & Mutual refusal & 80.85\% & 80.72\%\\
+\bottomrule
+\end{tabular}
+\end{center}
+The entries are probabilities of eventual autocracy starting from the prior at $k=2.55$. Raising permanent monitoring from $.05$ to $.14$ raises takeover risk for \emph{every} equilibrium selection. Under $.05$, the path from concession at the prior to refusal when $\beta=1$ is learned, and back to concession if $\alpha=-.02$ is subsequently learned, holds in both equilibria, conditional on continued democracy.
+
+The selection matters for a transitory shock. For a right incumbent facing elevated monitoring only in the current term, with future monitoring $.05$ and $k=2.55$, the highest current $S$ at which a flat challenger secures transfer is $.385138$ under the concession continuation and $.260564$ under the refusal continuation. At current $S=.30$, left successfully accommodates under the first and chooses a responsive offer under the second, with refusal upon a right defeat. The same permanent-monitoring comparison can therefore hold across selections while the cost of a transitory shock depends on the expected future conduct of both parties.
+
+\newpage
+\section*{5\quad Exhausting the stationary equilibrium set}
+\textbf{Proof of Proposition 2.} Order the seven posterior supports by size. A trial can eliminate a world and cannot restore it. Solve the point posteriors first, then the two records identifying only $\beta$, and finally the prior. At each step carry forward every surviving continuation from more informative records. At a given record $h$, autocracy values solve a linear system independently of campaign behavior. For each long-lived actor $i$, the remaining unknowns are its democratic values $v_{iL},v_{iR}$ under the two incumbents. A young voter's continuation uses the next old voter's flow, giving two more unknowns at $h$.
+
+Enforcement and the extreme ballots are uniform over possible continuations. For the listed $S\le.14$, the current bloc advantage of its own installed policy at a loss is at least $1.98^2-(.02^2+.14)$. The maximum discounted difference in subsequent bloc payoffs, including participation, is at most $\delta(2.04^2+4(.14)+.5)/(1-\delta)$. Subtracting leaves more than $.5$. Thus only the challenging bloc is willing. Any realized material voter payoff lies in $[-17,0]$, and expected next election valence lies in $[-45,45]$ before specifying ballots. Consequently the greatest change in current material and discounted future utility is bounded by $17+.25(17+90)<100$. The extreme valences decide the certificate. The old voter's expected normalized democratic flow is in $[35,55]$ given the resulting expected valence of $45$. Both parties' normalized discounted values lie in $[-30,30]$ since a term's absolute policy payoff is below $6$ and the attempt cost is at most $2.55$.
+
+At each incumbent and offer pair, enumerate the refusal decision and neutral certificate. Conditional on these decisions, a party's payoff is affine in its two unknown same-record values,
+\[
+                         c+\lambda_L v_{iL}+\lambda_R v_{iR}.
+\]
+The coefficients include the probabilities of democratic installation and the probability of retaining this posterior. Each pair of offers also yields linear tests for the incumbent's gain and the young voter's ballot, plus the old voter's known current-payoff test. Bound these affine functions exactly on the value rectangles. Branch whenever a deterministic transfer or certificate remains ambiguous. A mandate can leave a party's support when its alternative is strictly better against every remaining rival action. Intersect the rectangles with the resulting payoff bounds and the half-spaces implied by the specified transfers and ballots. Each step preserves every stationary equilibrium compatible with the branch.
+
+If the two parties' strict best replies form a cycle in a residual two-by-two campaign, both must mix. If party $i$'s responsive advantage at the rival's pure offers is $D_0,D_1$ of opposite signs, the rival's responsive probability must be $|D_0|/(|D_0|+|D_1|)$. Bounds on that probability, the party's indifference, and its value equation eliminate the last three unresolved branches at $k=2.40$. At $k=2.55$ the pure-action eliminations after the branch splits suffice, including against mixtures. For every surviving profile, solve the linear Bellman equations and verify all offer pairs, including deviations, and both age groups' certificate rule. The counts as record supports are added in the replication's order are $1,1,2,2,2,2,2$ at either $k=2.55$ calibration and $1,1,1,1,1,1,1$ at $k=2.40$. The calculations use exact fractions. In the one record with equivalent labels the same mandated policy generates the same trial and the stated tie rules give identical continuation decisions. \hfill$\square$
+
+The continuous first-election solution uses two elections and an initial right incumbent. The stationary enumeration uses the binary menu and the parameter values reported here. The full stationary correspondence with continuous mandates at every election remains open.
+\end{document}
+

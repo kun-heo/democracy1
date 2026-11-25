@@ -1,0 +1,119 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}
+\setlength{\emergencystretch}{2em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\begin{document}
+\section*{Bayesian mandates and the transfer of power}
+\emph{Three elections and an infinite horizon with two-period voters}
+
+Voters can live for just two terms and still discipline a party that expects to compete indefinitely. A young voter cares who will govern when she is old. A defeated party cares who will govern at every future election. The public record links their decisions because the government taking office today determines what everyone can learn before the next election.
+
+\subsection*{The game}
+
+The persistent return to an intervention is $\alpha$ + $\beta\omega$. The four equally likely coefficient pairs have $\alpha$ = $\pm$.02 and $\beta$ equal to 0 or 1. The fresh state $\omega$ is independently $-$1 or +1 each term. Before implementation it is revealed with probability S, and the posterior mean of $\omega$ is m, so Var(m) = S. Afterwards everyone observes x, $\omega$ and Y = x($\alpha$ + $\beta\omega$) + $\varepsilon$, with independent noise uniform on [$-$1/80, 1/80]. The common posterior h is inherited by new voters.
+
+Write a and b for the posterior means of $\alpha$ and $\beta$. An actor with ordinary policy d and weight $\gamma$ incurs the quadratic loss (x $-$ d $-$ $\gamma$($\alpha$ + $\beta\omega$))${}^2$. A party commits to a one-term mandate g before the election. Its implementing policy is
+
+\[x_j(m)=d_j+g_j(a+bm).\]
+
+The ordinary policies are $-$.5 and 1.5. L can offer g = 0 or $-$1, and R can offer g = 0 or +1. Their own permanent weights are $-$2 and +2. A defeated incumbent can pay k to refuse. On success it keeps its announced mandate this term and uses its permanent weight thereafter. Failed refusal installs the challenger. Parties value the policies implemented in and out of office. Their only direct cost of refusal is k.
+
+Two long-lived enforcement blocs have their party's ordinary policy and weight zero. After refusal a public quorum requires either one endorsement or two with equal probability. A pivotal endorsement costs .5. The enforcement rule forms a willing quorum whenever one exists. In every comparison reported below, only the challenger's bloc is willing, so one half of attempts succeed.
+
+\subsection*{How age enters the recursion}
+
+Equal-sized young and old cohorts vote sincerely. Both have (d, $\gamma$) = (.505, 1). The common pro-R valence is $-$100, 0 or +100 with probabilities .45, .10 and .45. Voters receive that valence if R is certified. Tied ballots and certificates go to L. An indifferent incumbent concedes. Parties, blocs and young voters discount at $\delta$ = .25.
+
+\[O=r^v,\qquad Y^{\mathrm{young}}=r^v+\delta P O,\qquad V_i=u_i+\delta P V_i.\]
+
+For a fixed strategy profile P is its public transition matrix, r\textsuperscript{v} is the current voter payoff, and u\textsubscript{i} is a party's or bloc's flow payoff. Old voters exit. Today's young use next period's \emph{old-voter} values. When the game ends in three elections, continuation payoffs beyond the terminal election are zero.
+
+\section*{When accommodation stops working}
+\emph{First-election cutoffs at the unresolved prior}
+
+Hold later monitoring at .05 and vary today's monitoring S. In a row with two positive cutoffs, every offer can be honored through the lower cutoff. Above it, both responsive offers would provoke refusal. The challenger then offers a flat mandate, the incumbent offers a responsive one, and defeat is honored through the upper cutoff. Above the upper cutoff both parties offer responsive mandates and the defeated incumbent refuses. Each party has its own thresholds.
+
+\begin{center}\small\begin{tabular}{llllll}\toprule
+\textbf{Elections} & \textbf{Cost k} & \textbf{L lower} & \textbf{L upper} & \textbf{R lower} & \textbf{R upper}\\ \midrule
+Two & 2.40 & .120037 & .321813 & .151600 & .402648\\
+Three & 2.40 & .012519 & .033564 & .046195 & .120617\\
+Infinite & 2.40 & Refusal at every S &  & Refusal at every S & \\
+Two & 2.55 & .270517 & .725240 & .302204 & .802648\\
+Three & 2.55 & .198066 & .531006 & .237283 & .629669\\
+Infinite & 2.55 & .133044 & .356685 & .150655 & .385138\\
+\bottomrule\end{tabular}\end{center}
+
+The finite rows give the transfer outcome in every campaign equilibrium under the stipulated voting, tie and enforcement rules. The infinite rows use verified stationary continuations. At S = 0 mandate labels implement identical policies. Thresholds are rounded here. All comparisons, including equality at a cutoff, use exact fractions.
+
+\subsection*{An analytical result common to the three horizons}
+
+Let T be the incumbent's gain from refusal after a defeat. Write u\textsuperscript{A} and u\textsuperscript{C} for current policy payoffs on entrenchment and concession. The two policies can generate different posterior distributions, giving continuation operators K\textsuperscript{A} and K\textsuperscript{C}. With success probability q the gain is
+
+\[T=q\left[u^A-u^C+\delta\left(K^A V^A-K^C V^D\right)\right]-k.\]
+
+At the prior, a responsive R implements x = 1.5 + .5m and always identifies both coefficients through the public outcome. A flat L implements x = $-$.5 regardless of m. Each branch's evidence distribution is therefore independent of today's S. For R, the slope of its own flow payoff in S is (2$\cdot$2$\cdot$1 $-$ 1${}^2$)(.5)${}^2$ = .75. Against a flat L the corresponding slope is zero. Since q = .5, the following relation holds for any of the horizons, holding future monitoring and the continuation fixed.
+
+\[T_R(S\mid g_R=1,g_L=0)=T_R(0\mid g_R=1,g_L=0)+\frac{3}{8}S.\]
+
+The continuation changes the intercept. At k = 2.40 it is $-$.150993 with two elections, $-$.0452312033125 with three, and +.117056020 in the stationary equilibrium. The first two upper cutoffs are the zeros of this affine function. In the last case refusal is profitable even at S = 0. A longer horizon increases the value of successful entrenchment relative to concession in this example. Both continuation values respond to the horizon, so the comparison requires solving both branches.
+
+\section*{What the parties learn in a stationary democracy}
+\emph{A history-dependent transfer decision with monitoring held fixed}
+
+A public state records the regime, the current governing party and the Bayesian posterior over ($\alpha$, $\beta$). Every feasible nonzero instrument distinguishes $\beta$ = 0 from $\beta$ = 1. Depending on its magnitude and the observation, it can also identify $\alpha$. A zero instrument leaves beliefs unchanged. The initial prior, four point posteriors and two posteriors that identify only $\beta$ exhaust the seven reachable records. Together with two regimes and two governing parties they give 28 Markov states.
+
+\subsection*{A stationary Markov perfect equilibrium at k = 2.55}
+
+\begin{center}\small\begin{tabular}{lll}\toprule
+\textbf{Public record} & \textbf{Permanent monitoring .05} & \textbf{Permanent monitoring .14}\\ \midrule
+Initial prior & Both concede & Both refuse\\
+$\alpha$ = $-$.02, $\beta$ = 0 & Both concede & Both concede\\
+$\alpha$ = $-$.02, $\beta$ = 1 & Both concede & Both refuse\\
+$\alpha$ = +.02, $\beta$ = 0 & Both concede & Both concede\\
+$\alpha$ = +.02, $\beta$ = 1 & Both refuse & Both refuse\\
+$\beta$ = 0, $\alpha$ unresolved & Both concede & Both concede\\
+$\beta$ = 1, $\alpha$ unresolved & Both refuse & Both refuse\\
+\bottomrule\end{tabular}\end{center}
+
+Each entry gives the action after a certified defeat, for either incumbent, at the equilibrium offers. At every record both parties choose responsive mandates, except that when only $\beta$ = 0 is known both mandates of a party implement its ordinary policy. The zero-valence certificate goes to the incumbent in refusal states. In concession states it goes to R except when $\alpha$ = $-$.02 and $\beta$ = 0, when it goes to L.
+
+With permanent monitoring .05, the first transfer is honored. Evidence establishing $\beta$ = 1 while leaving $\alpha$ unresolved makes either party refuse its next defeat. If a later observation establishes $\alpha$ = $-$.02 while democracy survives, either party again concedes. The same coefficient-learning process can initiate or end a spell of refusal.
+
+\subsection*{Probability of eventual takeover from the initial prior}
+
+\begin{center}\small\begin{tabular}{lll}\toprule
+\textbf{Permanent monitoring} & \textbf{L initially governs} & \textbf{R initially governs}\\ \midrule
+.05 & 25.55\% & 25.55\%\\
+.14 & 61.70\% & 61.43\%\\
+\bottomrule\end{tabular}\end{center}
+
+For a fixed equilibrium, give already autocratic states absorption probability one and closed democratic classes zero. On the remaining democratic states the hitting probability H solves H = p\textsuperscript{A} + QH, where p\textsuperscript{A} is one-period entry into autocracy and Q is the transition submatrix among those states. For permanent monitoring .05 the probability from either incumbency is 6578735941/25753024084. With .14 it is 791/1282 from L and 63007/102560 from R. These probabilities are ex ante over the public prior and subsequent play.
+
+\section*{When future votes change today's concession}
+\emph{A fixed-monitoring test of the electoral feedback from learning}
+
+Consider a defeated responsive R facing a flat L. Conditional on concession, the left government's policy trial generates the same distribution of evidence in both comparisons. In the counterfactual, assign the zero-valence result to R at the \emph{next} election independently of this evidence. Keep all posterior updates, policy payoffs, future monitoring and subsequent elections as specified. Re-solve campaigns and transfers. This distinguishes the electoral use of the record from its effect on policy choices.
+
+\begin{center}\small\begin{tabular}{lllll}\toprule
+\textbf{Game and next vote} & \textbf{Pr(R certified)} & \textbf{Pr(R governs)} & \textbf{R refusal gain} & \textbf{R action}\\ \midrule
+Three, ordinary vote & .5100 & .4650 & +.007269 & Refuse\\
+Three, fixed vote & .5500 & .4950 & $-$.007010 & Concede\\
+Infinite, ordinary vote & .5000 & .4325 & +.009323 & Refuse\\
+Infinite, fixed vote & .5500 & .4675 & $-$.008413 & Concede\\
+\bottomrule\end{tabular}\end{center}
+
+The three-election rows use S = .14 and k = 2.40. The infinite rows use S = .41 today, .05 afterwards and k = 2.55. The two probability columns condition on today's concession to a flat L. A certificate need not result in office because a future L incumbent can also refuse. The gain column holds fixed today's offer pair. In the ordinary-vote games even the flat offer fails to secure concession, and the challenger chooses responsive in equilibrium. In the fixed-vote games the challenger chooses flat and the incumbent concedes.
+
+In the stationary continuation, after a flat L, the probability of the record ($\alpha$, $\beta$) = ($-$.02, 0) is .20. The record (+.02, 1) also has probability .20, and $\beta$ = 1 with $\alpha$ unresolved has probability .10. At all three, the next zero-valence certificate goes to L. These events have total probability .50, lowering R's next certification probability from .55 to .50. At the last two records an incumbent L also refuses. R's chance of actually returning is .4325. The upper cutoff for R moves from .385138 with ordinary voting to .432434 with the next neutral certificate fixed.
+
+\subsection*{Equilibrium verification}
+
+For three elections, solve all records and incumbencies at the last election, then at the penultimate election. At the initial prior each branch at fixed mandates is affine in S. Partition [0, 1] at indifferences in quorum participation, refusal, voting and unilateral campaign deviations. Signs are constant between adjacent cut points. Checking every cell and boundary establishes the cutoffs in the first-election table. The displayed three-election R upper cutoff at k = 2.40 is exactly 723699253/6000000000.
+
+For each proposed stationary profile, integrate the measurement error on intervals with constant likelihood and form its transition matrix. Solve (I $-$ $\delta$P)V\textsubscript{i} = u\textsubscript{i} for parties and blocs, and use the two cohort equations. At every public record and incumbency, including after off-path offer pairs, recompute quorum participation, refusal and ballots. Check both parties' unilateral mandate deviations and the Bellman identities. The accompanying verification performs these operations with rational arithmetic. Other stationary equilibria and a general ordering of the equilibrium correspondence remain open.
+
+\end{document}

@@ -1,0 +1,101 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,geometry,fancyhdr,microtype}
+\geometry{left=1.03in,right=1.03in,top=.90in,bottom=.88in,headheight=15pt,headsep=.18in}
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=black]{hyperref}
+\hypersetup{pdftitle={A Three-Election Benchmark for Political Realignment and the Transfer of Power}}
+\setlength{\parindent}{0pt}\setlength{\parskip}{6pt plus 1pt minus 1pt}
+\setlength{\emergencystretch}{1.4em}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small\itshape Political Realignment and the Transfer of Power}
+\fancyhead[R]{\small Three-election benchmark}\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{.25pt}
+\newcommand{\UU}{\mathsf U}
+\begin{document}
+\thispagestyle{plain}
+{\LARGE\bfseries A Three-Election Benchmark\par}
+{\large Political realignment and the transfer of power\par}
+\section*{1\quad When the extra election changes refusal}
+With three elections remaining, either governing party would refuse a defeat when the policy effect is unresolved and monitoring is high. With two elections remaining, the right would concede in that state. One additional election changes its decision even when the announced programs, policies in the disputed term, and chance of a successful refusal are fixed.
+
+The democratic game now runs through three governing terms. Put \(V_4=0\) for all actors. Voters continue to live for two terms, truncated at the common endpoint. Parties and enforcement blocs value all remaining terms. The public policy record carries over between cohorts. All other parameters, program menus, voting and tie rules, and the convention that an attainable enforcement quorum forms are those of the OLG draft. In particular \(S\) is either .12 or .88 at fixed economic variance. The final two terms therefore reproduce the two-election benchmark by backward induction. A successful refusal cancels any elections still to come.
+
+\begin{center}\small
+\textbf{Table 1.\ Gain from refusing a defeat under high monitoring}\\[5pt]
+\begin{tabular}{@{}lcrr@{}}\toprule
+Election & Elections remaining & Left incumbent & Right incumbent\\\midrule
+First  & 3 & $+.4185$ & $+.5326$\\
+Second & 2 & $+.3283$ & $-.0353$\\
+Third  & 1 & $+.0516$ & $-.2274$\\\bottomrule
+\end{tabular}\\[3pt]
+Each row conditions on democracy, the unresolved record \(\UU\), and \(S=.88\).
+\end{center}
+
+For a controlled comparison, give the right incumbent and its challenger the same programs as in the two-election contest. Write a program as \((\beta^M,\gamma^M,a)\), its baseline policy, outcome weight, and official causal account. The left offers \((.30,1.20,0)\), and the right offers \((.50,.70,1)\). A lawful left government chooses \(.5\) after each report. If the right entrenches, it chooses \((-.5,.5,1)\) after reports \((-1,0,1)\). These policies are identical with two or three elections remaining. In both cases the probability of a successful refusal is \(q=.64\).
+
+Let \(A_R-C_R\) denote the right's payoff from successful entrenchment relative to a lawful transfer, before any attempt costs. With \(k=.57\) and failed-attempt sanction \(\kappa=.30\), refusal requires
+\[
+ A_R-C_R>\frac{k+(1-q)\kappa}{q}=1.059375.
+\]
+The payoff difference increases from \(1.0042831\) to \(1.1174497\) when the third election is added. The right's net gain changes from \(-.0353\) to \(+.0372\) solely through continuation values in this comparison. Allowing campaigns to adjust gives \(+.5326\) in the first row of Table 1. Either first-date equilibrium account for the left's baseline policy of \(-.10\) yields that figure.
+
+\newpage
+\section*{2\quad A mixed campaign in the first election}
+With a right incumbent, low monitoring, and an unresolved record, both parties must randomize over mandates in the first election. The electorate observes the realized programs before voting. Given the offers and a certified defeat, the incumbent has a strict preference for concession or refusal in every cell below.
+
+\begin{center}\small
+\textbf{Table 2.\ Remaining programs and party payoffs}\\[5pt]
+\begin{tabular}{@{}lrr@{}}\toprule
+& \(R_1=(1,2.4,1)\) & \(R_3=(.50,.70,1)\)\\\midrule
+\(L_0=(-.10,-.10,0)\) & $(-2.9486,-.1687)$ & $(-.5864,-.7760)$\\
+\(L_2=(.30,1.20,0)\) & $(-1.4193,-.2959)$ & $(-1.1692,-.1462)$\\\bottomrule
+\end{tabular}\\[3pt]
+Cell entries are the left and right party's expected payoffs before the vote.
+\end{center}
+
+Against \(L_0\), the right prefers \(R_1\). Against \(R_1\), the left prefers \(L_2\). The right then prefers \(R_3\), against which the left prefers \(L_0\). Making each party indifferent gives the unique independent mixed equilibrium in this state,
+\[
+ \Pr(L_0)=.19783068,\qquad \Pr(R_1)=.27592205 .
+\]
+The full menus initially contain four programs per party. After strictly dominated pure strategies are deleted, the mixture \(\tfrac34 L_0+\tfrac14L_2\) strictly dominates the remaining left offer outside the table. Against the two surviving left offers, \(R_3\) strictly dominates the remaining right offer outside the table. The replication checks every deviation against the four original programs using exact payoffs.
+
+The right refuses only at \((L_0,R_1)\) if it loses. The pair is drawn with probability .054586, and the right loses with probability .22 given the pair. Across all pairs it loses with probability .467924. Its refusal probability conditional on a certified defeat is therefore \(.054586(.22)/.467924=.02566\). A refusal in that cell succeeds with probability .64.
+
+\begin{center}\small
+\textbf{Table 3.\ From the beginning of the first election at \(\UU\), in percent}\\[5pt]
+\begin{tabular}{@{}lcrrr@{}}\toprule
+Incumbent & \(S\) & Right wins count & Refuses given loss & Takeover\\\midrule
+Left  & .12 & 32.00 & 0       & 0\\
+Left  & .88 & 68.00 & 100     & 43.52\\
+Right & .12 & 53.21 & 2.57    & .77\\
+Right & .88 & 88.00 & 100     & 7.68\\\bottomrule
+\end{tabular}
+\end{center}
+
+In two other first-date states the left is indifferent between the two accounts accompanying its equilibrium mandate. Those states are a left incumbent under low monitoring and a right incumbent under high monitoring, both at \(\UU\). Either account, or any mixture of them, gives the same certificate, transfer decision, and policy transitions used in the tables. The results condition on the specified selection in the enforcement game.
+
+\newpage
+\section*{3\quad A second chance to return after conceding}
+Suppose the incumbent loses the first count and yields to its challenger. It can return immediately in the second term. If the challenger wins the second count, it can also return for the first time in the third term. If the challenger instead overturns its own defeat and entrenches in term 2, the third election is canceled.
+
+\begin{center}\small
+\textbf{Table 4.\ After conceding a certified first defeat, in percent}\\[5pt]
+\begin{tabular}{@{}lcrrrr@{}}\toprule
+Party & Initial \(S\) & Wins next count & Governs term 2 & First return in 3 & Any return by 3\\\midrule
+Left  & .12 & 32.76 & 32.65 & 39.62 & 72.27\\
+Left  & .88 & 21.45 & 20.75 & 28.26 & 49.00\\
+Right & .12 & 60.06 & 54.55 & 14.74 & 69.29\\
+Right & .88 & 68.00 & 33.18 & 8.64  & 41.83\\\bottomrule
+\end{tabular}
+\end{center}
+
+The record is initially unresolved. Each row conditions on a certified first defeat and imposes a lawful transfer even where the incumbent would refuse. In the mixed campaign the weight of each pair of programs is proportional to its draw probability times the probability of defeat given that pair. Subsequent elections, policy trials, public releases, enforcement, and monitoring follow the equilibrium. The final column adds the two mutually exclusive dates of first return before rounding. For the right party, higher initial monitoring improves its prospects of winning the next count and lowers its chance of ever returning within the horizon.
+
+To see how the third term enters the party's incentive, consider the fixed-program, known-technology case from the two-election note. There is no regime loss, the rival's policy payoff is normalized to zero in each term, and \(g_t\) is the party's deterministic gain from governing in term \(t\). Let \(r_s\) be the probability that the party actually governs in term \(s\) if it concedes today. Write \(c_3\) for its expected expenditure on its own third-term refusal attempt and any resulting sanction on this path. Following a first concession it enters term 2 as challenger, so it cannot pay the incumbent's refusal costs in that term.
+
+Successful entrenchment today gives the party all three policy and office payoffs. A concession gives it \(\delta r_2g_2+\delta^2(r_3g_3-c_3)\) in expected discounted payoffs. Thus its gain from attempting to refuse the first loss is
+\[
+ T_{I,1}=q_1\big\{g_1+\delta(1-r_2)g_2+
+           \delta^2[(1-r_3)g_3+c_3]\big\}-k-(1-q_1)\kappa .
+\]
+Here \(r_3\) measures control in term 3, including retention after a term-2 return. A party that returns in term 2 can also lose power again. In the full numerical game the right's probability of governing in term 3 after an initial concession is 35.58 percent under low initial monitoring and 27.54 percent under high monitoring. The corresponding probabilities of any return by then are 69.29 and 41.83 percent. A voter already young in term 1 values only terms 1 and 2. The party's stake in term 3 can nevertheless change the programs and transfers she faces while alive.
+\end{document}
