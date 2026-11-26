@@ -400,42 +400,44 @@ which is continuous and strictly decreasing on $[0,\bar\ell]$, with $0<S_-\equiv
 with concession on $[0,S_+]$ and refusal on $(S_+,\sigma_\omega^2]$. Left's installation probability drops discontinuously from $p$ to $p(1-q)$ above $S_+$; at $S=0$, $(\bar\ell,\bar r)$ with concession is an equilibrium.
 \end{proposition}
 
-\begin{figure}[htbp]\centering\small
-\begin{tikzpicture}[>=Latex, scale=1.0]
+\begin{figure}[!htb]\centering\small
+\begin{tikzpicture}[>=Latex, x=.12\linewidth, y=1.60cm, font=\small]
   % Shaded regions (at a=0 where D_0(0)=D_0(\bar\ell)=D_0)
   \fill[inkblue!6]  (0,1.05) -- (6.8,3.65) -- (6.8,4.35) -- (0,4.35) -- cycle;
   \fill[inkblue!16] (0,1.05) -- (6.8,2.25) -- (6.8,3.65) -- cycle;
   \fill[red!7]      (0,0)    -- (6.8,0)    -- (6.8,2.25) -- (0,1.05) -- cycle;
 
   % Phase boundaries
-  \draw[thick, inkblue] (0,1.05) -- (6.8,3.65) node[right, font=\footnotesize] {$D_1(\bar\ell)$};
-  \draw[thick, inkblue!85!black] (0,1.05) -- (6.8,2.25) node[right, font=\footnotesize] {$D_1(0)$};
+  \draw[thick, inkblue] (0,1.05) -- (6.8,3.65) node[right] {$D_1(\bar\ell)$};
+  \draw[thick, inkblue!85!black] (0,1.05) -- (6.8,2.25) node[right] {$D_1(0)$};
   \draw[dotted, gray!80] (0,3.65) -- (6.8,3.65);
 
   % Horizontal slice at interior k/q
   \draw[dashed, black!70, thick] (0,1.92) -- (6.8,1.92);
   \fill[inkblue] (2.28,1.92) circle (2pt);
   \fill[inkblue] (4.93,1.92) circle (2pt);
-  \draw[dotted, black!60] (2.28,1.92) -- (2.28,0) node[below, font=\footnotesize] {$S_-$};
-  \draw[dotted, black!60] (4.93,1.92) -- (4.93,0) node[below, font=\footnotesize] {$S_+$};
+  \draw[dotted, black!60] (2.28,1.92) -- (2.28,0) node[below, text=black] {$S_-$};
+  \draw[dotted, black!60] (4.93,1.92) -- (4.93,0) node[below, text=black] {$S_+$};
 
   % Axes
-  \draw[->, thick] (0,0) -- (7.4,0) node[right, font=\footnotesize] {Monitoring $S$};
-  \draw[->, thick] (0,0) -- (0,4.6) node[above, font=\footnotesize] {Effective refusal cost $k/q$};
+  \draw[->, thick] (0,0) -- (7.05,0);
+  \draw[->, thick] (0,0) -- (0,4.53);
+  \node[font=\normalsize, rotate=90] at (-.76,2.23) {Effective cost of refusing defeat, $k/q$};
+  \node[font=\normalsize, anchor=north] at (3.4,-.34) {Monitoring $S$};
 
   % Ticks and labels
-  \node[left, font=\footnotesize] at (0,1.05) {$D_0$};
-  \node[left, font=\footnotesize] at (0,1.92) {$k/q$};
-  \node[left, font=\footnotesize] at (0,3.65) {$D_1(\bar\ell)$};
-  \node[below, font=\footnotesize] at (0,0) {$0$};
-  \node[below, font=\footnotesize] at (6.8,0) {$\sigma_\omega^2$};
+  \node[left] at (0,1.05) {$D_0$};
+  \node[left] at (0,1.92) {$k/q$};
+  \node[left] at (0,3.65) {$D_1(\bar\ell)$};
+  \node[below] at (0,0) {$0$};
+  \node[below] at (6.8,0) {$\sigma_\omega^2$};
 
   % Region annotations
-  \node[align=center, font=\footnotesize] at (2.45,3.25) {\textbf{Unconstrained Democracy}\\Full mandates $(\bar\ell,\bar r)$, Concede};
-  \node[align=center, font=\footnotesize, rotate=16] at (4.55,2.42) {\textbf{Pacted Moderation} ($\ell^*(S)<\bar\ell$, Concede)};
-  \node[align=center, font=\footnotesize] at (4.35,0.72) {\textbf{Polarization \& Refusal}\\Full mandates $(\bar\ell,\bar r)$, Refuse defeat};
+  \node[align=center] at (2.45,3.16) {{\normalsize\bfseries Unconstrained Democracy}\\Full mandates $(\bar\ell,\bar r)$, Concede};
+  \node[align=center] at (5.46,2.50) {{\normalsize\bfseries Pacted Moderation}\\$\ell^*(S)<\bar\ell$, Concede};
+  \node[align=center, fill=red!7, inner sep=2pt] at (3.60,0.79) {{\normalsize\bfseries Polarization \& Refusal}\\Full mandates $(\bar\ell,\bar r)$, Refuse defeat};
 \end{tikzpicture}
-\caption{Phase diagram of campaign mandates and democratic compliance in $(S,k/q)$ space (drawn for $D_0(0)=D_0(\bar\ell)=D_0$). Above the upper ray $k/q=(1-R^2)D_0+R^2 D_1(\bar\ell)$, full mandates are honored; inside the wedge, the challenger pays a turnover tribute $\bar\ell-\ell^*(S)>0$ to preserve transfer; below the lower ray $k/q=(1-R^2)D_0+R^2 D_1(0)$, moderation collapses and refusal emerges.}\label{fig:phase}
+\caption{Campaign mandates and democratic compliance when $D_0(0)=D_0(\bar\ell)=D_0$. Refusal costs $k$ per attempt and succeeds with probability $q$, so $k/q$ is the gain from success needed to break even. The dashed line holds $k/q$ fixed as monitoring $S$ rises. Above $k/q=(1-R^2)D_0+R^2 D_1(\bar\ell)$, the incumbent honors full mandates. Inside the wedge, the challenger pays a turnover tribute $\bar\ell-\ell^*(S)>0$ to preserve transfer. Below $k/q=(1-R^2)D_0+R^2 D_1(0)$, even a flat mandate elicits refusal.}\label{fig:phase}
 \end{figure}
 
 Figure~\ref{fig:phase} illustrates the linear wedge geometry of Proposition~\ref{prop:main}. Two robustness properties hold immediately. First, if valence follows a smooth density $f_\eta$ with sufficiently small $\bar\phi=\sup f_\eta>0$, $p(\ell,r;S)$ varies smoothly ($|\partial_\ell p|=O(\bar\phi)$), the binding locus $T_{R,2}(\ell,r^*;S)=0$ still pins down $\ell^*(S)$ on $(S_-,S_+]$, and crossing $S_+$ still triggers an upward jump from $0$ to $\ell^F(S)=\bar\ell-O(\bar\phi)$. Second, if the challenger's activist bloc shares $\gamma_{b_L}<0$, deep moderation lowers $C_{b_L}(\ell)-A_{b_L}(\bar r)$; if this margin crosses $c$ at $\hat\ell\in(0,\bar\ell)$, activist demobilization raises $q$ to $1$ and precipitates breakdown earlier, whereas cross-partisan endorsement by the incumbent's bloc ($C_{b_R}(\ell)-A_{b_R}(\bar r)\ge c$) lowers $q$ to $0$.
