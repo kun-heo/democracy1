@@ -51,7 +51,7 @@ Working draft, November 2026
 \end{center}
 
 \begin{quote}\small
-\noindent\textbf{Abstract.} The opposition can make its deepest policy concession in the last election in which a concession still secures voluntary transfer. I study this possibility in a game where parties announce how they will respond to economic news in office, a defeated incumbent can refuse to step down, and voters learn from the winner's record. A challenger can surrender discretion even as the expected squared distance between the two possible governments' policies grows. When citizens can help a defeated incumbent stay in office, the challenger can also make a policy concession that leads some citizens to withdraw their support for refusal. Such a concession can improve its chances of taking office even if the incumbent still refuses. In a Gaussian example, allowing the next electorate to act on the same evidence changes the incumbent's decision from concession to refusal. I then allow the incumbent to remove a rule that guarantees transfer to a challenger promising restraint. Both parties can prefer the guarantee before the election even though the incumbent would break the agreement after losing. With the same median voter and the same threshold for voluntary concession, an incumbent can value the safeguard throughout or eventually pay to dismantle it. With repeated elections, I bound refusal incentives across stationary equilibria.
+\noindent\textbf{Abstract.} The opposition can make its deepest policy concession in the last election in which a concession still secures voluntary transfer. I study this possibility in a game where parties announce how they will respond to economic news in office, a defeated incumbent can refuse to step down, and voters learn from the winner's record. A challenger can surrender discretion even as the expected squared distance between the two possible governments' policies grows. When citizens can help a defeated incumbent stay in office, the challenger can also make a policy concession that leads some citizens to withdraw their support for refusal. Such a concession can improve its chances of taking office even if the incumbent still refuses. In a Gaussian example, allowing the next electorate to act on the same evidence changes the incumbent's decision from concession to refusal. I then allow the incumbent to remove a rule that guarantees transfer to a challenger promising restraint. Both parties can prefer the guarantee before the election even though the incumbent would break the agreement after losing. With the same median voter and the same threshold for voluntary concession, an incumbent can value the safeguard throughout or eventually pay to dismantle it. With recurring elections, the same mandate and public backing can elicit concession or refusal depending on the electoral competition the loser expects to face in the future.
 \end{quote}
 
 \section{Introduction}\label{sec:intro}
@@ -81,7 +81,7 @@ In the gambling equilibrium of \citet{izzofuture}, the initially unpopular party
 
 In the symmetric anti-pandering equilibrium of \citet*[Proposition~2]{kartikst}, the voter infers both candidates' private signals from their platforms. Her posterior ideal policy lies midway between the platforms, and each candidate wins with probability $1/2$ for every pair of signals. Here voters learn from the challenger's record in office. Holding that evidence fixed lets me isolate how the prospect of losing votes at the next election affects the incumbent's willingness to concede today.
 
-Section~\ref{sec:setup} defines the game. Section~\ref{sec:prelim} analyzes one-election realignment, two-audience moderation, unrestricted slopes, and partial commitment. Section~\ref{sec:two} characterizes transitional elections and closed-form Gaussian learning. Section~\ref{sec:stationary} establishes infinite-horizon posterior bounds. Section~\ref{sec:example} presents the worked Gaussian and infinite-horizon analyses, and Section~\ref{sec:discussion} develops empirical designs and historical narratives. Proofs appear in the appendix.
+Section~\ref{sec:setup} defines the game. Section~\ref{sec:prelim} analyzes one-election realignment, two-audience moderation, unrestricted slopes, and partial commitment. Section~\ref{sec:two} characterizes transitional elections and closed-form Gaussian learning. Section~\ref{sec:stationary} characterizes the recurring election and establishes posterior bounds. Section~\ref{sec:civicmpe} solves stationary equilibria with citizen enforcement. Section~\ref{sec:example} presents the worked Gaussian and infinite-horizon analyses, and Section~\ref{sec:discussion} develops empirical designs and historical narratives. Proofs appear in the appendix.
 
 \section{The political game}\label{sec:setup}
 
@@ -572,13 +572,45 @@ A positive electoral effect shifts the cutoff downward. The upper cutoff can thu
 
 \section{Repeated elections and posterior-dependent bounds}\label{sec:stationary}
 
-For repeated elections I retain the organized-enforcement rule. When a single transfer does not permanently consolidate democracy, a party that concedes today may win a future count only to face an opponent that refuses to vacate office, while public beliefs $h_t$ evolve continually under Kalman-Bayesian updating. With a time-homogeneous monitoring Markov process, the public state is $Z=(\mathcal D,I,h,S)$. Under a stationary Markov profile with transition kernel $P$ and expected one-period payoffs $u_i$ (including any attempt/endorsement costs or valence), long-lived party/bloc values and cohort voter values satisfy
+With repeated elections, a party that concedes today may win a future count only to face an opponent that refuses to vacate office, while public beliefs $h_t$ evolve continually under Kalman-Bayesian updating. With a time-homogeneous monitoring Markov process, the public state is $Z=(\mathcal D,I,h,S)$. Under a stationary Markov profile with transition kernel $P$ and expected one-period payoffs $u_i$ (including any attempt/endorsement costs or valence), long-lived party/bloc values and cohort voter values satisfy
 \begin{equation}
  V_i=u_i+\delta PV_i,\qquad V_v^O=u_v,\qquad
  V_v^Y=u_v+\delta P u_v ,
  \label{eq:bellman}
 \end{equation}
-with finite-state party solution $(\Id-\delta P)^{-1}u_i$. Stationary Markov perfect equilibria (MPE) require optimal mandate offers, sincere cohort voting under \eqref{eq:olg}, quorum endorsement under $C_i-A_i\ge c$, and incumbent concession iff $q(A_I-C_I)\le k$ at every public state, including after off-path offers.
+with finite-state party solution $(\Id-\delta P)^{-1}u_i$. Stationary Markov perfect equilibria (MPE) require optimal mandate offers, sincere cohort voting under \eqref{eq:olg}, citizen enforcement under \eqref{eq:citizens} or quorum endorsement in the organized-bloc benchmark, and incumbent concession iff $q(A_I-C_I)\le k$ at every public state, including after off-path offers.
+
+\paragraph{A stationary equilibrium with citizen enforcement.}
+Let $z=(I,h,S)$ be a democratic campaign state and $J$ the challenger. The posterior $h$ includes its covariance. Write $V_i^D(j,h',S')$ for party $i$'s value entering the next election with incumbent $j$, and $V_i^A(j,h',S')$ for its value under permanent rule by $j$. Let $K_{j,w}$ integrate over the next posterior generated by today's policy trial and over the next monitoring level. Suppressing current arguments, the three branch values for a party are
+\begin{equation}
+ \begin{aligned}
+ W_i&= f_i(I,w_I)+\delta K_{I,w_I}V_i^D(I),\\
+ C_i&= f_i(J,w_J)+\delta K_{J,w_J}V_i^D(J),\\
+ A_i&= f_i(I,w_I)+\delta K_{I,w_I}V_i^A(I).
+ \end{aligned}\label{eq:stationarybranches}
+\end{equation}
+Entrenchment implements the incumbent's current mandate. Starting next term the autocrat uses its ideal weight $\gamma_I^P$. For an old citizen the three branches contain only current material payoffs. For a young citizen the continuation in each branch is her expected payoff \emph{as an old citizen next term}, including electoral valence if democracy survives. Current valence attaches to the certificate and cancels when citizens consider whether to overturn it.
+
+At every announced pair, including a pair reached with zero probability, \eqref{eq:citizens} gives $s_I$ from these old and young branch values. Put
+\[
+ q_I=q_0+\lambda s_I,\qquad T_I=q_I(A_I-C_I)-k,\qquad
+ d={\bf1}\{T_I>0\},\qquad \tau=q_I d .
+\]
+If $I$ loses the count, the challenger is installed with probability $1-\tau$. Old and young ballots compare $W-C-\tau(A-C)$ for their respective horizons, oriented toward the incumbent, with the signed valence for certifying $R$. Let $P_I$ be the incumbent's resulting probability of winning the count. The parties' campaign payoffs are
+\begin{equation}
+ M_i=P_IW_i+(1-P_I)
+ \big[C_i+\tau(A_i-C_i)-{\bf1}\{i=I\}k d\big] .
+ \label{eq:stationarycampaign}
+\end{equation}
+A stationary Markov perfect equilibrium (MPE) requires each party's offer distribution to put weight only on best replies in \eqref{eq:stationarycampaign}, and $V_i^D(z)$ to equal the expectation of $M_i$ under these independent distributions. The old citizen's value is her single-term payoff averaged over these same certificates and installed rulers. Autocratic values follow the policy of the permanent ruler. These conditions, imposed in every public state with the specified tie rules, characterize an MPE for bounded payoffs and extend under the corresponding discounted transversality condition. They enforce optimality after every campaign deviation, at the count, and at every future incumbent identity. The one-stage deviation principle then rules out a profitable plan involving several elections.
+
+Conditional on seating $J$ today, $I$'s probability of returning \emph{next term} is
+\[
+ K_{J,w_J}\,\E_{\mu(z')}\big[(1-P_J(z',w'))(1-\tau_J(z',w'))\big].
+\]
+The expectation averages over both next-term offers. The first factor gives $I$ a new certificate. The second makes that certificate effective. Today's incumbent values the whole continuation in \eqref{eq:stationarybranches}, including who can transfer power after that election.
+
+For the conditional guarantee in Section~\ref{sec:guarantee}, give the current campaign a public indicator specifying whether a flat challenger is guaranteed installation. With an intact guarantee, set $d=\tau=0$ for a certified flat challenger and solve both campaigns again. The rule expires after this count. If $U_I^F(z)$ and $U_I^G(z)$ are the resulting ex ante payoffs with the current guarantee removed or retained, the incumbent attempts repeal if $\rho[U_I^F(z)-U_I^G(z)]>c_E$. Both values use the same stationary political continuation. A shock to $S$ for this term leaves those continuation strategies fixed at each future state. A permanent change in $S$ requires recomputing them.
 
 Projecting squared losses onto the post-signal filtration yields sharp equilibrium-independent transfer bounds that hold for both unbounded Gaussian priors and bounded priors. At state $Z=(\mathcal D,I,h,S)$ with rival $J$, let $\bar S\in[S,\sigma_\omega^2]$ bound reachable future monitoring, and define the posterior parameter-uncertainty loss
 \[
@@ -597,7 +629,7 @@ Suppose the exogenous evolution of $\{S_t\}$ is independent of regime and policy
 As public learning drives $\Var_h(\alpha),\Var_h(\beta)\to 0$, $\mathcal U_I(h)\to 0$, eliminating parameter-uncertainty slack from the lower bound. Whenever the upper bound in \eqref{eq:infbounds} is nonpositive across admissible offers at $h$, every stationary MPE prescribes concession; whenever the lower bound is strictly positive across $J$'s menu against $I$'s equilibrium offer, every stationary MPE prescribes refusal.
 \end{proposition}
 
-These inequalities apply to any stationary equilibrium satisfying the stated hypotheses. The numerical exercise below evaluates selected equilibria in a finite approximation. Existence and an ordering of the full equilibrium set in the continuous posterior game require separate arguments.
+These inequalities apply pointwise with $q_I=q_0+\lambda s_I$ from the same state and offer pair, as well as with bloc enforcement. Section~\ref{sec:civicmpe} gives an exact stationary equilibrium at known technology and numerical selections for a finite approximation under learning. A global existence or ordering result for the full continuous posterior game would require a separate argument.
 
 \section{Worked Gaussian and infinite-horizon analyses}\label{sec:example}
 
@@ -891,7 +923,7 @@ In Table~\ref{tab:params}, the two valence draws that fix the winner regardless 
 
 \subsection{Repeated elections under Gaussian Kalman filtering}
 
-The repeated-election illustration uses binary mandates $\ell,r\in\{0,1\}$, permanent monitoring $S\in\{.05,.14\}$, and refusal cost $k=2.55$. At the prior, the discounted parameter-uncertainty term $\delta\mathcal U_I(h_0)/(1-\delta)$ is $.030$ at $S=.05$ and $.060$ at $S=.14$. It converges to zero along histories that resolve both coefficients. The other terms in \eqref{eq:infbounds} continue to depend on political disagreement. The proposition gives sufficient conditions for common behavior across equilibria at a given state.
+The organized-enforcement illustration uses binary mandates $\ell,r\in\{0,1\}$, permanent monitoring $S\in\{.05,.14\}$, and refusal cost $k=2.55$. At the prior, the discounted parameter-uncertainty term $\delta\mathcal U_I(h_0)/(1-\delta)$ is $.030$ at $S=.05$ and $.060$ at $S=.14$. It converges to zero along histories that resolve both coefficients. The other terms in \eqref{eq:infbounds} continue to depend on political disagreement. The proposition gives sufficient conditions for common behavior across equilibria at a given state.
 
 The following calculations concern the discretized Kalman game and the two continuation selections described in Appendix~\ref{app:stationary}.
 
@@ -917,6 +949,46 @@ $.14$ & Mutual refusal    & 74.28\% & 70.43\%\\ \bottomrule
 \end{tabular}
 \end{table}
 For an initially right incumbent, the $.6109$ takeover probability under mutual refusal at low $S$ exceeds the $.5526$ probability under mutual concession at high $S$. To formulate the extremal-equilibrium question in the spirit of \citet{milgromroberts}, let $H_I(e,S)$ be the probability of eventual takeover from the same prior and incumbent under stationary equilibrium $e$, and let $\mathcal E(S)$ be the equilibrium set. The lower and upper risks are $\inf_{e\in\mathcal E(S)}H_I(e,S)$ and $\sup_{e\in\mathcal E(S)}H_I(e,S)$. Establishing that each boundary rises requires either bounding the whole set or proving that the two displayed selections attain its extrema at both monitoring levels. Table~\ref{tab:risk} establishes the two matched comparisons. Its overlapping ranges rule out the stronger claim that every high-$S$ selection has greater risk than every low-$S$ selection.
+\subsection{Citizen enforcement at every election}\label{sec:civicmpe}
+
+Keep both cohorts and the four citizen types in Section~\ref{sec:civicworked}, with $m=.40$, $\nu=.5$, $\lambda=.60$, and $\delta=.25$. Both parties can be defeated incumbents. They choose between a flat and a full mandate at every election, as in the other repeated-election calculations. A successful refusal ends elections. After a failed refusal the certified challenger takes office and faces an election of its own. I use the same valence distribution in every democratic term. Let $S$ be current forecast variance and $S^\infty$ the level in every subsequent term.
+
+\paragraph{An analytical stationary benchmark.}
+First suppose $\alpha=0$ and $\beta=.5$ are already known. The economic state still varies and the government still observes a forecast in office. At $q_0=.29$ and $k=2.40$, there is a branch of stationary equilibria with voluntary transfer when monitoring is permanent. Up to $S=.20$, either incumbent accepts a full challenger and both parties offer their full mandates. From just above $.20$ through $S_{\rm perm}=91392/199891\simeq .45721$, the challenger offers a flat mandate when $R$ is incumbent. Both parties still run on full mandates when $L$ is incumbent. Both incumbents concede a defeat on this branch. At $S_{\rm perm}$ the right incumbent is indifferent after losing to a flat offer. Above it the same stationary profile would call for a concession that $R$ prefers to break. Appendix~\ref{app:civicmpe} derives the boundary and checks all campaign deviations.
+
+The cost of a single term of high monitoring can be quite different. At the same parameters, if $S^\infty=.05$ the highest \emph{current} $S$ that elicits voluntary concession to a flat offer is $.64962$. Changing $S$ permanently also changes what each party expects to get when it campaigns as tomorrow's incumbent or challenger. Comparing $.45721$ with $.64962$ holds today's officeholders and policy preferences fixed.
+
+A second exact example separates three incentives. Set $q_0=.325$, with $S^\infty=.05$ and the same $k$. The future equilibrium has both parties running on full mandates and honoring the count. At today's election $R$ would refuse even a flat challenger above $S_+=16157/90900\simeq .17774$. For $S_+<S\le .20$, $R$ strictly prefers keeping the guarantee even if repeal is free. Removal would induce the opposition to run on its full program. Just above $.20$ an unprotected challenger chooses a flat mandate anyway to reduce public backing for refusal. At that point $R$ prefers repeal. It will pay $.01$ to repeal the guarantee for $S>S_E(.01)=64471/272700\simeq .23642$. The distinction between refusing a defeat, ceasing to value self-restraint, and actively paying to remove a check therefore survives with indefinitely many elections.
+
+\paragraph{Learning and the prospect of a return.}
+Now restore the Gaussian prior in Table~\ref{tab:params}. Table~\ref{tab:civicmpe} reports selected stationary equilibria in a finite approximation to the Kalman transitions. Today's incumbent is $R$, the belief is the common prior, and the current guarantee, when present, expires after this election. Each row solves anew for both parties' behavior in all subsequent elections. Along the current-$S$ comparisons the right incumbent offers $r=1$ and the chance of a certified opposition victory is $.45$.
+
+\begin{table}[!htbp]\centering\small
+\caption{Citizen-backed refusal and costly repeal with recurring elections}\label{tab:civicmpe}
+\begin{tabular}{@{}rrrrrrr@{}}
+\toprule
+$q_0$ & $k$ & $S^\infty$ & $S_+$ & $S_E(0)$ & $S_E(.01)$ & Eventual takeover\\
+\midrule
+.29 & 2.40 & .05 & .6114 & .6114 & .6745 & 18.3\%\\
+.29 & 2.40 & .14 & .5448 & .5448 & .6079 & 37.5\%\\
+.29 & 2.55 & .05 & .8000 & .8000 & .8000 & 15.4\%\\
+.35 & 2.40 & .05 & none  & all   & all   & 96.7\%\\
+\bottomrule
+\end{tabular}
+\par\smallskip\footnotesize $S_+$ is the last current $S$ with voluntary transfer to a flat challenger. $S_E(c_E)$ is the lower boundary for strictly profitable repeal, with $\rho=1$. An entry of \emph{all} includes $S=0$. The last column starts at the prior with $R$ incumbent, no guarantee, and $S=S^\infty$ in every election.
+\end{table}
+
+Figure~\ref{fig:civicmpe} traces the refusal incentive in the first two rows. At $S=.60$ the opposition chooses a flat mandate in both. A refusal would succeed with probability $.47$. When future monitoring is $.05$, the incumbent's net gain from refusal is $-.00402$ and the opposition takes office with probability $.45$. When future monitoring is $.14$, that gain is $+.01943$ and the opposition takes office with probability $.2385$. Even the public record generated by a flat challenger has the same distribution in the current term. The change comes from the future political and policy consequences of giving that challenger office. In these two rows an unprotected challenger continues to offer a flat mandate immediately above $S_+$. Free repeal becomes attractive as soon as $R$ would refuse. Recovering the cost of repeal takes a further increase in $S$. In the third row a group of citizens changes sides immediately above $.80$, so costly repeal becomes attractive at the same boundary.
+
+\begin{figure}[!htbp]\centering
+\includegraphics[width=.96\linewidth]{citizen_stationary_transfer.pdf}
+\caption{The right incumbent's incentive after a certified loss to a flat challenger. Only the monitoring level in subsequent elections differs across the two curves. The vertical guide compares the same current $S=.60$, mandates $(0,1)$, and potential refusal success probability $.47$. Each curve crosses zero at the voluntary-transfer boundary for its stationary continuation.}\label{fig:civicmpe}
+\end{figure}
+
+Public backing can also put distance between winning a future vote and recovering office. In the last row, suppose $R$ seats a flat $L$ today. Averaging over the ensuing records and campaigns, $R$ wins the next count with probability $.5066$ and is installed with probability $.4115$. The roughly $9.5$ percentage point difference is the chance of winning and then being denied office by $L$. Neither probability by itself gives $R$'s full discounted value of conceding.
+
+The numbers depend on the posterior approximation and equilibrium selection. A wider and finer grid preserves the change from concession to refusal at today's $S=.60$ in the first two rows. It gives voluntary cutoffs of $.6045$ and $.5172$, and costly-repeal cutoffs of $.6676$ and $.5803$. At the higher future monitoring level the two grids disagree about paying $.01$ for repeal at exactly $.60$. Their eventual takeover probabilities also differ appreciably. The incentives for a particular transfer can be better determined numerically than the probability of reaching autocracy over an unlimited number of elections.
+
 \section{Interpreting transfers of power and executive challenges}\label{sec:discussion}
 
 The model's first empirical use is to reconstruct the terms on which a particular transfer took place. Start with what was known before the count. Which policies did the opposition give up, when did it give them up, and who could enforce the pledge? Contemporary platforms, proposed amendments and the accounts of outgoing officials can help establish whether a concession was addressed to a swing voter, an incumbent whose cooperation mattered, or a creditor whose financing the winner would need. What did the incumbent expect to happen to its own electoral coalition if voters saw the challenger govern? A concession made in anticipation of refusal can leave a historical record containing only a peaceful election. A count of breakdowns would miss the policy price paid for that transfer.
@@ -1145,4 +1217,51 @@ For a change in the institutional slope alone, fix $S=.40$, $m=.40$, $q_0=.35$, 
 with indifference at equality. This inequality compares the additional probability of installation with the policy cost of obtaining it. It holds above $\lambda_f$ throughout the feasible range $\lambda\le .65$ in this comparison.
 
 For the second row the gross payoff in \eqref{eq:civicrepeal} jumps below zero just above $S_+$. It is affine and negative until $.20$. On $(.20,.80)$ put $H(\ell)=D_1(\ell)-D_0$, $z=1+\ell_c$. The gross gain divided by $\rho p$ has derivative $H(0)-(1-Q_{\rm lo})[H(\ell_c)-zH'(\ell_c)/2]$. Here $H(0)>.749$, $H(.5)<1.32$, $H(1)<2.002$, and $H'>.70$ by the preceding bound. For $\ell_c\le.5$ the bracket is at most $1.32$; for $\ell_c\ge.5$ it is at most $2.002-.75(.70)$. Thus the gain strictly increases on this interval. Solving the scalar equation at costs $0$ and $.01$ gives $.309303$ and $.348547$. Just above $.80$ the gain jumps to $.25073$ and remains above cost through $1$ ($.25516$). For $m=0$, the gain is affine and negative on the entire upper branch. This verifies the three rows without assuming global single crossing for an arbitrary distribution of citizens.
+\subsection{Stationary citizen enforcement and the transfer guarantee}\label{app:civicmpe}
+
+\paragraph{Known technology and permanent monitoring.}
+With $a=0$, $b=.5$, and permanent $S$, the material payoff of $i$ from $j$ is $f_i(j,w)=-(d_j-d_i)^2+(2\gamma_iw-w^2)S/4$. Suppose both incumbents concede to the prescribed offers and the neutral count always goes to $R$. For each incumbent $j$ let $F_i(j)$ be the average of the two possible implemented material payoffs, with weights $.45$ on $L$ and $.55$ on $R$. The party values then solve
+\[
+ V_i^D(j)=F_i(j)+\frac{\delta}{1-\delta}\big[.45F_i(L)+.55F_i(R)\big],
+ \qquad V_i^A(j)=\frac{f_i(j,\gamma_j^P)}{1-\delta}.
+\]
+A young voter's next-term payoffs are $F_i(j)+45$ and $f_i(j,\gamma_j^P)$, respectively. The $45$ is the expected valence of a surviving election under the stated extreme draws.
+
+Take $q_0=.29$, $k=2.40$. With $L$ incumbent both offers are full. With $R$ incumbent consider $(\ell,r)=(0,1)$. Then $F_R(L)=-1.8-.15 S$, $F_R(R)=-1.8+.4125 S$, and $V_R^D(L)=-12/5-(31/320)S$. Successful entrenchment delivers $S/(1-\delta)$ from the following term onward. The old citizens at $.45$ still uphold the count at a flat offer, so $q_I=.47$ for the right incumbent. Its flat-offer indifference condition under this stationary profile is
+\[
+ .47\left[4+\frac34 S+
+ \frac14\left(\frac{S}{1-\delta}+\frac{12}{5}+\frac{31}{320}S\right)\right]=2.40.
+\]
+Its root is $91392/199891$. To verify that this is an equilibrium boundary, the replication evaluates both incumbent identities and all four current pairs using the displayed values. For each of the two candidate profiles (both full everywhere, and a flat challenger against $R$) the conjectured values are affine in $S$. Partition at all zeros of the old and young citizens' support margins, then at the refusal margins, then at the ballot margins for each valence draw. On each open interval the expected payoff difference from a unilateral campaign deviation is affine. Partition once more at its roots. Checking signs at the boundaries and one interior point per interval with rational arithmetic verifies all optimality conditions on $[0,1/5]$ for the first profile and on $(1/5,91392/199891]$ for the second. The check includes concession by an indifferent incumbent and abstention from support by an indifferent citizen. It establishes the upper end of this stationary branch.
+
+\paragraph{A current shock and the exact repeal thresholds.}
+Fix $S^\infty=.05$ instead. At both $q_0=.29$ and $.325$ the full-mandate, mutual-concession profile satisfies every deviation check there. Against $r=1$ the incumbent's stakes at a flat challenger are
+\[
+ D_f(S)=4+\tfrac34S+\frac{\delta}{1-\delta}\big[1.8+1.15 S^\infty\big]
+       =5543/1200+\tfrac34 S .
+\]
+The corresponding full-offer stakes exceed $D_f$ by $5S/4$. The challenger gains $B_f=4+1.25S+\delta(1.8+2.65S^\infty)/(1-\delta)$ from lawful installation with its flat policy rather than successful entrenchment by $R$. Its full offer adds $3S/4$ to this gain. In both calibrations the old median favors certifying $R$ on neutral valence, as does the young median: after a concession the two possible next democratic incumbents deliver the same value, while anticipated refusal makes a certified $R$ victory more attractive. Thus $p=.45$ across today's offers. Increasing $r$ raises the incumbent's own policy payoff, weakly raises its public backing, and costs it no certificates. It chooses $r=1$ for $S>0$.
+
+For $q_0=.29$, solving $.47D_f=2.4$ gives $27479/42300$. Directly above this threshold repeal induces the same flat mandate as the guarantee. The unconditional gross gain is $.45[.47D_f-2.4]$, and it reaches $.01$ at $90437/126900$. For $q_0=.325$ the success probabilities are $Q_{\rm lo}=.505$ and $Q_{\rm hi}=.625$. The comparison $B_f/(B_f+3S/4)>.88>(1-Q_{\rm hi})/(1-Q_{\rm lo})$ makes a flat offer preferable to a full one if both are refused but only the full offer attracts the extra citizens. Any accepted flat offer also beats a refused full offer. Consequently, at $S_+=16157/90900$, where $Q_{\rm lo}D_f=2.40$, voluntary concession is exhausted. From immediately above $S_+$ through $.20$ both offers still have the same backing. Repeal restores the full mandate, yielding
+\[
+ .45[Q_{\rm lo}D_f-2.40-(1-Q_{\rm lo})5S/4]<0.
+\]
+At $.20$ this is $-.051894375$. Immediately above $.20$ the unprotected challenger goes flat, so the right limit of the gross gain is $.003793125$. The incumbent now prefers free repeal and strictly prefers costly repeal above $64471/272700$, the root of $.45[Q_{\rm lo}D_f-2.40]=.01$. Above $.80$ even the flat offer attracts the extra citizens. Substituting $Q_{\rm hi}$ and the full challenger in \eqref{eq:civicrepeal} keeps the gain above cost. All of these comparisons concern the current guarantee with an indefinite sequence of elections still available after a lawful transfer.
+
+\paragraph{Gaussian information states.}
+The approximation for Table~\ref{tab:civicmpe} records separate accumulated precisions $u_+,u_-$ about $\theta_+=\alpha+\beta$ and $\theta_-=\alpha-\beta$. In this ordering $K_0$ has diagonal $.26$ and off-diagonal $-.24$. The covariance conditional on these precisions is $(K_0^{-1}+\operatorname{diag}(u_+,u_-))^{-1}$. An infinite precision means that the corresponding linear combination is known. Each precision is represented at $0,4,16,64,\infty$. Given the realized economic state $v\in\{+,-\}$, the exact trial at $x$ adds $x^2/.0625$ to $u_v$. Approximate that update by a lottery over its two bracketing precision nodes, choosing the probability so that the expected remaining variance of $\theta_v$ equals the exact posterior variance. For positive starting variance $K_{vv}$ the conditional mean innovation for a chosen node with variance $K'_{vv}$ is
+\[
+ \frac{K_{\cdot v}}{K_{vv}}\sqrt{K_{vv}-K'_{vv}}\ Z,\qquad Z\sim\mathcal N(0,1).
+\]
+This step preserves the Gaussian update's expected covariance before discretizing posterior means. With no new precision the means stay fixed. Nine-node Gauss--Hermite quadrature integrates the innovation. Convert to $a=(\E\theta_++\E\theta_-)/2$ and $b=(\E\theta_+-\E\theta_-)/2$, interpolate bilinearly on the same five-by-five mean grid as the organized-enforcement calculation, and clip outside its bounds. The resulting 625 information states each support both democratic incumbent identities and both possible autocrats. Every surviving democratic state, including one where both policy effects are known, has another election.
+
+\paragraph{Solving and checking the political game.}
+A record either keeps the same information state or raises a precision coordinate. Conditional on play at more informative states, a proposed campaign and transfer profile therefore gives a $2\times2$ Bellman system for each party at the current record, with the incumbent identity indexing the two equations. The algorithm enumerates all 256 pairs of on-path pure profiles (four offer pairs, two transfer responses, and two neutral certificates for each incumbent). It recomputes support, refusal and all ballots at all eight incumbent--offer nodes and checks both parties' unilateral campaign deviations. With multiple verified pure candidates the reported selection first minimizes the number of incumbent identities that refuse on path at this state, then favors greater total responsiveness and uses a fixed lexicographic tie rule. When pure profiles fail, the algorithm searches for independent mixed campaigns and verifies indifference on the support and the payoff to each pure deviation. The reported selections require mixed campaigns at 18, 92, 75, and 113 information states, respectively. This procedure finds particular equilibria and does not exhaust mixed MPE.
+
+In both numerical grids the two large valence draws dominate all ballot margins. The expected valence from retaining a next election is $45$. The young oppose refusal by either incumbent at all verified nodes. For example, on the wider grid $|a|\le .08$, $|b|\le1.5$, and future $S\le.14$. A single democratic material flow for a citizen is at least $-4-7(.08)-3(.08^2+.14\cdot1.5^2)>-5.53$, a future autocratic flow is at most $.88$, and the material gain from retaining either incumbent in the current term is below $6.25$ at all stationary nodes and at the prior for every transitory $S$. Hence $6.25+.25(.88+5.53-45)<0$. The older citizens can still switch sides in both grids. These calculations explain why the enforcement and electoral constituencies differ in this calibration.
+
+The verification constructs the complete transition matrix under the selected strategies and independently solves $(\Id-\delta P)V=f$ for the parties. To obtain the probability of eventual takeover, restrict the democratic transition matrix $Q$ to states with a positive-probability path to autocracy and solve $(\Id-Q)H=p_A$ there. Other democratic states have zero eventual takeover risk. The largest Bellman or one-period campaign-deviation residual in the four main calculations is below $3\times10^{-12}$. At the initial state, branch values for a transitory $S$ are affine within the null/revealing mixture. The calculation partitions $[0,1]$ at every citizen, refusal, ballot and campaign indifference under both guarantee rules. Campaigns for the initial right incumbent are pure on all resulting open intervals, so the final repeal comparison is affine on each, with the endpoints checked separately.
+
+On a nine-by-nine mean grid with $-.08\le a\le .08$, $-.5\le b\le1.5$, and 21 integration nodes, the takeover probabilities for the first two rows are $.4284$ and $.5434$. Section~\ref{sec:civicmpe} reports the corresponding cutoffs. At $q_0=.35$ and $S^\infty=.05$, eleven and thirteen integration nodes on the smaller mean grid also give strict repeal at $S=0$. At fifteen nodes the search did not verify an equilibrium at every state for that parameter combination. The grid results give neither uniqueness nor an error bound for the original continuous-posterior MPE.
+
 \end{document}

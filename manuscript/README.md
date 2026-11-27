@@ -1,6 +1,6 @@
 # Political Realignment and the Transfer of Power in an Unpredictable World
 
-The editable manuscript is `Realignment_and_the_Transfer_of_Power.tex`. Figures 2 and 4 use the supplied vector PDFs. The other figures are drawn in LaTeX. Compile the document with pdfLaTeX at least twice, or run the following command from this directory.
+The editable manuscript is `Realignment_and_the_Transfer_of_Power.tex`. The source files in this directory include the recurring-election analysis in Section 6.5. The source ZIP contains the preceding version. Figures 2, 4, and 5 use the supplied vector PDFs. The other figures are drawn in LaTeX. Compile the document with pdfLaTeX at least twice, or run the following command from this directory.
 
 ```bash
 latexmk -pdf Realignment_and_the_Transfer_of_Power.tex
@@ -15,6 +15,12 @@ python verify_citizen_support.py --figures
 ```
 
 This recomputes both elections, the two cohorts' ballots and support for refusal, the party campaigns with and without a conditional transfer guarantee, and the first three rows of Table 3. It writes Figure 2 to `citizen_transfer_regions.pdf` and Figure 4 to `transfer_guarantee_repeal.pdf`. Omit `--figures` to run the numerical checks alone. Section 6.2.1 gives the distribution of citizen types and Appendix D.1 derives the continuous-mandate best responses.
+
+## Citizen support with recurring elections
+
+Run `python verify_citizen_mpe.py` with NumPy and SciPy to reproduce Section 6.5 and Appendix D.2. This checks the known-technology stationary branch with rational arithmetic and solves the finite Kalman approximation with indefinite elections, binary mandates, both incumbent identities and overlapping citizen cohorts. It checks parties' deviations and recovers values and absorption probabilities independently from the full Markov chain.
+
+Use `--figure` with Matplotlib to regenerate Figure 5 (`citizen_stationary_transfer.pdf`). Use `--refinement` for the wider posterior grid. Each displayed threshold for a current shock holds the future stationary continuation fixed. The known-technology calculation also solves for the end of a branch when the change in monitoring is permanent.
 
 ## Transfer guarantees
 
