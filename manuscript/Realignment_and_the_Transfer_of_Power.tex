@@ -798,7 +798,7 @@ At $S=.42$ the first-election swing voter's preferred response weight is $1$, pr
 At $S=.05$ the challenger offers its full mandate $\ell^*=1$. At $S=S_+^o$ it gives up all responsiveness, $\ell^*=0$. In both elections the difference between the parties' mean policies is $d_R-d_L=2$. Yet \eqref{eq:mandatedistance} gives $4+\tfrac14 S(1+\ell^*)^2$ for the expected squared policy distance, which rises from $4.050$ in the first election to about $4.104$ in the second. The same measure is about $4.155$ at $S_-^o$, illustrating the offsetting effect of accommodation within the middle region. The comparison of $.05$ with $S_+^o$ thus exhibits greater policy risk, a larger opposition concession, and the exhaustion of voluntary means to secure turnover, with the same party preferences throughout.
 
 \paragraph{The value of preserving a check on succession.}
-Table~\ref{tab:repeal} uses the ordinary-voting branch payoffs and varies first-election enforcement at a fixed $k/q$. The second row raises the probability that both blocs must endorse enforcement to $.80$ and the cost of refusing to $3.84$. The parties face the same electoral odds and the same future policy and electoral consequences conditional on who governs as in the first row. Both boundaries of Figure~\ref{fig:phase} are identical. In the baseline, even free repeal is never strictly preferred. In the second row, self-restraint loses its value above $.7121$ and the incumbent will bear a cost of $.01$ to repeal the guarantee above $.7757$.
+Table~\ref{tab:repeal} uses the ordinary-voting branch payoffs and varies first-election enforcement at a fixed $k/q$. Figure~\ref{fig:repeal} plots what each incumbent would gain from repealing the guarantee before paying the cost of an attempt. The second row of the table raises the probability that both blocs must endorse enforcement to $.80$ and the cost of refusing to $3.84$. The parties face the same electoral odds and the same future policy and electoral consequences conditional on who governs as in the first row. Both boundaries of Figure~\ref{fig:phase} are identical. In the baseline, even free repeal is never strictly preferred. In the second row, self-restraint loses its value above $.7121$ and the incumbent will bear a cost of $.01$ to repeal the guarantee above $.7757$.
 \begin{table}[htbp]\centering\small
 \caption{Voluntary concession and the incentive to repeal the guarantee before the election}\label{tab:repeal}
 \begin{tabular}{@{}lrrrr@{}}
@@ -813,6 +813,61 @@ $(.80,3.84)$ & .1554 & .4148 & .7121 & .7757\\
 \end{tabular}
 \par\smallskip\footnotesize $p=.45$, $\rho=1$, $\sigma_\omega^2=1$, and $k/q=4.8$ in both rows.
 \end{table}
+
+\begin{figure}[!htbp]\centering
+\begin{tikzpicture}[x=.84\linewidth,y=22.5cm,font=\normalsize]
+  % Ordinary-voting endpoint stakes from Appendix D. Here sigma_omega^2=1.
+  \def\nullStake{4.489036}
+  \def\flatStake{5.238680}
+  \def\fullStake{6.490482}
+  \edef\transferCut{\fpeval{(4.8-\nullStake)/(\flatStake-\nullStake)}}
+  % Gross gain rho*p*G(S) on the refusal branch, with k/q=4.8.
+  \def\grossgain#1#2{\fpeval{.45*(#1*(\nullStake-4.8)
+    + (#2)*(#1*(\flatStake-\nullStake)-(1-#1)*(\fullStake-\flatStake)))}}
+  \def\repealcut#1{\fpeval{(#1-\grossgain{.80}{0})/
+    (\grossgain{.80}{1}-\grossgain{.80}{0})}}
+  \edef\freeCut{\repealcut{0}}
+  \edef\paidCut{\repealcut{.01}}
+
+  \node[anchor=south west,inner sep=0pt] at (0,.067)
+    {Incumbent's expected gain from repeal, before costs};
+  \foreach \y in {-.20,-.15,-.10,-.05,0,.05}{
+    \draw[black!13,thin] (0,\y) -- (1,\y);
+    \node[left=3pt,inner sep=0pt,font=\small] at (0,\y) {$\y$};
+  }
+  \draw[black!55] (0,.053) -- (0,-.20) -- (1,-.20);
+  \foreach \x in {0,.25,.50,.75,1}{
+    \draw[black!55] (\x,-.20) -- ++(0,-.0035);
+    \node[below=4pt,inner sep=0pt,font=\small] at (\x,-.20) {$\x$};
+  }
+  \node[anchor=north] at (.50,-.225) {Variance of the government's economic forecast, $S$};
+  \draw[black!50,thin] (0,0) -- (1,0);
+  \draw[black!65,densely dotted] (0,.01) -- (1,.01);
+  \node[above right=1.5pt,inner sep=0pt] at (.02,.01) {Repeal cost $.01$};
+  \draw[black!45,densely dashed,thin] (\transferCut,-.20) -- (\transferCut,.053);
+  \node[anchor=east,align=right,inner sep=4pt,fill=white] at (\transferCut,-.084)
+    {Limit of voluntary transfer\\$S_+=\fpeval{round(\transferCut,4)}$};
+
+  \draw[black!90,line width=1.3pt] (0,0) -- (\transferCut,0);
+  \fill[black!90] (\transferCut,0) circle (2.2pt);
+  \draw[black!75,line width=1.1pt,dashed]
+    (\transferCut,\grossgain{.50}{\transferCut}) -- (1,\grossgain{.50}{1})
+    node[pos=.75,above right=2pt,inner sep=1pt,text=black!90] {$q=.50$};
+  \draw[inkblue,line width=1.4pt]
+    (\transferCut,\grossgain{.80}{\transferCut}) -- (1,\grossgain{.80}{1})
+    node[pos=.88,above left=2pt,inner sep=1pt] {$q=.80$};
+  \draw[black!75,fill=white,line width=.9pt] (\transferCut,\grossgain{.50}{\transferCut}) circle (2.3pt);
+  \draw[inkblue,fill=white,line width=1pt] (\transferCut,\grossgain{.80}{\transferCut}) circle (2.3pt);
+
+  \draw[inkblue!75,thin] (\freeCut,0) -- (.66,.039) -- (.65,.039)
+    node[left,align=right,inner sep=2pt,fill=white,text=inkblue] {Free repeal\\$S_E=\fpeval{round(\freeCut,4)}$};
+  \draw[inkblue!75,thin] (\paidCut,.01) -- (.82,-.033) -- (.83,-.033)
+    node[right,align=left,inner sep=2pt,fill=white,text=inkblue] {Repeal at cost $.01$\\$S_E=\fpeval{round(\paidCut,4)}$};
+  \fill[inkblue] (\freeCut,0) circle (2pt);
+  \fill[inkblue] (\paidCut,.01) circle (2pt);
+\end{tikzpicture}
+\caption{The value of repealing the transfer guarantee before the election. Repeal leaves outcomes unchanged through $S_+$ (filled point on the vertical guide). Just above $S_+$, either incumbent would refuse defeat without the guarantee, yet each prefers to keep it to secure the challenger's concession (open points). Repeal is profitable where the gain exceeds its cost. The probability $q$ that refusal succeeds varies at fixed $k/q=4.8$, $p=.45$, and $\rho=1$.}\label{fig:repeal}
+\end{figure}
 
 With a repeal cost of $.01$ and $S=.75$, an observer in either society sees the same safeguard, the same flat opposition mandate, and transfer whenever the opposition wins. In the first society the incumbent values the guarantee. In the second it already prefers a world without the guarantee, but the gain falls short of the cost of repeal. At $S=.78$ only the second incumbent acts. Within that society the same incumbent keeps the guarantee at $S=.50$ and pays to dismantle it at $S=.80$. At $.80$, keeping the guarantee would seat the opposition with probability $.45$. Repeal brings back its full mandate and cuts this probability to $.45(1-.80)=.09$. Repeal causes this subsequent change in the terms of competition. Explaining why it occurs at that point requires knowing what the incumbent stood to gain from honoring the earlier bargain.
 
