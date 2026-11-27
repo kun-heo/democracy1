@@ -6,6 +6,10 @@ The editable manuscript is `Realignment_and_the_Transfer_of_Power.tex`. The figu
 latexmk -pdf Realignment_and_the_Transfer_of_Power.tex
 ```
 
+## Transfer guarantees
+
+Run `python verify_transfer_guarantee.py` to reproduce the pre-election repeal cutoffs and expected squared policy distances from the ordinary-voting Gaussian endpoint payoffs printed in Appendix D. It requires only the Python standard library.
+
 ## Transfer with weak valence
 
 Run `python verify_weak_valence.py` with NumPy and SciPy to reproduce Section 6.3 and Appendix D's weak-valence comparison. At the specified first-term offers, the script integrates over the Gaussian posteriors, solves the final election, and checks the first count, the blocs' endorsement decisions, and the incumbent's transfer choice for each voting rule.
