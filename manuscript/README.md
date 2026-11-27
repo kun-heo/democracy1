@@ -1,14 +1,24 @@
 # Political Realignment and the Transfer of Power in an Unpredictable World
 
-The editable manuscript is `Realignment_and_the_Transfer_of_Power.tex`. The figures in the current manuscript are drawn in LaTeX. Compile the document with pdfLaTeX at least twice, or run the following command from this directory.
+The editable manuscript is `Realignment_and_the_Transfer_of_Power.tex`. Figures 2 and 4 use the supplied vector PDFs. The other figures are drawn in LaTeX. Compile the document with pdfLaTeX at least twice, or run the following command from this directory.
 
 ```bash
 latexmk -pdf Realignment_and_the_Transfer_of_Power.tex
 ```
 
+## Citizen support for refusal in two elections
+
+Run the following from this directory with Python 3, NumPy, SciPy, and Matplotlib.
+
+```bash
+python verify_citizen_support.py --figures
+```
+
+This recomputes both elections, the two cohorts' ballots and support for refusal, the party campaigns with and without a conditional transfer guarantee, and the first three rows of Table 3. It writes Figure 2 to `citizen_transfer_regions.pdf` and Figure 4 to `transfer_guarantee_repeal.pdf`. Omit `--figures` to run the numerical checks alone. Section 6.2.1 gives the distribution of citizen types and Appendix D.1 derives the continuous-mandate best responses.
+
 ## Transfer guarantees
 
-Run `python verify_transfer_guarantee.py` to reproduce the pre-election repeal cutoffs and expected squared policy distances from the ordinary-voting Gaussian endpoint payoffs printed in Appendix D. It requires only the Python standard library.
+Run `python verify_transfer_guarantee.py` to reproduce the fixed-enforcement repeal cutoffs (the last two rows of Table 3) and expected squared policy distances from the ordinary-voting Gaussian endpoint payoffs printed in Appendix D. It requires only the Python standard library.
 
 ## Transfer with weak valence
 
