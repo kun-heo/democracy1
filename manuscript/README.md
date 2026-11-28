@@ -22,6 +22,8 @@ Run `python verify_citizen_mpe.py` with NumPy and SciPy to reproduce Section 6.5
 
 Use `--figure` with Matplotlib to regenerate Figure 5 (`citizen_stationary_transfer.pdf`). Use `--refinement` for the wider posterior grid. Each displayed threshold for a current shock holds the future stationary continuation fixed. The known-technology calculation also solves for the end of a branch when the change in monitoring is permanent.
 
+Run `python verify_citizen_mpe.py --future-ballot` for the Figure 5 payoff decomposition, the one-election deviation to an opposition mandate of 0.01, and the comparison at current S = 0.62. The counterfactual assigns the neutral certificate to R in every subsequent election. Both parties choose their future mandates and transfer responses under this rule. Today's ballot follows the ordinary rule in both games. Add `--refinement` to repeat these comparisons on the wider grid.
+
 ## Transfer guarantees
 
 Run `python verify_transfer_guarantee.py` to reproduce the fixed-enforcement repeal cutoffs (the last two rows of Table 3) and expected squared policy distances from the ordinary-voting Gaussian endpoint payoffs printed in Appendix D. It requires only the Python standard library.

@@ -49,7 +49,7 @@ class Plan:
     young_support: np.ndarray
 
 
-def play(b, inst, protect=False, all_shocks=False):
+def play(b, inst, protect=False, all_shocks=False, *, fixed_neutral=False):
     """Backward induction within each election. Optional leading axis: profiles."""
     q_list, ref_list, prob_list, val_list, gain_list, sy_list = ([] for _ in range(6))
     ell, r = OFFERS.T
@@ -74,10 +74,13 @@ def play(b, inst, protect=False, all_shocks=False):
         margins = np.stack([old_margin, young_margin], axis=-2)
         if all_shocks:
             votes = np.stack([electoral_count(margins + h, inst.weights) for h in SHOCKS], axis=-1)
+            if fixed_neutral:
+                votes[..., SHOCKS == 0] = True
             pr = votes @ SHOCK_PROB
             valence = (votes * SHOCKS) @ SHOCK_PROB
         else:
-            pr = .45 + .10 * electoral_count(margins, inst.weights)
+            neutral = np.ones_like(refuse) if fixed_neutral else electoral_count(margins, inst.weights)
+            pr = .45 + .10 * neutral
             valence = VALENCE
         lose = (1 - pr) if inc == R else pr
         seated = lose * (1 - tau)
@@ -115,7 +118,7 @@ def solve_two(matrix, rhs):
                      (a[..., None] * rhs[..., 1, :] - c[..., None] * rhs[..., 0, :]) / det], axis=-2)
 
 
-def stationary_candidates(f, aut, future, stay, inst):
+def stationary_candidates(f, aut, future, stay, inst, fixed_neutral=False):
     """Endogenous q from the old. Verify young support again in play().
     future = current flow + discounted democratic values at strictly later
     information states; stay is the probability the public record does not move.
@@ -145,7 +148,7 @@ def stationary_candidates(f, aut, future, stay, inst):
     vals = rhs.copy()
     vals[..., :2] = solve_two(matrices, rhs[..., :2])
     dem = future + DISCOUNT * stay[..., None] * vals[:, :, None, :]
-    strategies = play(Branches(f, dem, aut), inst)
+    strategies = play(Branches(f, dem, aut), inst, fixed_neutral=fixed_neutral)
     nash = campaign_nash(strategies.value)
     ids = np.arange(len(vals))
     valid = np.ones(len(vals), dtype=bool)
@@ -214,14 +217,15 @@ def stage_nash(pay):
                      incentive_l[0] / (incentive_l[0] - incentive_l[1])])
 
 
-def mixed_candidates(f, a, future, stay, inst, pure_values):
+def mixed_candidates(f, a, future, stay, inst, pure_values, fixed_neutral=False):
     """Search support patterns, then certify the returned equilibrium independently.
 
     Within a fixed transfer/ballot pattern each actor's indifferences depend
     only on the opponent's mixing once one supported own action is fixed.
     """
     def assess(v):
-        return play(Branches(f, future + DISCOUNT * stay[..., None] * v[:, None, :], a), inst)
+        return play(Branches(f, future + DISCOUNT * stay[..., None] * v[:, None, :], a),
+                    inst, fixed_neutral=fixed_neutral)
 
     def certify(full, v):
         if np.any(full < -1e-9) or np.any(full > 1 + 1e-9):
@@ -385,17 +389,18 @@ class GaussianGrid:
         return ids, weights
 
 
-def material(grid, state, s):
+def material(grid, state, s, left_flat=0.):
     _, _, k, l = grid.states[state]
     a, b = grid.a[k], grid.b[l]
-    return np.stack([flow(BASE[j], (2 * j - 1) * np.arange(3), a, a * a + s * b * b) for j in PARTIES])
+    weights = (-np.array([left_flat, 1., 2.]), np.arange(3))
+    return np.stack([flow(BASE[j], weights[j], a, a * a + s * b * b) for j in PARTIES])
 
 
-def transitions(grid, state, s):
+def transitions(grid, state, s, left_flat=0.):
     out = []
     for party in PARTIES:
         row = []
-        for offer in range(3):
+        for offer in (left_flat if party == L else 0., 1., 2.):
             mix = {}
             for report, prob in [(0, 1 - s), (1, s)]:
                 if prob == 0:
@@ -443,9 +448,10 @@ class Solution:
     risk: np.ndarray
     multiplicity: np.ndarray
     residual: float
+    fixed_neutral: bool = False
 
 
-def solve(grid, s, inst, select='concede'):
+def solve(grid, s, inst, select='concede', *, fixed_neutral=False):
     n = len(grid.states)
     vals = np.zeros((n, 2, 6))
     auto = np.zeros_like(vals)
@@ -462,7 +468,7 @@ def solve(grid, s, inst, select='concede'):
         a = f + DISCOUNT * (ad + stay[..., None] * auto[state, :, None, :])
         _, dd = split_expectation(state, kernel, vals)
         future = f + DISCOUNT * dd
-        v, profiles, ok = stationary_candidates(f, a, future, stay, inst)
+        v, profiles, ok = stationary_candidates(f, a, future, stay, inst, fixed_neutral)
         if len(ok):
             sign = 1 if select == 'concede' else -1
             def rank(i):
@@ -472,19 +478,19 @@ def solve(grid, s, inst, select='concede'):
             vals[state] = v[pick]
             policy[state] = OFFERS[profiles[pick, :, 0]]
         else:
-            mixed = mixed_candidates(f, a, future, stay, inst, v)
+            mixed = mixed_candidates(f, a, future, stay, inst, v, fixed_neutral)
             if mixed is None:
                 raise RuntimeError(f'No certified profile at {grid.states[state]}, S={s}, select={select}')
             policy[state], vals[state] = mixed
         multi[state] = len(ok)
         d = future + DISCOUNT * stay[..., None] * vals[state, :, None, :]
-        resp = play(Branches(f, d, a), inst, all_shocks=True)
+        resp = play(Branches(f, d, a), inst, all_shocks=True, fixed_neutral=fixed_neutral)
         prob = offer_probabilities(policy[state])
         expected = np.einsum('ip,ipj->ij', prob, resp.value)
         err = max(np.max(abs(expected - vals[state])), regret(resp.value, policy[state]))
         residual = max(err, residual)
         assert err < 5e-10 and np.max(resp.young_support) == 0
-        stable = play(Branches(f, d, a), inst)
+        stable = play(Branches(f, d, a), inst, fixed_neutral=fixed_neutral)
         assert np.max(abs(resp.pr - stable.pr)) < TIE and np.max(abs(resp.value - stable.value)) < 5e-11
         higher = np.zeros(2)
         local = np.zeros((2, 2))
@@ -506,14 +512,14 @@ def solve(grid, s, inst, select='concede'):
                         higher[inc] += t * risk[h, j]
         risk[state] = absorbing_risk(local, higher)
     assert np.min(risk) > -1e-10 and np.max(risk) < 1. + 1e-10
-    return Solution(grid, s, inst, vals, auto, policy, risk, multi, residual)
+    return Solution(grid, s, inst, vals, auto, policy, risk, multi, residual, fixed_neutral)
 
 
-def current(sol, state, s):
-    """One election at current S, followed forever by the stationary selection."""
+def current(sol, state, s, *, left_flat=0.):
+    """Current branches, optionally pricing a one-time L deviation in the flat slot."""
     grid = sol.grid
-    f = material(grid, state, s)
-    kernel = transitions(grid, state, s)
+    f = material(grid, state, s, left_flat)
+    kernel = transitions(grid, state, s, left_flat)
     stay, next_d = split_expectation(state, kernel, sol.values)
     _, next_a = split_expectation(state, kernel, sol.auto)
     d = f + DISCOUNT * (next_d + stay[..., None] * sol.values[state, :, None, :])
@@ -637,7 +643,7 @@ def next_return(sol, s, offer=0):
     certificate = installed = 0.
     for nxt, prob in ks.items():
         b = current(sol, nxt, sol.s)
-        r = play(b, sol.inst, all_shocks=True)
+        r = play(b, sol.inst, all_shocks=True, fixed_neutral=sol.fixed_neutral)
         weights = offer_probabilities(sol.policy[nxt])[L]
         certificate += prob * (weights @ r.pr[L])
         installed += prob * (weights @ (r.pr[L] * (1 - r.q[L] * r.refuse[L])))
@@ -662,7 +668,7 @@ def audit_chain(sol):
             data.append(probability * p)
     for state in range(n):
         b = current(sol, state, sol.s)
-        r = play(b, sol.inst, all_shocks=True)
+        r = play(b, sol.inst, all_shocks=True, fixed_neutral=sol.fixed_neutral)
         kr = transitions(sol.grid, state, sol.s)
         mix = offer_probabilities(sol.policy[state])
         for inc in PARTIES:
@@ -837,12 +843,55 @@ def draw_figure(lines):
     plt.close(fig)
 
 
+def compare_future_ballots(grid):
+    """Figure 5 and the fixed-neutral electoral counterfactual in Section 6.5."""
+    inst = Institutions(intercept=.29, k=2.4)
+    root = grid.prior_state()
+    # OFFERS stores (ell,r) lexicographically. Price the current pair (0,1).
+    flat = 1
+    stakes = []
+    ballot_values = []
+    cases = ((.05, False, (.60, .62)), (.14, False, (.60,)), (.05, True, (.62,)))
+    for future_s, fixed, current_levels in cases:
+        sol = solve(grid, future_s, inst, fixed_neutral=fixed)
+        audit_chain(sol)
+        cuts, outcomes = cutoff_table(sol)  # Today's ballot is ordinary in all cases.
+        print(f'Future S={future_s:.2f}, neutral ballot={"fixed to R" if fixed else "responsive"}')
+        for s in current_levels:
+            b = current(sol, root, s)
+            p, chosen, _, _ = outcomes(s)
+            np.testing.assert_allclose(chosen['full'], [0, 1], atol=TIE)
+            np.testing.assert_allclose([chosen['loss'], p.q[R, flat]], [.45, .47], atol=TIE)
+            a, c, gain = b.a[R, 1, R], b.d[L, 0, R], p.incentives[R, flat]
+            certified, installed = next_return(sol, s)
+            print(f'  S={s:.2f}, A_R={a:.6f}, C_R={c:.6f}, T_R={gain:+.6f}, '
+                  f'L installed={chosen["installed"]:.4f}, S+={cuts[0]:.6f}; '
+                  f'next R certified={certified:.6f}, installed={installed:.6f}')
+            if s == .60:
+                stakes.append((a, c))
+                deviation = play(current(sol, root, s, left_flat=.01), inst, all_shocks=True)
+                extra = deviation.value[R, flat, L] - p.value[R, flat, L]
+                print(f'  ell=.01: L campaign gain={extra:+.6f}, T_R={deviation.incentives[R, flat]:+.6f}')
+            else:
+                ballot_values.append((a, c, gain))
+    ordinary, fixed = ballot_values
+    np.testing.assert_allclose(ordinary[0], fixed[0], rtol=0., atol=TIE)
+    np.testing.assert_allclose(ordinary[2] - fixed[2], .47 * (fixed[1] - ordinary[1]), atol=TIE)
+    delta_a, delta_c = np.subtract(stakes[1], stakes[0])
+    print(f'Figure 5: delta A_R={delta_a:+.6f}, delta C_R={delta_c:+.6f}, '
+          f'autocracy share={delta_a / (delta_a - delta_c):.1%}')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--refinement', action='store_true',
                         help='solve the larger mean grid reported in the appendix')
     parser.add_argument('--figure', action='store_true', help='regenerate the stationary transfer figure')
+    parser.add_argument('--future-ballot', action='store_true',
+                        help='compare future electoral rules and decompose the Figure 5 change')
     args = parser.parse_args()
+    if args.future_ballot and args.figure:
+        parser.error('--future-ballot reports the comparisons without redrawing the figure')
     lines = []
     exact = known_technology()
     print('Known technology: permanent branch, then flat/repeal cutoffs for two institutions')
@@ -861,6 +910,9 @@ def main():
         grid = GaussianGrid(np.linspace(-.04, .04, 5), np.linspace(0., 1., 5),
                           [0., 4., 16., 64., np.inf], 9)
         cases = [(.29, 2.4, .05), (.29, 2.4, .14), (.29, 2.55, .05), (.35, 2.4, .05)]
+    if args.future_ballot:
+        compare_future_ballots(grid)
+        return
     for q, k, s in cases:
         inst = Institutions(k=k, intercept=q)
         sol = solve(grid, s, inst)
